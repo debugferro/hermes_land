@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_220426) do
     t.string "username"
     t.string "country"
     t.bigint "language_id", null: false
-    t.string "about_me"
+    t.text "about_me"
     t.date "birth_date"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["language_id"], name: "index_users_on_language_id"
