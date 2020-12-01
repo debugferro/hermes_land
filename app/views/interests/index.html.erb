@@ -1,0 +1,7 @@
+<%= simple_form_for current_user, url: interests_path, method: 'post' do |f| %>
+  <%= f.association :interests, input_html: {class:'multiple-select form-control form-control-lg'}, include_hidden: false, label: false %>
+  <%= select_tag "interests", options_from_collection_for_select(
+    Interest.All, :name, :name),
+    class: 'select2' %>
+  <%= f.submit %>
+<% end %>
