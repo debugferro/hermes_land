@@ -12,6 +12,7 @@ class User < ApplicationRecord
   # TODO: HASMANY RELATIONS TO THE EXTRA FEATURES
   has_many :posts
   has_many :comments
+  belongs_to :language
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
