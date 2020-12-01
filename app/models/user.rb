@@ -21,7 +21,7 @@ class User < ApplicationRecord
             presence: true,
             format: { with: /[a-z\s.-]/i },
             length: { minimum: 3, maximum: 15 }
-  validates :username, presence: true#, format: { with: /\A[A-Za-z0-9_-]*\z/ }
+  validates :username, presence: true, format: { with: /\A[A-Za-z0-9_-]*\z/ }
   validates :country, inclusion: { in: COUNTRIES }
   validates :language_id, presence: true
 end
