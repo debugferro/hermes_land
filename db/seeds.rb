@@ -1,19 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require "faker"
 
-  User.destroy_all
-  Language.destroy_all
-  a = ["English", "French", "Portuguese", "Chinese", "German"]
-  Language::LANGUAGES.each do | language |
-   Language.create(name: language) if a.include?(language)
-  end
-
+User.destroy_all
+Language.destroy_all
+selected_languages = ["English", "French", "Portuguese", "Chinese", "German"]
+Language::LANGUAGES.each do | language |
+ Language.create(name: language) if selected_languages.include?(language)
+end
 
 
 user = User.create!(
@@ -135,3 +127,25 @@ about_me: "We only live once so it is better to learn as much as possible while 
 language: Language.all.sample,
 country: User::COUNTRIES.sample
 )
+
+Language::LANGUAGES.each do | language |
+  Language.create(name: language) unless a.include?(language)
+end
+
+# ids = []
+# a.each do |language|
+#   id = Language.where(name: language).first.id
+#   ids << id
+# end
+
+# user = User.create!(
+# email: "testeuser1@gmail.com",
+# password: "123456",
+# username: "Gabs",
+# first_name: "Gabriel",
+# last_name:  "Ferro",
+# birth_date: Faker::Date.birthday(min_age: 12, max_age: 65),
+# about_me: "This is me, like it or not, here i come. I love learning new languages so i can talk with anyone at anytime",
+# language_id: ids.sample,
+# country: User::COUNTRIES.sample
+# )

@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 
 # Countries Gem for getting information about them
 gem 'countries'
+# Language Gem for gettin information about language
+gem 'language_list', '~> 1.1'
 # Devise authentication gem
 gem 'devise'
 
