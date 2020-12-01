@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 
 # Countries Gem for getting information about them
 gem 'countries'
+# Language Gem for gettin information about language
+gem 'language_list', '~> 1.1'
 # Devise authentication gem
 gem 'devise'
 
@@ -65,3 +67,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Language Gem for gettin information about language
+gem 'language_list', '~> 1.1'
+
+gem 'faker'
