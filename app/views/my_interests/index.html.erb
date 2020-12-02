@@ -1,0 +1,28 @@
+<!-- <script type="module">
+  import $ from 'jquery';
+  const hideDiv = () => {
+      $(".btn-add").click(function(){
+      $("#add").hide();
+    });
+
+    $(".btn-add").click(function(){
+      $("#add").show();
+    });
+  }
+</script> -->
+
+<ul>
+<% @my_interests.each do |my_interest| %>
+   <li>
+    <%= my_interest.interest.name %>
+    <%= link_to 'X', my_interest_path(my_interest), method: :delete %>
+  </li>
+<% end %>
+</ul>
+<button class="btn-add" type="button" onclick="hideDiv();">+</button>
+<div id="add">
+<%= simple_form_for current_user, url: my_interests_path, method: 'post' do |f| %>
+  <%= f.association :interests, value_method: :name, label_method: :name, input_html: { class: 'select2' }  %>
+  <%= f.submit %>
+<% end %>
+</div>
