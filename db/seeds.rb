@@ -132,17 +132,3 @@ about_me: "We only live once so it is better to learn as much as possible while 
 language_id: ids.sample,
 country: User::COUNTRIES.sample
 )
-
-
-
-# user = User.create!(
-# email: "testeuser1@gmail.com",
-# password: "123456",
-# username: "Gabs",
-# first_name: "Gabriel",
-# last_name:  "Ferro",
-# birth_date: Faker::Date.birthday(min_age: 12, max_age: 65),
-# about_me: "This is me, like it or not, here i come. I love learning new languages so i can talk with anyone at anytime",
-# language_id: ids.sample,
-# country: User::COUNTRIES.sample
-# )

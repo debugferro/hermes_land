@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
 
+  resources :chat_rooms, only: [:index, :show, :create] do
+    resources :participants, only: [:create]
+    resources :messages, only: [:create]
+  end
+
   resources :interests, only: [:index, :show, :create, :update]
 
   resources :my_interests, only: [:index, :create, :update, :destroy]

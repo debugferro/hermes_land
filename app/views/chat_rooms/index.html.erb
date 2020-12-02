@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="card-signup">
+    <h1>CHAT</h1>
+    <p>Start a new conversation:</p>
+    <%= simple_form_for @new_chat, url: chat_rooms_path, method: 'post' do |f| %>
+      <%= f.association :users, collection: User.where.not(id: current_user.id), value_method: :id, label_method: :username, input_html: { class: 'select2 form-large' }  %>
+      <%= f.submit "Start" %>
+    <% end %>
+    <hr>
+    <% @present_chats.each do |chat| %>
+      <% participants = chat.participants.map do |p| %>
+        <% p.user.username if p.user.username != @user.username %>
+      <% end %>
+      <% participants = participants.compact %>
+      <%= link_to participants.to_sentence, chat_room_path(chat) %>
+    <% end %>
+  </div>
+</div>

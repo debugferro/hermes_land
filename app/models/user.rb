@@ -10,6 +10,7 @@ class User < ApplicationRecord
   # TODO: HASMANY RELATIONS TO THE EXTRA FEATURES
   has_many :posts
   has_many :comments
+  has_many :participants
   has_many :interests, through: :my_interests
   has_many :languages, through: :my_languages
   has_many :chat_rooms, through: :participants
