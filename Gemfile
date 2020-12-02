@@ -72,3 +72,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'language_list', '~> 1.1'
 
 gem 'faker'
+
+# To create authorizations
+gem 'pundit'

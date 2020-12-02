@@ -2,6 +2,7 @@ class InterestsController < ApplicationController
 
   def index
     @interest = Interest.new
+    @interest = policy_scope(Interest)
   end
 
   def show
@@ -9,7 +10,7 @@ class InterestsController < ApplicationController
   end
 
   def create
-
+    authorize @interest
   end
 
   def update
@@ -19,4 +20,12 @@ class InterestsController < ApplicationController
   def destroy
 
   end
+
+  private
+
+  def set_interest
+    @interest = Interest.find(params[:id])
+    authorize @interest
+  end
+
 end

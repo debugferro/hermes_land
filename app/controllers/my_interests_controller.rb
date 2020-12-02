@@ -14,12 +14,14 @@ class MyInterestsController < ApplicationController
       @similar_interest = Interest.where("name ILIKE ?", param).first
       @similar_interest ||= Interest.create!(name: param)
       @my_interest = MyInterest.new(interest_id: @similar_interest.id, user_id: @user.id)
+      authorize @my_interest
       @my_interest.save
     end
     redirect_to :my_interests
   end
 
   def destroy
+    authorize @my_interest
     @my_interest.destroy
     redirect_to :my_interests
   end
