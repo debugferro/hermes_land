@@ -28,10 +28,13 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initSelect2 } from '../components/init_select2';
+import { hideDiv } from '../components/hide_div';
 
 document.addEventListener("turbolinks:load", function() {
   initSelect2();
+  hideDiv();
 });
+
 
 // document.addEventListener('turbolinks:load', () => {
 //   // Call your functions here, e.g:
