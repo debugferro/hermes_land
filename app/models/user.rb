@@ -3,16 +3,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   before_save :fix_case_inputs
 
-  has_many :interests
-  has_many :user_languages
-  has_many :languages, through: :user_languages
+  has_many :my_languages
+  has_many :my_interests
   has_many :notifications
   has_many :messages
-  has_many :chat_rooms, through: :participants
   # TODO: HASMANY RELATIONS TO THE EXTRA FEATURES
   has_many :posts
   has_many :comments
-  belongs_to :language
+  has_many :interests, through: :my_interests
+  has_many :languages, through: :my_languages
+  has_many :chat_rooms, through: :participants
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
