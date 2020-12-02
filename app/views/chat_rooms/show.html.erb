@@ -1,1 +1,14 @@
-this is your page!
+
+<div class="container">
+  <div class="card-signup">
+    this is your page!
+    <% @messages.each do |message| %>
+      <p><%= message.content %></p>
+    <% end %>
+
+    <%= simple_form_for @new_message, url: chat_room_messages_path(@chat_room) do |f| %>
+      <%= f.input :content, as: :text %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
