@@ -1,0 +1,8 @@
+<div class="container" style="background-color: white">
+  <h1>Oi, <%= current_user.first_name %></h1>
+   <ul>
+    <h2><% @users.each do |user|%></h2>
+     <li> <%= link_to "#{user.first_name}", user_path(user) %> </li>
+     <% end %>
+   </ul>
+</div>
