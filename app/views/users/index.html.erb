@@ -1,0 +1,14 @@
+<div class="p-4">
+    <div class="container p-3">
+      <h1>Oi, <%= current_user.first_name %></h1>
+    </div>
+  <div class="p-3 rounded" style="background-color: rgba(211,211,211,0.5)">
+    <div class="container cards">
+      <% @users.each do |user|%>
+      <div class="card-category align-center" style="background-image: linear-gradient(rgba(211,211,211,0.1), rgba(211,211,211,0.3)), url(https://kitt.lewagon.com/placeholder/users/ssaunier)">
+        <%= link_to "#{user.first_name}", user_path(user) %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
