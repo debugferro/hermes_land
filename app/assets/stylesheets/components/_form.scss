@@ -1,7 +1,22 @@
-.form-large {
-
+.select2, .select2-container, .select2-container--default{
+  width: 60% !important;
+  margin-left: 1em;
 }
 
 .form-unit .select2-container, .form-unit .select2-selection {
     width: 100% !important;
+}
+
+textarea {
+  border-radius: 1em;
+  resize: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 60px;
+  resize: none;
+}
+
+.chat-form {
+  width: 80% !important;
+  border-radius: 1em;
 }

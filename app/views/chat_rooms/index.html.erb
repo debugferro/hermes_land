@@ -9,9 +9,10 @@
     <hr>
     <% @present_chats.each do |chat| %>
       <% participants = chat.participants.map do |p| %>
-        <% p.user.username %>
+        <% p.user.username if p.user.username != @user.username %>
       <% end %>
-      <%= link_to participants.join(', '), chat_room_path(chat) %>
+      <% participants = participants.compact %>
+      <%= link_to participants.to_sentence, chat_room_path(chat) %>
     <% end %>
   </div>
 </div>

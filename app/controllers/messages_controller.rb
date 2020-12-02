@@ -7,7 +7,11 @@ class MessagesController < ApplicationController
     @message.user = @user
     @message.chat_room = @chat_room
     if @message.save
-      redirect_to @chat_room
+      ChatRoomChannel.broadcast_to(
+        @chat_room,
+        render_to_string(partial: "message", locals: { message: @message })
+      )
+      redirect_to @chat_room, anchor: "message-#{@message.id}"
     else
       render @chat_room
     end
