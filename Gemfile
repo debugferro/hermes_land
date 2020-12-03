@@ -22,12 +22,18 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Devise authentication gem
+gem 'devise'
+# To create authorizations
+gem 'pundit'
+# Cloudinary gem for cloud image hosting integration
+gem 'cloudinary', '~> 1.16.0'
 # Countries Gem for getting information about them
 gem 'countries'
 # Language Gem for gettin information about language
 gem 'language_list', '~> 1.1'
-# Devise authentication gem
-gem 'devise'
+# Faker for generating seeds for the database
+gem 'faker'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -67,11 +73,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# Language Gem for gettin information about language
-gem 'language_list', '~> 1.1'
-
-gem 'faker'
-
-# To create authorizations
-gem 'pundit'
