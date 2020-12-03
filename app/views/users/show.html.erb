@@ -1,3 +1,36 @@
 <div class="container pt-5" style="background-color: white">
   <h1>This is <%= @user.first_name %>'s profile</h1>
+
+  <div>
+    <%= @user.about_me %>
+  </div>
+  <div>
+    <% @user.interests.each do |interest| %>
+      <ul>
+        <li><%= interest.name %></li>
+      </ul>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "Chat with #{@user.first_name}", chat_rooms_path, class: "btn btn-flat" %>
+  </div>
 </div>
+
+<!--  Only can be used after "my_languages" implementation
+  <%# @user.my_languages.each do |language|%>
+  <ul>
+    <li> <%#= user.language %> </li>
+  </ul>
+  <%# end %>
+-->
+<!-- Raising errors, neeed to debug
+  <div>
+    <%# if @user.photo.attached? do %>
+      <%#= cl_image_tag @user.photo.key %>
+    <%# else %>
+      <%#= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier" %>
+    <%# end %>
+  </div>
+-->
+
+
