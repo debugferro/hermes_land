@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :notifications
   has_many :messages
   # TODO: HASMANY RELATIONS TO THE EXTRA FEATURES
+  has_one_attached :photo
   has_many :posts
   has_many :comments
   has_many :participants
