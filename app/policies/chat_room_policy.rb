@@ -6,7 +6,12 @@ class ChatRoomPolicy < ApplicationPolicy
   end
 
   def show?
-    users == record.user
+    user == record.users
+    if record.users.where(id: user.id).present?
+      true
+    else
+      false
+    end
   end
 
   def create?
