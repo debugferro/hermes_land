@@ -30,19 +30,15 @@ import "bootstrap";
 import { initSelect2 } from '../components/init_select2';
 import { hideDiv } from '../components/hide_div';
 import { initChatRoomCable } from '../channels/chat_room_channel';
-// import { sendMessage } from '../components/send_message';
+import { sendMessage } from '../components/send_message';
+import { loadScroll } from '../components/load_scroll';
 
 document.addEventListener("turbolinks:load", function() {
   initSelect2();
   hideDiv();
   initChatRoomCable();
-  // sendMessage();
-  const messagesContainer = document.getElementById('messages');
-  if (messagesContainer) {
-    window.onload = function () {
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    };
-  }
+  sendMessage();
+  loadScroll();
 });
 
 

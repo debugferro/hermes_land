@@ -66,10 +66,8 @@ ActiveRecord::Schema.define(version: 2020_12_03_032434) do
 
   create_table "interests", force: :cascade do |t|
     t.string "name"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_interests_on_user_id"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -95,6 +93,16 @@ ActiveRecord::Schema.define(version: 2020_12_03_032434) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["interest_id"], name: "index_my_interests_on_interest_id"
     t.index ["user_id"], name: "index_my_interests_on_user_id"
+  end
+
+  create_table "my_languages", force: :cascade do |t|
+    t.bigint "language_id", null: false
+    t.bigint "user_id", null: false
+    t.string "level"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["language_id"], name: "index_my_languages_on_language_id"
+    t.index ["user_id"], name: "index_my_languages_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -129,16 +137,6 @@ ActiveRecord::Schema.define(version: 2020_12_03_032434) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "user_languages", force: :cascade do |t|
-    t.bigint "language_id", null: false
-    t.bigint "user_id", null: false
-    t.string "level"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["language_id"], name: "index_user_languages_on_language_id"
-    t.index ["user_id"], name: "index_user_languages_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -163,18 +161,17 @@ ActiveRecord::Schema.define(version: 2020_12_03_032434) do
   add_foreign_key "avatars", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "interests", "users"
   add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "my_interests", "interests"
   add_foreign_key "my_interests", "users"
+  add_foreign_key "my_languages", "languages"
+  add_foreign_key "my_languages", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "participants", "chat_rooms"
   add_foreign_key "participants", "users"
   add_foreign_key "posts", "interests"
   add_foreign_key "posts", "languages"
   add_foreign_key "posts", "users"
-  add_foreign_key "user_languages", "languages"
-  add_foreign_key "user_languages", "users"
   add_foreign_key "users", "languages"
 end
