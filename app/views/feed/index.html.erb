@@ -24,18 +24,18 @@
             <p><strong>Country:</strong> <%= user.country %></p>
             <p><strong>Native language:</strong> <%= user.native_language %>
             <% user.my_languages&.each do |language| %>
-              <p><%= Language.find(language.language_id).name %></p>
+              <p></p>
               <% level = '🔹' if language.level == "Begginer"%>
               <% level = '🔹🔹' if language.level == "Elementary"%>
               <% level = '🔹🔹🔹' if language.level == "Intermediate"%>
               <% level = '🔹🔹🔹🔹' if language.level == "Advanced"%>
               <% level = '🔹🔹🔹🔹🔹' if language.level == "Fluent"%>
-              <span id="level">
-                <%= level %>
-              </span>
+              <p>
+                <%= "#{language.language.name}: #{level}" %>
+              </p>
             <% end %>
             <% user.interests&.each do |interest| %>
-              <p><%= interest.name %></p>
+              (<%= interest.name %>)
             <% end %>
           </div>
         </div>
