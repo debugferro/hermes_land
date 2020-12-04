@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     end
 
     # DIFFERENT WAY OF DOING
+
     # if params[:query].present?
     #   @results = []
     #   @results << User.global_search(@text).to_a if @text
