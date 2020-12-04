@@ -23,6 +23,7 @@
             <p><strong>About me:</strong> <%= user.about_me.truncate(100) %></p>
             <p><strong>Country:</strong> <%= user.country %></p>
             <p><strong>Native language:</strong> <%= user.native_language %>
+              <br>
             <% user.my_languages&.each do |language| %>
               <p></p>
               <% level = '🔹' if language.level == "Begginer"%>
