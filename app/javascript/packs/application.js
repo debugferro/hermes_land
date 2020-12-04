@@ -1,3 +1,4 @@
+//= require bootstrap-multiselect
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
@@ -25,6 +26,7 @@ require("channels")
 // External imports
 import "bootstrap";
 
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initSelect2 } from '../components/init_select2';
@@ -32,6 +34,7 @@ import { hideDiv } from '../components/hide_div';
 import { initChatRoomCable } from '../channels/chat_room_channel';
 import { sendMessage } from '../components/send_message';
 import { loadScroll } from '../components/load_scroll';
+// import { filterDropdown } from '../components/filter_dropdown'
 
 document.addEventListener("turbolinks:load", function() {
   initSelect2();
@@ -39,6 +42,7 @@ document.addEventListener("turbolinks:load", function() {
   initChatRoomCable();
   sendMessage();
   loadScroll();
+  // filterDropdown();
 });
 
 
@@ -46,3 +50,16 @@ document.addEventListener("turbolinks:load", function() {
 //   // Call your functions here, e.g:
 //   // initSelect2();
 // });
+
+
+      // <%= form_tag users_path, method: :get do %>
+      //   <%= text_field_tag :query,
+      //     params[:query],
+      //     class: "form-control",
+      //     placeholder: "Find a user"
+      //   %>
+      //   <%= hidden_field_tag(:parent_id, "5") %>
+      //   <%= submit_tag "Search", class: "btn btn-primary" %>
+      // <% end %>
+      // <%= f.input :countries, as: :select, collection: User::COUNTRIES, input_html: { class: 'select2 form-large', multiple: true }  %>
+      // <%= f.input :languages, as: :select, collection: Language.all, input_html: { class: 'select2 form-large', multiple: true }  %>

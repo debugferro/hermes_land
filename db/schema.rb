@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_032434) do
+ActiveRecord::Schema.define(version: 2020_12_03_205328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,15 @@ ActiveRecord::Schema.define(version: 2020_12_03_032434) do
     t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -149,11 +158,10 @@ ActiveRecord::Schema.define(version: 2020_12_03_032434) do
     t.string "last_name"
     t.string "username"
     t.string "country"
-    t.bigint "language_id", null: false
     t.text "about_me"
     t.date "birth_date"
+    t.string "native_language"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["language_id"], name: "index_users_on_language_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -173,5 +181,4 @@ ActiveRecord::Schema.define(version: 2020_12_03_032434) do
   add_foreign_key "posts", "interests"
   add_foreign_key "posts", "languages"
   add_foreign_key "posts", "users"
-  add_foreign_key "users", "languages"
 end

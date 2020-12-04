@@ -34,6 +34,8 @@ gem 'countries'
 gem 'language_list', '~> 1.1'
 # Faker for generating seeds for the database
 gem 'faker'
+# PGsearch for search engine
+gem 'pg_search', '~> 2.3.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
