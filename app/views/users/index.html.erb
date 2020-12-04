@@ -30,12 +30,12 @@
               <% level = '🔹🔹🔹' if language.level == "Intermediate"%>
               <% level = '🔹🔹🔹🔹' if language.level == "Advanced"%>
               <% level = '🔹🔹🔹🔹🔹' if language.level == "Fluent"%>
-              <span id="level">
-                <%= level %>
-              </span>
+              <p>
+                <%= "#{language.language.name}: #{level}" %>
+              </p>
             <% end %>
             <% user.interests&.each do |interest| %>
-              <p><%= interest.name %></p>
+              (<%= interest.name %>)
             <% end %>
           </div>
         </div>
