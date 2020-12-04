@@ -16,6 +16,7 @@
           <div class="card-category align-center outflow-avatar" style="background-image: linear-gradient(rgba(211,211,211,0.1), rgba(211,211,211,0.3)), url(https://kitt.lewagon.com/placeholder/users/ssaunier)">
             <%= link_to "#{user.username}", user_path(user), class: "btn-profile" %>
           </div>
+          <%= image_tag "circle-greek.png",  class: "greek-circle"%>
           <div class="card-profile-content">
             <p><strong>About me:</strong> <%= user.about_me.truncate(100) %></p>
             <p><strong>Country:</strong> <%= user.country %></p>

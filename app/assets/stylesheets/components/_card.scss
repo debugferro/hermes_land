@@ -9,14 +9,13 @@
   color: whitesmoke;
   font-size: 24px;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   box-shadow: 2px 2px 13px 2px #00000082;
   position: absolute;
-  border: 2px solid black;
-
-    top: -3em;
-    right: 4em;
+  border: 15px solid #c79000;
+  top: -3em;
+  right: 4em;
 }
 
 .card-profiles {
@@ -34,8 +33,16 @@
   // position: absolute;
 
 }
+
+.greek-circle {
+  position: absolute;
+  top: -4.5em;
+  right: 6em;
+  height: 45%;
+  width: 45%;
+}
 .card-filler{
-  background-color: #1b881f;
+  background-color: whitesmoke;
   width: 21.79em;
   height: 23%;
   margin-left: -1.9em;
@@ -47,14 +54,15 @@
 }
 
 .btn-profile {
-background-color: #167ffb;
-    border-radius: 0.1em;
-    padding: 0.1em 1.1em;
-    position: absolute;
-    bottom: -0.5em;
-    color: whitesmoke;
-    text-decoration: none !important;
-    text-transform: uppercase;
+  background-color: #0037c7;
+  border-radius: 1.1em;
+  padding: 0.1em 1.1em;
+  position: absolute;
+  bottom: -0.5em;
+  color: whitesmoke;
+  text-decoration: none !important;
+  text-transform: uppercase;
+      z-index: 1;
 }
 .btn-profile:hover {
       color: black;
