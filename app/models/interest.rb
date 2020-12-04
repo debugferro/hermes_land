@@ -5,4 +5,7 @@ class Interest < ApplicationRecord
   def fix_case_inputs
     self.name = name.capitalize if name
   end
+
+  # include PgSearch::Model
+  # multisearchable against: [:name]
 end

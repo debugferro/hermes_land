@@ -3,15 +3,12 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users, only: [:index, :show]
-
+  resources :feed, only: [:index]
   resources :chat_rooms, only: [:index, :show, :create] do
     resources :participants, only: [:create]
     resources :messages, only: [:create]
   end
 
   resources :interests, only: [:index, :show, :create, :update]
-
   resources :my_interests, only: [:index, :create, :update, :destroy]
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

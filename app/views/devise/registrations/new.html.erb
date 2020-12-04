@@ -45,8 +45,8 @@
                         required: true,
                         autofocus: true,
                         input_html: { autocomplete: "country" }%>
-            <%= f.label :language_id, "Your native language" %>
-            <%= f.select :language_id, Language.order('name ASC').map { |l| [l.name, l.id] } %>
+            <%= f.label :native_language, "Your native language" %>
+            <%= f.select :native_language, Language.order('name ASC').map { |l| [l.name, l.name] } %>
             <%= f.input :about_me,
                         required: true,
                         autofocus: true,
