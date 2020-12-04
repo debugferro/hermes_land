@@ -4,7 +4,6 @@ class MessagesController < ApplicationController
   def create
     # Create a new message for a chatroom
     @message = Message.new(message_params)
-    authorize @user
     @message.user = @user
     @message.chat_room = @chat_room
     if @message.save
