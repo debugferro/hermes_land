@@ -2,9 +2,9 @@
 <div class="container">
     <div class="card-signup">
     <%= simple_form_for :query, url: users_path, method: "GET", html: { class: 'form-inline', id: '' } do |f| %>
-      <%= f.input :text, input_html: {value: ""} %>
-      <%= f.input :interests, as: :select, collection: Interest.all, value_method: :name, label_method: :name, input_html: { class: 'select2 form-large', multiple: true }  %>
-      <%= f.submit "Search", class: "btn btn-primary" %>
+      <%= f.input :text, input_html: {value: ""}, label: false %>
+      <%= f.input :interests, as: :select, collection: Interest.all, value_method: :name, label_method: :name, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Interests:"  %>
+      <%= f.submit "Search", class: "btn-search" %>
     <% end %>
 
     </div>

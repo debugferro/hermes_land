@@ -21,7 +21,7 @@
 .card-profiles {
   box-shadow: 2px 1px 9px 3px #00000040;
   background: whitesmoke;
-  border: 2px solid black;
+  border: 1px solid black;
   padding: 30px;
   position: relative;
   height: 22em;
@@ -31,7 +31,13 @@
 
 .outflow-avatar {
   // position: absolute;
+}
 
+#find-title {
+  font-size: 2em;
+    letter-spacing: 0.13em;
+    margin-top: -22px;
+    text-transform: capitalize;
 }
 
 .greek-circle {
@@ -42,7 +48,7 @@
   width: 45%;
 }
 .card-filler{
-  background-color: whitesmoke;
+  background-color: #8ABFD7;
   width: 21.79em;
   height: 23%;
   margin-left: -1.9em;
@@ -58,7 +64,7 @@
   border-radius: 1.1em;
   padding: 0.1em 1.1em;
   position: absolute;
-  bottom: -0.5em;
+  bottom: -0.8em;
   color: whitesmoke;
   text-decoration: none !important;
   text-transform: uppercase;
@@ -67,6 +73,22 @@
 .btn-profile:hover {
       color: black;
     }
+
+.btn-search {
+  background-color: #0037c7;
+  border-radius: 1.1em;
+  padding: 0.1em 1.1em;
+  color: whitesmoke;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  border: none;
+      font-weight: bold;
+    font-size: 1.1em;
+}
+
+.btn-search:hover {
+  color: black;
+}
 
 .cards {
   display: grid;
