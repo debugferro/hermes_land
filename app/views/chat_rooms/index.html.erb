@@ -12,7 +12,7 @@
         <% p.user.username if p.user.username != @user.username %>
       <% end %>
       <% participants = participants.compact %>
-      <%= link_to participants.to_sentence, chat_room_path(chat) %>
+      <%= link_to participants.to_sentence, chat_room_path(chat), data: { turbolinks: false } %>
     <% end %>
   </div>
 </div>

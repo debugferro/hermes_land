@@ -21,7 +21,6 @@ class UsersController < ApplicationController
           @results << User.global_search(country).to_a
         end
       end
-      # raise
       @results = @results.flatten.uniq
     end
 
