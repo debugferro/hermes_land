@@ -6,11 +6,17 @@
           <h2>This is <%= @user.first_name%> <%= @user.last_name %>'s profile</h2>
           <div> <p>Country: <%= @user.country %></p></div>  
           <div class="container row pt-2">
-            <%= @user.about_me %>
-            <div> <p>Native Language: <%= @user.native_language %></p></div>           
+
+            <p><strong>Country: </strong><%= @user.country %></p>
+          </div>   
+          <div class="container row pt-2">
+            <p><strong>Native Language: </strong><%= @user.native_language %></p>
+          </div>                  
+          <div class="container row pt-2">
+          <p><strong>About me: </strong><%= @user.about_me %></p>
           </div>
           <div class="container row pt-2">
-            <% @user.interests.each do |interest| %>
+            <p><strong>Interests: </strong><% @user.interests.each do |interest| %></p>
               <ul>
                 <li><%= interest.name %></li>
               </ul>
