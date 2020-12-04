@@ -4,6 +4,8 @@
     <%= simple_form_for :query, url: users_path, method: "GET", html: { class: 'form-inline', id: '' } do |f| %>
       <%= f.input :text, input_html: {value: ""}, label: false %>
       <%= f.input :interests, as: :select, collection: Interest.all, value_method: :name, label_method: :name, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Interests:"  %>
+      <%= f.input :countries, as: :select, collection: User::COUNTRIES, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Countries:"  %>
+      <%= f.input :languages, as: :select, collection: Language.all, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Languages:"  %>
       <%= f.submit "Search", class: "btn-search" %>
     <% end %>
 

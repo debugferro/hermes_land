@@ -3,40 +3,40 @@ class UsersController < ApplicationController
   before_action :fix_inputs, only: [:index]
 
   def index
-    # @results = []
-    # if params[:query].present?
-    #   @results << User.global_search(@text).to_a if @text
-    #   if @interests
-    #     @interests.each do |interest|
-    #       @results << User.interest_search(interest).to_a
-    #     end
-    #   end
-    #   if @languages
-    #     @languages.each do |language|
-    #       @results << User.language_search(language).to_a
-    #     end
-    #   end
-    #   if @countries
-    #     @countries.each do |country|
-    #       @results << User.global_search(country).to_a
-    #     end
-    #   end
-    #   # raise
-    #   @results = @results.flatten.uniq
-    # end
-
-
-    # DIFFERENT WAY OF DOING
+    @results = []
     if params[:query].present?
-      @results = []
       @results << User.global_search(@text).to_a if @text
       if @interests
         @interests.each do |interest|
           @results << User.interest_search(interest).to_a
         end
       end
+      if @languages
+        @languages.each do |language|
+          @results << User.language_search(language).to_a
+        end
+      end
+      if @countries
+        @countries.each do |country|
+          @results << User.global_search(country).to_a
+        end
+      end
+      # raise
+      @results = @results.flatten.uniq
     end
-    @results = @results.flatten.uniq
+
+
+    # DIFFERENT WAY OF DOING
+    # if params[:query].present?
+    #   @results = []
+    #   @results << User.global_search(@text).to_a if @text
+    #   if @interests
+    #     @interests.each do |interest|
+    #       @results << User.interest_search(interest).to_a
+    #     end
+    #   end
+    # end
+    # @results = @results.flatten.uniq
   end
 
   def show
