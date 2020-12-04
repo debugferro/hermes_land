@@ -2,6 +2,7 @@ class ChatRoomsController < ApplicationController
   before_action :set_present_chats, only: [:index]
   before_action :fix_params, only: [:create]
   before_action :set_user
+  before_action :set_present_chats, only: [:create, :show, :index]
 
   def index
     # Where it is going to display all chatrooms for current user
@@ -10,6 +11,7 @@ class ChatRoomsController < ApplicationController
 
   def show
     @chat_room = ChatRoom.find(params[:id])
+    authorize @chat_room
     @participants = @chat_room.users
     @messages = @chat_room.messages
     @new_message = Message.new
