@@ -24,8 +24,8 @@ class UsersController < ApplicationController
       @results = @results.flatten.uniq
     end
 
+    # DIFFERENT WAY OF DOING
 
-    # # DIFFERENT WAY OF DOING
     # if params[:query].present?
     #   @results = []
     #   @results << User.global_search(@text).to_a if @text

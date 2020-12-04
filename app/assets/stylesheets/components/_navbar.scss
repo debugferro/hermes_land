@@ -2,7 +2,7 @@
   justify-content: space-between;
   background: whitesmoke;
   height: 64px;
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid black;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -15,20 +15,23 @@
 }
 
 .logo {
-position: relative;
-width: 164px;
-height: 29px;
-font-family: Roboto;
-font-style: normal;
-font-weight: bold;
-font-size: 24px;
-line-height: 28px;
-text-transform: uppercase;
-color: #000000;
+  position: relative;
+  margin-left: 3em;
+  font-weight: bold;
+  letter-spacing: 0.3em;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  color: #000000;
+  text-decoration: none !important;
+}
+.logo:hover {
+  color: #000000;
 }
 
 .logo-img {
-position: relative;
-width: 30.52px;
-height: 45px;
+  position: absolute;
+  width: 5em;
+  height: 5em;
+  margin-left: -1.5em;
+  margin-top: -1.7em;
 }
