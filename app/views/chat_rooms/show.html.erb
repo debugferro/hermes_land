@@ -19,8 +19,8 @@
     </div>
     <div class="box-form">
       <%= simple_form_for @new_message, url: chat_room_messages_path(@chat_room), remote: true, html: { class: 'chatroom' }, authenticity_token: true do |f| %>
-        <%= f.input :content, as: :text, input_html: { class: 'chat-form' } %>
-        <%= f.submit "SEND" %>
+        <%= f.input :content, as: :text, input_html: { class: 'chat-form' }, label: false %>
+
       <% end %>
     </div>
   </div>
