@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_205328) do
+ActiveRecord::Schema.define(version: 2020_12_06_012701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,13 +36,24 @@ ActiveRecord::Schema.define(version: 2020_12_03_205328) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "assets", force: :cascade do |t|
+    t.string "category"
+    t.string "path"
+    t.bigint "avatar_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["avatar_id"], name: "index_assets_on_avatar_id"
+  end
+
   create_table "avatars", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "base"
     t.string "eyes"
+    t.string "eyebrows"
     t.string "hair"
     t.string "mouth"
-    t.string "path"
+    t.string "nose"
+    t.string "acessory"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_avatars_on_user_id"
@@ -166,6 +177,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_205328) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "assets", "avatars"
   add_foreign_key "avatars", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
