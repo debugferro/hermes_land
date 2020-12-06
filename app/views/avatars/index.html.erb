@@ -28,3 +28,9 @@
 <button class="Btn-eyebrows">Change eyebrows</button>
 <button class="Btn-cloth">Change clothes</button>
 <button class="Btn-acessory">Change acessories</button>
+<button class="Btn-save">UPLOAD</button>
+
+  <%= simple_form_for @user, method: 'patch' do |f| %>
+    <%= f.hidden_field :avatar, value: "teste" %>
+    <%= f.submit "Start", class: 'hidden-content' %>
+  <% end %>

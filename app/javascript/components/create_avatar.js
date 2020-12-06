@@ -13,25 +13,25 @@ import $ from 'jquery';
 
 const createAvatar = () => {
   // DEFINING INDEX AS 1 TO LOOP INSIDE ARRAY SENT BY RAILS WHEN CLICKING A BUTTON
-  let baseIndex = 1;
-  let eyeIndex = 1;
-  let hairIndex = 1;
-  let mouthIndex = 1;
-  let eyebrowIndex = 1;
-  let noseIndex = 1;
-  let clothIndex = 1;
+  let baseIndex     = 1;
+  let eyeIndex      = 1;
+  let hairIndex     = 1;
+  let mouthIndex    = 1;
+  let eyebrowIndex  = 1;
+  let noseIndex     = 1;
+  let clothIndex    = 1;
   let acessoryIndex = 1;
 
   // GETTING INFORMATION FROM RAILS AVATAR CONTROLLER
   const avatarInfos = $('.avatar_information');
-  const bases = avatarInfos.data('bases');
-  const eyes = avatarInfos.data('eyes');
-  const hairs = avatarInfos.data('hairs');
-  const mouths = avatarInfos.data('mouths');
-  const eyebrows = avatarInfos.data('eyebrows');
-  const noses = avatarInfos.data('noses');
-  const clothes = avatarInfos.data('clothes');
-  const acessories = avatarInfos.data('acessories');
+  const bases       = avatarInfos.data('bases');
+  const eyes        = avatarInfos.data('eyes');
+  const hairs       = avatarInfos.data('hairs');
+  const mouths      = avatarInfos.data('mouths');
+  const eyebrows    = avatarInfos.data('eyebrows');
+  const noses       = avatarInfos.data('noses');
+  const clothes     = avatarInfos.data('clothes');
+  const acessories  = avatarInfos.data('acessories');
 
   // GETTING HTML BUTTONS FOR CHANGES
   let btnUpdate   = document.querySelector(".Btn");
@@ -43,6 +43,7 @@ const createAvatar = () => {
   let btnNose     = document.querySelector(".Btn-nose");
   let btnCloth    = document.querySelector(".Btn-cloth");
   let btnAcessory = document.querySelector(".Btn-acessory");
+  let btnSave     = document.querySelector(".Btn-save");
 
   // METHODS FOR GRABBING ELEMENTS THAT WERE CHANGED AND UPDATE CANVAS
   const updateCanvas = () => {
@@ -60,15 +61,15 @@ const createAvatar = () => {
     var data = resAvatar.toDataURL('image/png');
   }
   const grabElements = () => {
-    imgBase = document.getElementById("face");
-    imgHair = document.getElementById("hair");
-    imgMouth = document.getElementById("mouth");
-    imgEyes = document.getElementById("eyes");
+    imgBase     = document.getElementById("face");
+    imgHair     = document.getElementById("hair");
+    imgMouth    = document.getElementById("mouth");
+    imgEyes     = document.getElementById("eyes");
     imgEyebrows = document.getElementById("eyebrows");
-    imgNose = document.getElementById("nose");
-    imgCloth = document.getElementById("cloth") ?? '';
+    imgNose     = document.getElementById("nose");
+    imgCloth    = document.getElementById("cloth") ?? '';
     imgAcessory = document.getElementById("acessory") ?? '';
-    resAvatar = document.querySelector(".result");
+    resAvatar   = document.querySelector(".result");
   }
   grabElements();
 
@@ -140,6 +141,15 @@ const createAvatar = () => {
       grabElements();
       updateCanvas();
     });
+  });
+
+  // SEND BUTTON EVENT LISTENER
+  // SET FORM VALUE TO CANVAS-DATAURI TO UPLOAD
+  btnSave.addEventListener("click", () => {
+    let form = document.getElementById("edit_user_1");
+    let dataURI = resAvatar.toDataURL('image/png');
+    document.getElementById("user_avatar").value = dataURI;
+    form.submit();
   });
 };
 
