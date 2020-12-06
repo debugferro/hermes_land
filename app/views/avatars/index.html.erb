@@ -9,8 +9,9 @@
 <%= image_tag @eye, id: 'eyes', class: 'hidden-content' %>
 <%= image_tag @eyebrow, id: 'eyebrows', class: 'hidden-content' %>
 <%= image_tag @cloth, id: 'cloth', class: 'hidden-content' if @cloth %>
+<%= image_tag '', id: 'cloth', class: 'hidden-content' unless @cloth %>
 <%= image_tag @acessory, id: 'acessory', class: 'hidden-content' if @acessory %>
-
+<%= image_tag '', id: 'acessory', class: 'hidden-content' unless @cacessory %>
 
 
 <canvas class="result"></canvas>

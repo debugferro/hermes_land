@@ -66,8 +66,8 @@ const createAvatar = () => {
     imgEyes = document.getElementById("eyes");
     imgEyebrows = document.getElementById("eyebrows");
     imgNose = document.getElementById("nose");
-    imgCloth = document.getElementById("cloth");
-    imgAcessory = document.getElementById("acessory");
+    imgCloth = document.getElementById("cloth") ?? '';
+    imgAcessory = document.getElementById("acessory") ?? '';
     resAvatar = document.querySelector(".result");
   }
   grabElements();
