@@ -1,3 +1,6 @@
+<%= content_tag :div, class: "avatar_information", data: {bases: @bases, eyes: @eyes, hairs: @hairs, mouths: @mouths, eyebrows: @eyebrows, noses: @noses, clothes: @clothes, acessories: @acessories} do %>
+<% end %>
+
 <!-- cloudinary_js_config -->
 <%= image_tag @base, id: 'face', class: 'hidden-content' %>
 <%= image_tag @hair, id: 'hair', class: 'hidden-content'%>
@@ -5,6 +8,10 @@
 <%= image_tag @nose, id: 'nose', class: 'hidden-content' %>
 <%= image_tag @eye, id: 'eyes', class: 'hidden-content' %>
 <%= image_tag @eyebrow, id: 'eyebrows', class: 'hidden-content' %>
+<%= image_tag @cloth, id: 'cloth', class: 'hidden-content' if @cloth %>
+<%= image_tag @acessory, id: 'acessory', class: 'hidden-content' if @acessory %>
+
+
 
 <canvas class="result"></canvas>
 <br>
@@ -12,4 +19,11 @@
 <br>
 <hr>
 <button class="Btn">UPDATE</button>
+<button class="Btn-base">Change face</button>
 <button class="Btn-hair">Change hair</button>
+<button class="Btn-mouth">Change mouth</button>
+<button class="Btn-nose">Change nose</button>
+<button class="Btn-eyes">Change eyes</button>
+<button class="Btn-eyebrows">Change eyebrows</button>
+<button class="Btn-cloth">Change clothes</button>
+<button class="Btn-acessory">Change acessories</button>

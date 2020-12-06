@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_012701) do
+ActiveRecord::Schema.define(version: 2020_12_06_015508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,10 +39,15 @@ ActiveRecord::Schema.define(version: 2020_12_06_012701) do
   create_table "assets", force: :cascade do |t|
     t.string "category"
     t.string "path"
-    t.bigint "avatar_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["avatar_id"], name: "index_assets_on_avatar_id"
+  end
+
+  create_table "assets_avatars", id: false, force: :cascade do |t|
+    t.bigint "asset_id", null: false
+    t.bigint "avatar_id", null: false
+    t.index ["asset_id"], name: "index_assets_avatars_on_asset_id"
+    t.index ["avatar_id"], name: "index_assets_avatars_on_avatar_id"
   end
 
   create_table "avatars", force: :cascade do |t|
@@ -177,7 +182,6 @@ ActiveRecord::Schema.define(version: 2020_12_06_012701) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "assets", "avatars"
   add_foreign_key "avatars", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
