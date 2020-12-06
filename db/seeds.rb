@@ -2,6 +2,7 @@ require "faker"
 
 User.destroy_all
 Language.destroy_all
+Asset.destroy_all
 selected_languages = ["English", "French", "Portuguese", "Chinese", "German"]
 Language::LANGUAGES.each do | language |
  Language.create(name: language)
@@ -126,3 +127,51 @@ about_me: "We only live once so it is better to learn as much as possible while 
 native_language: selected_languages.sample,
 country: User::COUNTRIES.sample
 )
+
+def createAsset(category, name, gender, id)
+  asset = Asset.create!(
+  category: category,
+  path: "#{gender}_#{name}_#{id}.png"
+    )
+end
+
+Asset.create!(category: "base", path: "f_white_face_1.png")
+Asset.create!(category: "base", path: "m_white_face_1.png")
+Asset.create!(category: "nose", path: "m_nose_1.png")
+Asset.create!(category: "eyes", path: "m_blue_eyes_1.png")
+Asset.create!(category: "mouth", path: "m_mouth_1.png")
+Asset.create!(category: "hair", path: "m_blond_hair_1.png")
+Asset.create!(category: "eyebrows", path: "m_blond_eyebrows_1.png")
+
+
+4.times do |id|
+  createAsset("acessory", "acessory", "f", id+2)
+end
+
+5.times do |id|
+  createAsset("hair", "blond_hair", "f", id+1)
+end
+
+2.times do |id|
+  createAsset("hair", "cocoa_hair", "f", id+1)
+end
+
+2.times do |id|
+  createAsset("mouth", "mouth", "f", id+1)
+end
+
+2.times do |id|
+  createAsset("nose", "nose", "f", id+1)
+end
+
+1.times do |id|
+  createAsset("eyes", "blue_eyes", "f", id+1)
+  createAsset("eyebrows", "blond_eyebrows", "f", id+1)
+end
+
+2.times do |id|
+  createAsset("eyes", "blue_vamp_eyes", "f", id+2)
+end
+
+
+

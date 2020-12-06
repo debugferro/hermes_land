@@ -44,14 +44,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    require 'open-uri'
-    if params[:user][:avatar]
-      photo = Cloudinary::Uploader.upload(params[:user][:avatar])
-      photo = open(photo['url'])
-      @user.photo.attach(io: photo, filename: 'teste')
-    end
-    @user.save
-    redirect_to :root
+    # require 'open-uri'
+    # if params[:user][:avatar]
+    #   photo = Cloudinary::Uploader.upload(params[:user][:avatar])
+    #   photo = open(photo['url'])
+    #   @user.photo.attach(io: photo, filename: 'teste')
+    # end
+    # @user.save
+    # redirect_to :root
   end
 
   private
