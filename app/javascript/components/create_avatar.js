@@ -14,6 +14,8 @@ import $ from 'jquery';
   let bases;
   let eyes;
   let hairs;
+  let hairColors;
+  let currentHairColors;
   let mouths;
   let eyebrows;
   let noses;
@@ -28,12 +30,19 @@ const filter = (names, index, letter) => {
     return filteredNames;
 }
 
+const filterColor = (hairColors, pattern, selectedColors) => {
+  hairColors.forEach((hairColor) => {
+  if (hairColor[hairColor.lastIndexOf("_") + 1] == pattern) {
+    selectedColors.push(hairColor);
+    }
+  })
+}
 // ITERAR SOBRE A ARRAY DE CABELOS
 // TODAS QUE TERMINAM COM O MESMO NÚMERO SÃO REMOVIDAS PARA UMA ARRAY DE CORES
 // QUANDO O USUÁRIO ESCOLHER UM CABELO, O PROGRAMA IRÁ EXIBIR A ESSA LISTA DE CORES
 // ISSO SE A ID DO USUÁRIO ESCOLHIDO TIVER UMA ARRAY DE CORES ONDE TENHAM ESSA ID
 
-
+// CHANGE HAIR
 
 const createAvatar = () => {
   // DEFINING INDEX AS 1 TO LOOP INSIDE ARRAY SENT BY RAILS WHEN CLICKING A BUTTON
@@ -48,9 +57,11 @@ const createAvatar = () => {
 
   // GETTING INFORMATION FROM RAILS AVATAR CONTROLLER BASED ON GENDER
   const getAssetsInfo = (avatarInfos, gender) => {
+    // f_nome_tipo_id.png
     bases       = filter(avatarInfos.data('bases'), 0, gender);
     eyes        = filter(avatarInfos.data('eyes'), 0, gender);
     hairs       = filter(avatarInfos.data('hairs'), 0, gender);
+    hairColors  = filter(avatarInfos.data('haircolors'), 0, gender);
     mouths      = filter(avatarInfos.data('mouths'), 0, gender);
     eyebrows    = filter(avatarInfos.data('eyebrows'), 0, gender);
     noses       = filter(avatarInfos.data('noses'), 0, gender);
@@ -59,18 +70,19 @@ const createAvatar = () => {
   }
 
   // GETTING HTML BUTTONS FOR CHANGES
-  let btnUpdate   = document.querySelector(".Btn");
-  let btnBase     = document.querySelector(".Btn-base");
-  let btnEyes     = document.querySelector(".Btn-eyes");
-  let btnHair     = document.querySelector(".Btn-hair");
-  let btnMouth    = document.querySelector(".Btn-mouth");
-  let btnEyebrows = document.querySelector(".Btn-eyebrows");
-  let btnNose     = document.querySelector(".Btn-nose");
-  let btnCloth    = document.querySelector(".Btn-cloth");
-  let btnAcessory = document.querySelector(".Btn-acessory");
-  let btnSave     = document.querySelector(".Btn-save");
-  let btnMale     = document.querySelector(".Btn-male");
-  let btnFemale   = document.querySelector(".Btn-female");
+  let btnUpdate    = document.querySelector(".Btn");
+  let btnBase      = document.querySelector(".Btn-base");
+  let btnEyes      = document.querySelector(".Btn-eyes");
+  let btnHair      = document.querySelector(".Btn-hair");
+  let btnHairColor = document.querySelector(".Btn-haircolor");
+  let btnMouth     = document.querySelector(".Btn-mouth");
+  let btnEyebrows  = document.querySelector(".Btn-eyebrows");
+  let btnNose      = document.querySelector(".Btn-nose");
+  let btnCloth     = document.querySelector(".Btn-cloth");
+  let btnAcessory  = document.querySelector(".Btn-acessory");
+  let btnSave      = document.querySelector(".Btn-save");
+  let btnMale      = document.querySelector(".Btn-male");
+  let btnFemale    = document.querySelector(".Btn-female");
 
   // METHODS FOR GRABBING ELEMENTS THAT WERE CHANGED AND UPDATE CANVAS
   const updateCanvas = () => {
@@ -116,10 +128,24 @@ const createAvatar = () => {
   btnUpdate.addEventListener("click", () => {
     updateCanvas();
   });
-
+  let currentHair;
   btnHair.addEventListener("click", () => {
-    let currentHair = hairs[hairIndex++%hairs.length];
+    currentHair = hairs[hairIndex++%hairs.length];
     imgHair.src = `/avatar/${currentHair}`
+    imgHair.addEventListener("load", function () {
+      grabElements();
+      updateCanvas();
+    });
+  });
+
+  btnHairColor.addEventListener("click", () => {
+    let pattern = currentHair[currentHair.lastIndexOf("_") + 1]
+    let selectedColors = [];
+    filterColor(hairColors, pattern, selectedColors);
+    let selectedColorsIndex = 1;
+    selectedColors.push(currentHair)
+    let currentColor = selectedColors[selectedColorsIndex++%selectedColors.length]
+    imgHair.src = `/avatar/${currentColor}`
     imgHair.addEventListener("load", function () {
       grabElements();
       updateCanvas();
