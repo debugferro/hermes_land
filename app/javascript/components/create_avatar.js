@@ -30,13 +30,17 @@ const filter = (names, index, letter) => {
     return filteredNames;
 }
 
-const filterColor = (hairColors, pattern, selectedColors) => {
-  hairColors.forEach((hairColor) => {
-  if (hairColor[hairColor.lastIndexOf("_") + 1] == pattern) {
-    selectedColors.push(hairColor);
+const findAssetColors = (assetColors, pattern) => {
+  let selected = [];
+  assetColors.forEach((assetColor) => {
+  if (assetColor[assetColor.lastIndexOf("_") + 1] == pattern) {
+    selected.push(assetColor)
     }
   })
+  return selected;
 }
+
+
 // ITERAR SOBRE A ARRAY DE CABELOS
 // TODAS QUE TERMINAM COM O MESMO NÚMERO SÃO REMOVIDAS PARA UMA ARRAY DE CORES
 // QUANDO O USUÁRIO ESCOLHER UM CABELO, O PROGRAMA IRÁ EXIBIR A ESSA LISTA DE CORES
@@ -54,6 +58,8 @@ const createAvatar = () => {
   let noseIndex     = 1;
   let clothIndex    = 1;
   let acessoryIndex = 1;
+  let selectedHairColorsIndex = 0;
+
 
   // GETTING INFORMATION FROM RAILS AVATAR CONTROLLER BASED ON GENDER
   const getAssetsInfo = (avatarInfos, gender) => {
@@ -115,6 +121,24 @@ const createAvatar = () => {
     gender = avatarInfos.data('gender');
   }
 
+  let selectedHairColors = [];
+
+  const initializeColorIndexes = (currentAsset, selectedAssetColors, assetColors, selectedAssetsIndex) => {
+    let pattern = currentAsset[currentAsset.lastIndexOf("_") + 1]
+    selectedAssetColors = [];
+    selectedAssetColors = findAssetColors(assetColors, pattern);
+    selectedAssetColors.push(currentAsset)
+    selectedAssetsIndex = (selectedAssetColors.indexOf(currentAsset)) + 1;
+  }
+
+  // const initializeColorIndexes = () => {
+  //   let pattern = currentHair[currentHair.lastIndexOf("_") + 1]
+  //   selectedHairColors = [];
+  //   selectedHairColors = findAssetColors(hairColors, pattern);
+  //   selectedHairColors.push(currentHair)
+  //   selectedHairColorsIndex = (selectedHairColors.indexOf(currentHair)) + 1;
+  // }
+
   // LOADING CURRENT USER AVATAR
   window.onload = function () {
     grabElements();
@@ -129,8 +153,10 @@ const createAvatar = () => {
     updateCanvas();
   });
   let currentHair;
+
   btnHair.addEventListener("click", () => {
     currentHair = hairs[hairIndex++%hairs.length];
+    initializeColorIndexes(currentHair, selectedHairColors, hairColors, selectedHairColorsIndex);
     imgHair.src = `/avatar/${currentHair}`
     imgHair.addEventListener("load", function () {
       grabElements();
@@ -139,12 +165,11 @@ const createAvatar = () => {
   });
 
   btnHairColor.addEventListener("click", () => {
-    let pattern = currentHair[currentHair.lastIndexOf("_") + 1]
-    let selectedColors = [];
-    filterColor(hairColors, pattern, selectedColors);
-    let selectedColorsIndex = 1;
-    selectedColors.push(currentHair)
-    let currentColor = selectedColors[selectedColorsIndex++%selectedColors.length]
+    // let pattern = currentHair[currentHair.lastIndexOf("_") + 1]
+    // let selectedHairColors = [];
+    // selectedHairColors = findAssetColors(hairColors, pattern);
+    // selectedHairColors.push(currentHair)
+    let currentColor = selectedHairColors[selectedHairColorsIndex++%selectedHairColors.length]
     imgHair.src = `/avatar/${currentColor}`
     imgHair.addEventListener("load", function () {
       grabElements();

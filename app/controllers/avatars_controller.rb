@@ -95,7 +95,7 @@ class AvatarsController < ApplicationController
     @female_defaults  << Asset.where(path: 'f_blond_eyebrows_1.png').first
     @female_defaults  << Asset.where(path: 'f_nose_1.png').first
     @female_defaults  << Asset.where(path: 'f_mouth_2.png').first
-    @female_defaults  << Asset.where(path: 'f_blond_hair_1.png').first
+    @female_defaults  << Asset.where(path: 'f_:blond;_hair_6.png').first
 
     @male_defaults = []
     @male_defaults << Asset.where(path: 'm_white_face_1.png').first
