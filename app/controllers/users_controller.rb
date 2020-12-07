@@ -40,6 +40,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @chat_room = ChatRoom.new
   end
 
   def verify_presence_and_set

@@ -23,7 +23,7 @@
             <% end %>
           </div>
           <div class="container row pt-2 justify-content-center">
-            <%= link_to "Chat with #{@user.first_name}", chat_rooms_path, class: "btn btn-flat w-75" %>
+            <%= link_to "Chat with #{@user.first_name}", chat_rooms_path(chat_room:{user_ids: [@user.id]}), method: :post, class: "btn btn-primary w-75" %>
           </div>
         </div>
       </div>
