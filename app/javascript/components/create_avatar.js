@@ -12,6 +12,7 @@ import $ from 'jquery';
   var context;
   let avatarInfos;
   let bases;
+  let baseColors;
   let eyes;
   let hairs;
   let hairColors;
@@ -22,6 +23,9 @@ import $ from 'jquery';
   let clothes;
   let acessories;
   let gender;
+
+  let filteredNoses;
+  let filteredMouths;
 
 const filter = (names, index, letter) => {
     let filteredNames = names.filter(function(word) {
@@ -40,6 +44,18 @@ const findAssetColors = (assetColors, pattern) => {
   return selected;
 }
 
+const findColors = (assetColors, pattern) => {
+  let selected = [];
+  assetColors.forEach((assetColor) => {
+  let firstIndex = assetColor.lastIndexOf(":") + 1;
+  let lastIndex = assetColor.lastIndexOf(";");
+  if (assetColor.substring(firstIndex, lastIndex) == pattern) {
+    selected.push(assetColor)
+    }
+  })
+  return selected;
+}
+
 
 // ITERAR SOBRE A ARRAY DE CABELOS
 // TODAS QUE TERMINAM COM O MESMO NÚMERO SÃO REMOVIDAS PARA UMA ARRAY DE CORES
@@ -50,6 +66,7 @@ const findAssetColors = (assetColors, pattern) => {
 
 const createAvatar = () => {
   // DEFINING INDEX AS 1 TO LOOP INSIDE ARRAY SENT BY RAILS WHEN CLICKING A BUTTON
+  // DEFINING ASSETS INDEXES
   let baseIndex     = 1;
   let eyeIndex      = 1;
   let hairIndex     = 1;
@@ -58,13 +75,20 @@ const createAvatar = () => {
   let noseIndex     = 1;
   let clothIndex    = 1;
   let acessoryIndex = 1;
-  let selectedHairColorsIndex = 0;
 
+  // DEFINING COLORIZED ASSETS INDEXES
+  let selectedHairColorsIndex = 0;
+  let selectedBaseColorsIndex = 0;
+
+  // DEFINING THE VARIABLE FOR PRESENT SELECTED HAIR COLORS
+  let selectedHairColors = [];
+  let selectedBaseColors = [];
 
   // GETTING INFORMATION FROM RAILS AVATAR CONTROLLER BASED ON GENDER
   const getAssetsInfo = (avatarInfos, gender) => {
     // f_nome_tipo_id.png
     bases       = filter(avatarInfos.data('bases'), 0, gender);
+    baseColors  = filter(avatarInfos.data('basecolors'), 0, gender);
     eyes        = filter(avatarInfos.data('eyes'), 0, gender);
     hairs       = filter(avatarInfos.data('hairs'), 0, gender);
     hairColors  = filter(avatarInfos.data('haircolors'), 0, gender);
@@ -78,6 +102,7 @@ const createAvatar = () => {
   // GETTING HTML BUTTONS FOR CHANGES
   let btnUpdate    = document.querySelector(".Btn");
   let btnBase      = document.querySelector(".Btn-base");
+  let btnSkin      = document.querySelector(".Btn-skincolor");
   let btnEyes      = document.querySelector(".Btn-eyes");
   let btnHair      = document.querySelector(".Btn-hair");
   let btnHairColor = document.querySelector(".Btn-haircolor");
@@ -121,28 +146,35 @@ const createAvatar = () => {
     gender = avatarInfos.data('gender');
   }
 
-  let selectedHairColors = [];
 
-  const initializeColorIndexes = (currentAsset, selectedAssetColors, assetColors, selectedAssetsIndex) => {
+  const initializeColorIndexes = (currentAsset, assetColors) => {
     let pattern = currentAsset[currentAsset.lastIndexOf("_") + 1]
-    selectedAssetColors = [];
+    let selectedAssetColors = [];
+    let selectedAssetsIndex;
+
     selectedAssetColors = findAssetColors(assetColors, pattern);
     selectedAssetColors.push(currentAsset)
     selectedAssetsIndex = (selectedAssetColors.indexOf(currentAsset)) + 1;
+    return {
+      index: selectedAssetsIndex,
+      colors: selectedAssetColors
+    };
   }
 
-  // const initializeColorIndexes = () => {
-  //   let pattern = currentHair[currentHair.lastIndexOf("_") + 1]
-  //   selectedHairColors = [];
-  //   selectedHairColors = findAssetColors(hairColors, pattern);
-  //   selectedHairColors.push(currentHair)
-  //   selectedHairColorsIndex = (selectedHairColors.indexOf(currentHair)) + 1;
-  // }
+  const initializeNoseMouthForColor = (currentFile) => {
+    let startIndex = currentFile.lastIndexOf(":") + 1;
+    let endIndex = currentFile.lastIndexOf(";");
+    let pattern = currentFile.substring(startIndex, endIndex)
+    filteredNoses = findColors(noses, pattern);
+    filteredMouths = findColors(mouths, pattern);
+  }
 
   // LOADING CURRENT USER AVATAR
   window.onload = function () {
     grabElements();
     updateCanvas();
+    // INITIALIZING NOSE/MOUTH AND EYES FOR CURRENT SKIN COLOR
+    initializeNoseMouthForColor(imgBase.src.slice(29));
     };
   getInfo();
   getAssetsInfo(avatarInfos, gender);
@@ -152,11 +184,48 @@ const createAvatar = () => {
   btnUpdate.addEventListener("click", () => {
     updateCanvas();
   });
-  let currentHair;
+
+  let currentBase;
+  btnBase.addEventListener("click", () => {
+    currentBase = bases[baseIndex++%bases.length];
+    let initializedValues = initializeColorIndexes(currentBase, baseColors);
+    selectedBaseColors = initializedValues.colors
+    selectedBaseColorsIndex = initializedValues.index
+    imgBase.src = `/avatar/${currentBase}`
+    imgBase.addEventListener("load", function () {
+      grabElements();
+      updateCanvas();
+    });
+  });
+
+  btnSkin.addEventListener("click", () => {
+    // VERIFY IF VALUES WERE INITIALIZED
+    // IF NOT INITIALIZED IT WILL FOR THE CURRENT BASE TO CHANGE IT'S COLOR
+    if (currentBase == undefined) {
+      currentBase = bases[baseIndex++%bases.length];
+      let initializedValues = initializeColorIndexes(currentBase, baseColors);
+      selectedBaseColors = initializedValues.colors
+      selectedBaseColorsIndex = initializedValues.index
+    }
+    let currentColor = selectedBaseColors[selectedBaseColorsIndex++%selectedBaseColors.length]
+    imgBase.src = `/avatar/${currentColor}`
+    initializeNoseMouthForColor(currentColor);
+    btnMouth.click(); // FORCING MOUTH AND NOSE TO CHANGE SO IT CAN BE COMPATIBLE
+    btnNose.click();  // WITH THE CURRENT SKIN COLOR
+    imgBase.addEventListener("load", function () {
+      grabElements();
+      updateCanvas();
+    });
+  });
 
   btnHair.addEventListener("click", () => {
-    currentHair = hairs[hairIndex++%hairs.length];
-    initializeColorIndexes(currentHair, selectedHairColors, hairColors, selectedHairColorsIndex);
+    let currentHair = hairs[hairIndex++%hairs.length];
+    // INITIALIZING CURRENT HAIR COLOR FILES AND INDEX
+    // SETTING CURRENT HAIR COLORS AND EQUIVALENT INDEX
+    let initializedValues = initializeColorIndexes(currentHair, hairColors);
+    selectedHairColors = initializedValues.colors
+    selectedHairColorsIndex = initializedValues.index
+    // -------------------------------------------------
     imgHair.src = `/avatar/${currentHair}`
     imgHair.addEventListener("load", function () {
       grabElements();
@@ -177,13 +246,6 @@ const createAvatar = () => {
     });
   });
 
-  btnBase.addEventListener("click", () => {
-    imgBase.src = `/avatar/${bases[baseIndex++%bases.length]}`
-    imgBase.addEventListener("load", function () {
-      grabElements();
-      updateCanvas();
-    });
-  });
 
   btnEyes.addEventListener("click", () => {
     imgEyes.src = `/avatar/${eyes[eyeIndex++%eyes.length]}`
@@ -194,7 +256,7 @@ const createAvatar = () => {
   });
 
   btnMouth.addEventListener("click", () => {
-    imgMouth.src = `/avatar/${mouths[mouthIndex++%mouths.length]}`
+    imgMouth.src = `/avatar/${filteredMouths[mouthIndex++%filteredMouths.length]}`
     imgMouth.addEventListener("load", function () {
       grabElements();
       updateCanvas();
@@ -210,7 +272,7 @@ const createAvatar = () => {
   });
 
   btnNose.addEventListener("click", () => {
-    imgNose.src = `/avatar/${noses[noseIndex++%noses.length]}`
+    imgNose.src = `/avatar/${filteredNoses[noseIndex++%filteredNoses.length]}`
     imgNose.addEventListener("load", function () {
       grabElements();
       updateCanvas();
@@ -256,10 +318,6 @@ const createAvatar = () => {
     document.getElementById("avatar_appearance").value = assetData;
     form.submit();
   });
-
-  const getColors = (currentAsset) => {
-
-  }
 
 };
 

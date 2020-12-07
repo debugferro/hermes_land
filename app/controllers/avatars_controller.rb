@@ -18,7 +18,8 @@ class AvatarsController < ApplicationController
 
     @gender = @user.avatar.gender
 
-    @bases = write_paths(Asset.where(category: "base"))
+    @bases = write_paths(Asset.where(category: "base", colorized: false))
+    @base_colors = write_paths(Asset.where(category: "base", colorized: true))
     @eyes = write_paths(Asset.where(category: "eyes"))
     @hairs = write_paths(Asset.where(category: "hair", colorized: false))
     @colorized_hairs = write_paths(Asset.where(category: "hair", colorized: true))

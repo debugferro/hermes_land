@@ -1,4 +1,4 @@
-<%= content_tag :div, class: "avatar_information", data: {bases: @bases, eyes: @eyes, hairs: @hairs, haircolors: @colorized_hairs, mouths: @mouths, eyebrows: @eyebrows, noses: @noses, clothes: @clothes, acessories: @acessories, gender: @gender } do %>
+<%= content_tag :div, class: "avatar_information", data: {bases: @bases, basecolors: @base_colors, eyes: @eyes, hairs: @hairs, haircolors: @colorized_hairs, mouths: @mouths, eyebrows: @eyebrows, noses: @noses, clothes: @clothes, acessories: @acessories, gender: @gender } do %>
 <% end %>
 
 <!-- cloudinary_js_config -->
@@ -21,6 +21,7 @@
 <hr>
 <button class="Btn">UPDATE</button>
 <button class="Btn-base">Change face</button>
+<button class="Btn-skincolor">Change skin color</button>
 <button class="Btn-hair">Change hair</button>
 <button class="Btn-haircolor">Change hair color</button>
 <button class="Btn-mouth">Change mouth</button>
