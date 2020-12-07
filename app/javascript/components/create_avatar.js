@@ -28,6 +28,12 @@ const filter = (names, index, letter) => {
     return filteredNames;
 }
 
+// ITERAR SOBRE A ARRAY DE CABELOS
+// TODAS QUE TERMINAM COM O MESMO NÚMERO SÃO REMOVIDAS PARA UMA ARRAY DE CORES
+// QUANDO O USUÁRIO ESCOLHER UM CABELO, O PROGRAMA IRÁ EXIBIR A ESSA LISTA DE CORES
+// ISSO SE A ID DO USUÁRIO ESCOLHIDO TIVER UMA ARRAY DE CORES ONDE TENHAM ESSA ID
+
+
 
 const createAvatar = () => {
   // DEFINING INDEX AS 1 TO LOOP INSIDE ARRAY SENT BY RAILS WHEN CLICKING A BUTTON
@@ -42,30 +48,14 @@ const createAvatar = () => {
 
   // GETTING INFORMATION FROM RAILS AVATAR CONTROLLER BASED ON GENDER
   const getAssetsInfo = (avatarInfos, gender) => {
-
-    bases       = avatarInfos.data('bases');
-    bases       = filter(bases, 0, gender);
-
-    eyes        = avatarInfos.data('eyes');
-    eyes       = filter(eyes, 0, gender);
-
-    // hairs       = avatarInfos.data('hairs');
+    bases       = filter(avatarInfos.data('bases'), 0, gender);
+    eyes        = filter(avatarInfos.data('eyes'), 0, gender);
     hairs       = filter(avatarInfos.data('hairs'), 0, gender);
-
-    mouths      = avatarInfos.data('mouths');
-    mouths      = filter(mouths, 0, gender);
-
-    eyebrows    = avatarInfos.data('eyebrows');
-    eyebrows    = filter(eyebrows, 0, gender);
-
-    noses       = avatarInfos.data('noses');
-    noses       = filter(noses, 0, gender);
-
-    clothes     = avatarInfos.data('clothes');
-    clothes     = filter(clothes, 0, gender);
-
-    acessories  = avatarInfos.data('acessories');
-    acessories  = filter(acessories, 0, gender);
+    mouths      = filter(avatarInfos.data('mouths'), 0, gender);
+    eyebrows    = filter(avatarInfos.data('eyebrows'), 0, gender);
+    noses       = filter(avatarInfos.data('noses'), 0, gender);
+    clothes     = filter(avatarInfos.data('clothes'), 0, gender);
+    acessories  = filter(avatarInfos.data('acessories'), 0, gender);
   }
 
   // GETTING HTML BUTTONS FOR CHANGES
@@ -113,6 +103,7 @@ const createAvatar = () => {
     gender = avatarInfos.data('gender');
   }
 
+  // LOADING CURRENT USER AVATAR
   window.onload = function () {
     grabElements();
     updateCanvas();
@@ -127,7 +118,8 @@ const createAvatar = () => {
   });
 
   btnHair.addEventListener("click", () => {
-    imgHair.src = `/avatar/${hairs[hairIndex++%hairs.length]}`
+    let currentHair = hairs[hairIndex++%hairs.length];
+    imgHair.src = `/avatar/${currentHair}`
     imgHair.addEventListener("load", function () {
       grabElements();
       updateCanvas();
@@ -202,18 +194,6 @@ const createAvatar = () => {
     form.submit();
   });
 
-  // imgBase     = document.getElementById("face");
-  //   imgHair     = document.getElementById("hair");
-  //   imgMouth    = document.getElementById("mouth");
-  //   imgEyes     = document.getElementById("eyes");
-  //   imgEyebrows = document.getElementById("eyebrows");
-  //   imgNose     = document.getElementById("nose");
-  //   imgCloth    = document.getElementById("cloth") ?? '';
-  //   imgAcessory = document.getElementById("acessory") ?? '';
-  //   resAvatar   = document.querySelector(".result");
-
-  // SEND BUTTON EVENT LISTENER
-  // SET FORM VALUE TO CANVAS-DATAURI TO UPLOAD
   btnSave.addEventListener("click", () => {
     let form = document.getElementById("edit_avatar_1");
     let dataURI = resAvatar.toDataURL('image/png');
@@ -225,6 +205,11 @@ const createAvatar = () => {
     document.getElementById("avatar_appearance").value = assetData;
     form.submit();
   });
+
+  const getColors = (currentAsset) => {
+
+  }
+
 };
 
 

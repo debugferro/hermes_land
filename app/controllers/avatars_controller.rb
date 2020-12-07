@@ -41,8 +41,18 @@ class AvatarsController < ApplicationController
       case params[:avatar][:gender]
       when "male"
         @avatar.gender = "m"
+        @avatar.assets.destroy_all
+
+        @male_defaults.each do |default|
+          @avatar.assets << default
+        end
       when "female"
         @avatar.gender = "f"
+        @avatar.assets.destroy_all
+
+        @female_defaults.each do |default|
+          @avatar.assets << default
+        end
       end
       @avatar.save
       redirect_to avatars_path
