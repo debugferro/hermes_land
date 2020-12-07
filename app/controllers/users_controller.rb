@@ -43,6 +43,11 @@ class UsersController < ApplicationController
     @chat_room = ChatRoom.new
   end
 
+  def profile
+    @my_interests = MyInterest.where(user_id: current_user)
+    @my_languages = MyLanguage.where(user_id: current_user)
+  end
+
   def verify_presence_and_set
     @interests = params[:query][:interests] if params[:query][:interests].present?
     @countries = params[:query][:countries] if params[:query][:countries].present?

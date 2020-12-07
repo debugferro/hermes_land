@@ -17,13 +17,13 @@ class MyInterestsController < ApplicationController
       authorize @my_interest
       @my_interest.save
     end
-    redirect_to :my_interests
+    redirect_to profile_path
   end
 
   def destroy
     authorize @my_interest
     @my_interest.destroy
-    redirect_to :my_interests
+    redirect_to profile_path
   end
 
   private

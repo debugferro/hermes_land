@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users, only: [:index, :show]
+  get '/profile', to: 'users#profile'
   resources :feed, only: [:index]
   resources :chat_rooms, only: [:index, :show, :create] do
     resources :participants, only: [:create]

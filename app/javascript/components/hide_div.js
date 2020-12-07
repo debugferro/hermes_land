@@ -1,12 +1,14 @@
 import $ from 'jquery';
 
 const hideDiv = () => {
-  const toggleDiv = document.getElementById("togglediv");
-  if (toggleDiv) {
-    $("#btn-add").click(function(){
-      toggleDiv.classList.toggle("hidden")
-    });
-  }
+  const toggleDiv = document.querySelectorAll(".togglediv");
+  toggleDiv.forEach((div) => {
+    if (div) {
+      $(".btn-add").click(function(){
+        div.classList.toggle("hidden")
+      });
+    }
+  })
 }
 
 export { hideDiv };
