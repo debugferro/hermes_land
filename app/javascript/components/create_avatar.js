@@ -1,6 +1,5 @@
 import $ from 'jquery';
 
-
 const filter = (names, index, letter) => {
   let filteredNames = names.filter(function(word) {
     return word.charAt(index) === letter || word.charAt(index) === 'n';
@@ -419,9 +418,5 @@ const createAvatar = () => {
   });
 
 };
-
-
-
-// document.addEventListener("DOMContentLoaded", uploadfunc);
 
 export { createAvatar };

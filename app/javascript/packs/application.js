@@ -45,7 +45,9 @@ document.addEventListener("turbolinks:load", function() {
   sendMessage();
   loadScroll();
   setAvatar();
-  createAvatar();
+  if (document.querySelector(".avatar_information")) {
+    createAvatar();
+  }
   // filterDropdown();
 });
 

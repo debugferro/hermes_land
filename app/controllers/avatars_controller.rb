@@ -6,12 +6,13 @@ class AvatarsController < ApplicationController
 
   def index
     @new_avatar = Avatar.new
-    # unless @user.avatar
-    #   @new_avatar = Avatar.create!(user_id: @user.id)
-    #   @female_defaults.each do |default|
-    #     @new_avatar.assets << default
-    #   end
-    # end
+    unless @user.avatar
+      avatar = Avatar.create!(user_id: @user.id)
+      @female_defaults.each do |default|
+        avatar.assets << default
+      end
+    end
+
     if @user.avatar
       @base = @user.avatar.assets.where(category: "base").first.path
       @eye = @user.avatar.assets.where(category: "eyes").first.path
@@ -21,7 +22,7 @@ class AvatarsController < ApplicationController
       @nose = @user.avatar.assets.where(category: "nose").first.path
       @acessory = @user.avatar.assets.where(category: "acessory").first&.path
       @cloth = @user.avatar.assets.where(category: "cloth").first&.path
-      @cloth = @cloth.first.path if @cloth.present?
+      # @cloth = @cloth.first.path if @cloth.present?
       @gender = @user.avatar.gender
     end
 
@@ -37,7 +38,7 @@ class AvatarsController < ApplicationController
     @noses = write_paths(Asset.where(category: "nose"))
     @acessories = write_paths(Asset.where(category: "acessory", colorized: false))
     @acessory_colors = write_paths(Asset.where(category: "acessory", colorized: true))
-    @clothes = write_paths(Asset.where(category: "cloth"))
+    @clothes = write_paths(Asset.where(category: "cloth", colorized: false))
   end
 
   def create

@@ -346,16 +346,16 @@ Asset.create!(category: "nose", path: "n_:white;_nose_9.png", colorized: false)
 
 # CLOTHES
 
-Asset.create!(category: "nose", path: "n_:default;_clothes_1.png", colorized: false)
+Asset.create!(category: "cloth", path: "n_:default;_clothes_1.png", colorized: false)
 
-Asset.create!(category: "nose", path: "n_:default;_clothes_2.png", colorized: false)
+Asset.create!(category: "cloth", path: "n_:default;_clothes_2.png", colorized: false)
 
-Asset.create!(category: "nose", path: "n_:default;_clothes_3.png", colorized: false)
+Asset.create!(category: "cloth", path: "n_:default;_clothes_3.png", colorized: false)
 
-Asset.create!(category: "nose", path: "n_:default;_clothes_4.png", colorized: false)
-Asset.create!(category: "nose", path: "n_:black;_clothes_4.png", colorized: false)
-Asset.create!(category: "nose", path: "n_:red;_clothes_4.png", colorized: false)
-Asset.create!(category: "nose", path: "n_:white;_clothes_4.png", colorized: false)
+Asset.create!(category: "cloth", path: "n_:default;_clothes_4.png", colorized: false)
+Asset.create!(category: "cloth", path: "n_:black;_clothes_4.png", colorized: false)
+Asset.create!(category: "cloth", path: "n_:red;_clothes_4.png", colorized: false)
+Asset.create!(category: "cloth", path: "n_:white;_clothes_4.png", colorized: false)
 
 
 

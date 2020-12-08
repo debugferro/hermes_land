@@ -53,13 +53,6 @@ ActiveRecord::Schema.define(version: 2020_12_07_155051) do
 
   create_table "avatars", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "base"
-    t.string "eyes"
-    t.string "eyebrows"
-    t.string "hair"
-    t.string "mouth"
-    t.string "nose"
-    t.string "acessory"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "gender", default: "f"
