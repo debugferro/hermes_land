@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :verify_presence_and_set, only: [:index]
+  before_action :set_user, only: [:update]
   before_action :fix_inputs, only: [:index]
 
   def index
@@ -47,6 +48,23 @@ class UsersController < ApplicationController
   def profile
     @my_interests = MyInterest.where(user_id: current_user)
     @my_languages = MyLanguage.where(user_id: current_user)
+  end
+
+  def update
+    # require 'open-uri'
+    # if params[:user][:avatar]
+    #   photo = Cloudinary::Uploader.upload(params[:user][:avatar])
+    #   photo = open(photo['url'])
+    #   @user.photo.attach(io: photo, filename: 'teste')
+    # end
+    # @user.save
+    # redirect_to :root
+  end
+
+  private
+
+  def set_user
+    @user = current_user
   end
 
   def verify_presence_and_set
