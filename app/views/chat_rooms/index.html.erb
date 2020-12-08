@@ -7,12 +7,15 @@
       <%= f.submit "Start" %>
     <% end %>
     <hr>
+    <p>My Chats:</p>
     <% @present_chats.each do |chat| %>
       <% participants = chat.participants.map do |p| %>
         <% p.user.username if p.user.username != @user.username %>
       <% end %>
       <% participants = participants.compact %>
-      <%= link_to participants.to_sentence, chat_room_path(chat), data: { turbolinks: false } %>
+      <ul style="list-style:none;">
+      <li><%= link_to participants.to_sentence, chat_room_path(chat), data: { turbolinks: false }, class: "btn btn-primary"  %></li>
+      </ul>
     <% end %>
   </div>
 </div>

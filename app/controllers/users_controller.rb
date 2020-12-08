@@ -41,6 +41,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @chat_room = ChatRoom.new
+    @my_languages = MyLanguage.where(user_id: @user)
+  end
+
+  def profile
+    @my_interests = MyInterest.where(user_id: current_user)
+    @my_languages = MyLanguage.where(user_id: current_user)
   end
 
   def update
