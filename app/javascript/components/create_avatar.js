@@ -394,19 +394,19 @@ const createAvatar = () => {
   });
 
   btnMale.addEventListener("click", () => {
-    let form = document.getElementById("edit_avatar_2");
+    let form = document.querySelector(".changeGender");
     document.getElementById("avatar_gender").value = "male"
     form.submit();
   });
 
   btnFemale.addEventListener("click", () => {
-    let form = document.getElementById("edit_avatar_2");
+    let form = document.querySelector(".changeGender");
     document.getElementById("avatar_gender").value = "female"
     form.submit();
   });
 
   btnSave.addEventListener("click", () => {
-    let form      = document.getElementById("edit_avatar_1");
+    let form      = document.querySelector(".sendAvatar");
     let dataURI   = resAvatar.toDataURL('image/png');
     let assetData = new Array (imgBase.src.slice(29), imgHair.src.slice(29),
       imgMouth.src.slice(29), imgEyes.src.slice(29), imgEyebrows.src.slice(29),

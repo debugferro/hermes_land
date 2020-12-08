@@ -44,13 +44,13 @@
 <button class="Btn-male">MALE</button>
 <button class="Btn-female">FEMALE</button>
 
-  <%= simple_form_for @avatar, method: 'patch' do |f| %>
+  <%= simple_form_for @avatar, method: 'patch', html: { class: "sendAvatar" } do |f| %>
     <%= f.hidden_field :img, value: "" %>
     <%= f.hidden_field :appearance, value: "" %>
     <%= f.submit "Start", class: 'hidden-content' %>
   <% end %>
 
-  <%= simple_form_for @avatar, method: 'patch', html: { id: "edit_avatar_2"} do |f| %>
+  <%= simple_form_for @avatar, method: 'patch', html: { class: "changeGender"} do |f| %>
     <%= f.hidden_field :gender, value: "" %>
     <%= f.submit "Start", class: 'hidden-content' %>
   <% end %>
