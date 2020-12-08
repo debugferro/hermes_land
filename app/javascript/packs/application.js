@@ -34,6 +34,8 @@ import { hideDiv } from '../components/hide_div';
 import { initChatRoomCable } from '../channels/chat_room_channel';
 import { sendMessage } from '../components/send_message';
 import { loadScroll } from '../components/load_scroll';
+import { setAvatar } from '../components/set_avatar';
+import { createAvatar } from '../components/create_avatar';
 // import { filterDropdown } from '../components/filter_dropdown'
 
 $(".nav-item").on("click", function(){
@@ -47,6 +49,10 @@ document.addEventListener("turbolinks:load", function() {
   initChatRoomCable();
   sendMessage();
   loadScroll();
+  setAvatar();
+  if (document.querySelector(".avatar_information")) {
+    createAvatar();
+  }
   // filterDropdown();
 });
 

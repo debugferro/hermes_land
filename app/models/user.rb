@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_many :posts
   has_many :comments
+  has_one :avatar
+  # has_many :assets, through: :avatar
   has_many :participants
   has_many :interests, through: :my_interests
   has_many :languages, through: :my_languages

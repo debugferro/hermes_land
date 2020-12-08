@@ -1,28 +1,40 @@
 <div class="container">
     <div class="card-signup">
       <h1 id="find-title">Find your buddy!</h1>
-    <%= simple_form_for :query, url: users_path, method: "GET", html: { class: 'form-inline', id: '' } do |f| %>
-      <%= f.input :text, input_html: {value: ""}, label: false %>
-      <%= f.input :interests, as: :select, collection: Interest.all, value_method: :name, label_method: :name, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Interests:" %>
-      <%= f.input :countries, as: :select, collection: User::COUNTRIES, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Countries:"  %>
-      <%= f.input :languages, as: :select, collection: Language.all, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Languages:"  %>
-      <%= f.submit "Search", class: "btn-search" %>
-    <% end %>
-
+      <div class="d-flex">
+        <div>
+        <%= simple_form_for :query, url: users_path, method: "GET", html: { class: '', id: '' } do |f| %>
+          <div class="p-2">
+            <%= f.input :interests, as: :select, collection: Interest.all, value_method: :name, label_method: :name, input_html: { class: 'select2max form-small', multiple: true }, required: false, label: "Interests:" %>
+          </div>
+          <div class="p-2">
+            <%= f.input :countries, as: :select, collection: User::COUNTRIES, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Countries:"  %>
+          </div>
+          <div class="p-2">
+            <%= f.input :languages, as: :select, collection: Language.all, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Languages:"  %>
+          </div>
+        </div>
+        <div class="p-2">
+          <%= f.submit "Search", class: "btn-search" %>
+        <% end %>
+        </div>
+      </div>
     </div>
 
     <div class="cards">
       <% @users.each do |user|%>
         <div class="card-profiles">
           <div class="card-filler"></div>
-          <div class="card-category align-center outflow-avatar" style="background-image: linear-gradient(rgba(211,211,211,0.1), rgba(211,211,211,0.3)), url(https://kitt.lewagon.com/placeholder/users/ssaunier)">
-            <%= link_to "#{user.username}", user_path(user), class: "btn-profile"%>
+          <% cl_image_path user.photo.key if user.photo.attached? %>
+          <div class="card-category align-center outflow-avatar" style="background-image: linear-gradient(rgba(211,211,211,0.1), rgba(211,211,211,0.3)), url(<%= cl_image_path user.photo.key if user.photo.attached? %>)">
+            <%= link_to "#{user.username}", user_path(user), class: "btn-profile" %>
           </div>
           <%= image_tag "circle-greek.png",  class: "greek-circle"%>
           <div class="card-profile-content">
             <p><strong>About me:</strong> <%= user.about_me.truncate(100) %></p>
             <p><strong>Country:</strong> <%= user.country %></p>
             <p><strong>Native language:</strong> <%= user.native_language %>
+              <br>
             <% user.my_languages&.each do |language| %>
               <p></p>
               <% level = '🔹' if language.level == "Begginer"%>
