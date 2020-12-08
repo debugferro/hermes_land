@@ -163,6 +163,27 @@ Asset.create!(category: "acessory", path: "m_:black;_acessory_4.png", colorized:
 Asset.create!(category: "acessory", path: "f_:pink;_acessory_5.png", colorized: false)
 Asset.create!(category: "acessory", path: "f_:red;_acessory_5.png", colorized: true)
 
+Asset.create!(category: "acessory", path: "n_:default;_acessory_6.png", colorized: false)
+Asset.create!(category: "acessory", path: "n_:pink;_acessory_6.png", colorized: true)
+
+Asset.create!(category: "acessory", path: "f_:default;_acessory_7.png", colorized: false)
+Asset.create!(category: "acessory", path: "f_:black;_acessory_7.png", colorized: true)
+Asset.create!(category: "acessory", path: "f_:blue;_acessory_7.png", colorized: true)
+
+Asset.create!(category: "acessory", path: "f_:default;_acessory_8.png", colorized: false)
+
+Asset.create!(category: "acessory", path: "f_:default;_acessory_9.png", colorized: false)
+Asset.create!(category: "acessory", path: "f_:blue;_acessory_9.png", colorized: true)
+Asset.create!(category: "acessory", path: "f_:yellow;_acessory_9.png", colorized: true)
+
+Asset.create!(category: "acessory", path: "f_:default;_acessory_10.png", colorized: false)
+Asset.create!(category: "acessory", path: "f_:white;_acessory_10.png", colorized: true)
+
+Asset.create!(category: "acessory", path: "f_:default;_acessory_11.png", colorized: false)
+Asset.create!(category: "acessory", path: "f_:red;_acessory_11.png", colorized: true)
+
+Asset.create!(category: "acessory", path: "f_:default;_acessory_12.png", colorized: false)
+
 # EYEBROWS            <gender>_:<hair color>;_<category>_<id>.png
 
 Asset.create!(category: "eyebrows", path: "n_:blond;_eyebrows_1.png", colorized: false)
@@ -228,8 +249,14 @@ Asset.create!(category: "hair", path: "f_:black;_hair_2.png", colorized: true)
 
 Asset.create!(category: "hair", path: "f_:blond;_hair_3.png", colorized: false)
 Asset.create!(category: "hair", path: "f_:cocoa;_hair_3.png", colorized: true)
+Asset.create!(category: "hair", path: "f_:black;_hair_3.png", colorized: true)
+Asset.create!(category: "hair", path: "f_:red;_hair_3.png", colorized: true)
 
 Asset.create!(category: "hair", path: "f_:blond;_hair_4.png", colorized: false)
+Asset.create!(category: "hair", path: "f_:black;_hair_4.png", colorized: true)
+Asset.create!(category: "hair", path: "f_:cocoa;_hair_4.png", colorized: true)
+Asset.create!(category: "hair", path: "f_:red;_hair_4.png", colorized: true)
+Asset.create!(category: "hair", path: "f_:white;_hair_4.png", colorized: true)
 
 Asset.create!(category: "hair", path: "f_:blond;_hair_5.png", colorized: false)
 Asset.create!(category: "hair", path: "f_:cocoa;_hair_5.png", colorized: true)
@@ -244,6 +271,9 @@ Asset.create!(category: "hair", path: "f_:black;_hair_6.png", colorized: true)
 Asset.create!(category: "hair", path: "f_:blond;_hair_7.png", colorized: false)
 
 Asset.create!(category: "hair", path: "f_:blond;_hair_8.png", colorized: false)
+Asset.create!(category: "hair", path: "f_:black;_hair_8.png", colorized: true)
+Asset.create!(category: "hair", path: "f_:white;_hair_8.png", colorized: true)
+Asset.create!(category: "hair", path: "f_:cocoa;_hair_8.png", colorized: true)
 
 Asset.create!(category: "hair", path: "n_:blond;_hair_9.png", colorized: false)
 Asset.create!(category: "hair", path: "n_:cocoa;_hair_9.png", colorized: true)
@@ -314,6 +344,18 @@ Asset.create!(category: "nose", path: "n_:black;_nose_8.png", colorized: false)
 
 Asset.create!(category: "nose", path: "n_:white;_nose_9.png", colorized: false)
 
+# CLOTHES
+
+Asset.create!(category: "nose", path: "n_:default;_clothes_1.png", colorized: false)
+
+Asset.create!(category: "nose", path: "n_:default;_clothes_2.png", colorized: false)
+
+Asset.create!(category: "nose", path: "n_:default;_clothes_3.png", colorized: false)
+
+Asset.create!(category: "nose", path: "n_:default;_clothes_4.png", colorized: false)
+Asset.create!(category: "nose", path: "n_:black;_clothes_4.png", colorized: false)
+Asset.create!(category: "nose", path: "n_:red;_clothes_4.png", colorized: false)
+Asset.create!(category: "nose", path: "n_:white;_clothes_4.png", colorized: false)
 
 
 
