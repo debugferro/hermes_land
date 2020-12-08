@@ -14,7 +14,7 @@ username: "Gabs",
 first_name: "Gabriel",
 last_name:  "Ferro",
 birth_date: Faker::Date.birthday(min_age: 12, max_age: 65),
-about_me: "This is me, like it or not, here i come. I love learning new languages so i can talk with anyone at anytime",
+about_me: "This is me, like it or not, here i come. I want to travel around the world and i trully believe that speaking as many languages as possible will help me out.",
 native_language: selected_languages.sample,
 country: User::COUNTRIES.sample
 )
@@ -26,7 +26,7 @@ username: "Filip",
 first_name: "Filipe",
 last_name:  "Alencar",
 birth_date: Faker::Date.birthday(min_age: 12, max_age: 65),
-about_me: "The more inhuman we became the more we understood each other as humans, my name is Filipe an i am crazy about coding, thats why i want to improve my english",
+about_me: "My name is Filipe an i am crazy about coding, thats why i want to improve my english, so i can comunicate better with people around the globe",
 native_language: selected_languages.sample,
 country: User::COUNTRIES.sample
 )
@@ -38,7 +38,7 @@ username: "Gui",
 first_name: "Guilherme",
 last_name:  "Lima",
 birth_date: Faker::Date.birthday(min_age: 12, max_age: 65),
-about_me: "I´m a brazilian guy from Rio de Janeiro that really likes to travel around to learn new cultures and languages",
+about_me: "I didn't ask for a free ride, I only ask you to show me a real good time. I never asked for the rainfall, at least I showed up, You showed me nothing at all",
 native_language: selected_languages.sample,
 country: User::COUNTRIES.sample
 )
@@ -50,7 +50,7 @@ username: "Mat",
 first_name: "Matheus",
 last_name:  "Penchel",
 birth_date: Faker::Date.birthday(min_age: 12, max_age: 65),
-about_me: "The best coder there is, i love computer and rock. Now, i´ve decide to try something new and learn a new language",
+about_me: "I´m a computers enthusiast and love studying about it. Now, i´ve decide to try something new and learn a new language, to challenge other parts of my brain",
 native_language: selected_languages.sample,
 country: User::COUNTRIES.sample
 )
@@ -62,7 +62,7 @@ username: "Tatchi",
 first_name: "Tabata",
 last_name:  "Wiggers",
 birth_date: Faker::Date.birthday(min_age: 12, max_age: 65),
-about_me: "I´m passionate about nature, specially dogs. I really like to travel and experience cultures as locals, thats why i want to improve my language skills",
+about_me: "I´m passionate about nature, specially dogs. I really like to travel and experience cultures as locals, thats why i want to improve my language skills, to speak the native language wherever i go.",
 native_language: selected_languages.sample,
 country: User::COUNTRIES.sample
 )
@@ -74,7 +74,7 @@ username: "Ju",
 first_name: "Julia",
 last_name:  "Frederico",
 birth_date: Faker::Date.birthday(min_age: 12, max_age: 65),
-about_me: "I´m a polyglot always looking for ways to improve. Today i can speak 6 languages and i hope to learn a new one this year",
+about_me: "I´m a polyglot always looking for ways to improve my skills. Today i can speak 6 languages and i hope to learn a new one this year",
 native_language: selected_languages.sample,
 country: User::COUNTRIES.sample
 )
@@ -86,7 +86,7 @@ username: "Cyn",
 first_name: "Cynthia",
 last_name:  "Tsai",
 birth_date: Faker::Date.birthday(min_age: 12, max_age: 65),
-about_me: "A true rock lover, i´m a musician and a polyglot. I want to be able to compose songs in other languages",
+about_me: "A true rock lover, i´m a musician and a polyglot. I want to be able to compose and understand songs in other languages",
 native_language: selected_languages.sample,
 country: User::COUNTRIES.sample
 )
@@ -98,7 +98,7 @@ username: "Kenny",
 first_name: "Ken",
 last_name:  "Wall",
 birth_date: Faker::Date.birthday(min_age: 12, max_age: 65),
-about_me: "Although i already speak a few languages, i really think that learn other languages are really important for me",
+about_me: "Although i already speak a few languages, i think that learning other languages are really important for me and my job. I´m very excited to try Hermes Land.",
 native_language: selected_languages.sample,
 country: User::COUNTRIES.sample
 )
@@ -110,7 +110,7 @@ username: "Rowazinho",
 first_name: "Rowan",
 last_name:  "Douglas",
 birth_date: Faker::Date.birthday(min_age: 12, max_age: 65),
-about_me: "I believe that it is never too late to learn something new.",
+about_me: "I believe that it is never too late to learn something new. That´s why i am always trying yo learn new things. Hit me up if we have the same interests and lets talk.",
 native_language: selected_languages.sample,
 country: User::COUNTRIES.sample
 )
@@ -122,7 +122,7 @@ username: "Tomazinho",
 first_name: "Tomas",
 last_name:  "Gomes",
 birth_date: Faker::Date.birthday(min_age: 12, max_age: 65),
-about_me: "We only live once so it is better to learn as much as possible while you still can",
+about_me: "The more i learn, the more i want to learn. I´m an easy going guy with many friends around the world",
 native_language: selected_languages.sample,
 country: User::COUNTRIES.sample
 )
