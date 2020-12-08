@@ -1,18 +1,25 @@
 // Specific CSS for your home-page
 .banner {
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-color: #F2F2F2;
-  padding: 150px 0;
+  padding: 250px 0px;
+}
+
+.bg-overlay {
+  background-color: rgba(0,0,0,0.1);
+  width: 450px;
 }
 
 .banner h1 {
   margin: 0;
-  color: black;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  color: #F2F2F2;
+  text-shadow: 5px 5px 5px rgba(0,0,0,0.5);
   font-family: Roboto;
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 50px;
+  font-weight: 500;
+  height: 120px;
+  width: 400px;
 }
 
 .banner p {
@@ -20,17 +27,35 @@
   color: black;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  width: 420px;
+  height:90px;
 }
 
-.btn-flat {
+.btn-flat-blue {
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #1EDD88;
+  background: #1C77C3;
   transition: background 0.3s ease;
+  font-weight: bold;
 }
 
-.btn-flat:hover {
-  background: #1BCB7F;
-  color: white;
+.btn-flat-blue:hover {
+  background: #F2F2F2;
+  color: black;
+}
+
+.btn-flat-login {
+  color: rgba(0,0,0,0.7);
+  border: solid black 1px;
+  // padding: 8px 24px;
+  border-radius: 5px;
+  background: transparent;
+  transition: background 0.3s ease;
+  font-weight: bold;
+}
+
+.btn-flat-login:hover {
+  background: rgba(30,90,130,0.6);
+  color: black;
 }
