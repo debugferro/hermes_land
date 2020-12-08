@@ -128,10 +128,10 @@ native_language: selected_languages.sample,
 country: User::COUNTRIES.sample
 )
 
-def createAsset(category, name, gender, id)
+def createAsset(category, color, type, gender, id)
   asset = Asset.create!(
   category: category,
-  path: "#{gender}_#{name}_#{id}.png"
+  path: "#{gender}_:#{name};_#{type}_#{id}.png"
     )
 end
 
@@ -144,12 +144,74 @@ Asset.create!(category: "hair", path: "m_blond_hair_1.png")
 Asset.create!(category: "eyebrows", path: "m_blond_eyebrows_1.png")
 
 
+# ACESSORIES
+
+Asset.create!(category: "acessory", path: "n_:default;_acessory_1", colorized: false)
+
+Asset.create!(category: "acessory", path: "f_:purple;_acessory_2.png", colorized: false)
+Asset.create!(category: "acessory", path: "f_:purple2;_acessory_2.png", colorized: true)
+Asset.create!(category: "acessory", path: "f_:purple3;_acessory_2.png", colorized: true)
+
+Asset.create!(category: "acessory", path: "f_:default;_acessory_3.png", colorized: false)
+
+Asset.create!(category: "acessory", path: "m_:blond;_acessory_4.png", colorized: false)
+Asset.create!(category: "acessory", path: "m_:black;_acessory_4.png", colorized: true)
+
+Asset.create!(category: "acessory", path: "f_:pink;_acessory_5.png", colorized: false)
+Asset.create!(category: "acessory", path: "f_:red;_acessory_5.png", colorized: true)
+
+# EYEBROWS
+
+Asset.create!(category: "acessory", path: "n_:blond;_eyebrows_1.png", colorized: false)
+Asset.create!(category: "acessory", path: "n_:black;_eyebrows_1.png", colorized: true)
+
+Asset.create!(category: "acessory", path: "n_:blond;_eyebrows_2.png", colorized: false)
+Asset.create!(category: "acessory", path: "n_:cocoa;_eyebrows_2.png", colorized: true)
+Asset.create!(category: "acessory", path: "n_:black;_eyebrows_2.png", colorized: true)
+
+Asset.create!(category: "acessory", path: "m_:blond;_eyebrows_3.png", colorized: false)
+Asset.create!(category: "acessory", path: "m_:black;_eyebrows_3.png", colorized: true)
+
+Asset.create!(category: "acessory", path: "m_:blond;_eyebrows_4.png", colorized: false)
+
+Asset.create!(category: "acessory", path: "f_:blond;_eyebrows_5.png", colorized: false)
+
+Asset.create!(category: "acessory", path: "f_:blond;_eyebrows_6.png", colorized: false)
+Asset.create!(category: "acessory", path: "f_:cocoa;_eyebrows_6.png", colorized: true)
+Asset.create!(category: "acessory", path: "f_:black;_eyebrows_6.png", colorized: true)
+Asset.create!(category: "acessory", path: "f_:red;_eyebrows_6.png", colorized: true)
+
+# EYES            <gender>_:<skin color>;_<category>_<id>.png
+
+Asset.create!(category: "acessory", path: "f_:neutral;_eye_1.png", colorized: false)
+Asset.create!(category: "acessory", path: "f_:neutral;_eyec_1.png", colorized: true)
+
+Asset.create!(category: "acessory", path: "f_:black;_eyes_2.png", colorized: false)
+Asset.create!(category: "acessory", path: "f_:white;_eyes_2", colorized: false)
+
+Asset.create!(category: "acessory", path: "f_:white;_eyes_3.png", colorized: false)
+Asset.create!(category: "acessory", path: "f_:black;_eyes_3.png", colorized: false)
+
+Asset.create!(category: "acessory", path: "f_:neutral;_eyes_4.png", colorized: false)
+
+Asset.create!(category: "acessory", path: "f_:neutral;_eyes_5.png", colorized: false)
+
+Asset.create!(category: "acessory", path: "f_:neutral;_eyes_6.png", colorized: false)
+
+Asset.create!(category: "acessory", path: "f_:neutral;_eyes_7.png", colorized: false)
+
+Asset.create!(category: "acessory", path: "f_:neutral;_eyes_4.png", colorized: false)
+
+
+
+
+
 4.times do |id|
   createAsset("acessory", "acessory", "f", id+2)
 end
 
-5.times do |id|
-  createAsset("hair", "blond_hair", "f", id+1)
+3.times do |id|
+  Asset.create!(category: "acessory", path: "f_:purple")
 end
 
 2.times do |id|
