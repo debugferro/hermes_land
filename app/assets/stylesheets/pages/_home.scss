@@ -44,3 +44,18 @@
   background: #F2F2F2;
   color: black;
 }
+
+.btn-flat-login {
+  color: rgba(0,0,0,0.7);
+  border: solid black 1px;
+  // padding: 8px 24px;
+  border-radius: 5px;
+  background: transparent;
+  transition: background 0.3s ease;
+  font-weight: bold;
+}
+
+.btn-flat-login:hover {
+  background: rgba(30,90,130,0.6);
+  color: black;
+}
