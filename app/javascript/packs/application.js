@@ -25,7 +25,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
-
+import $ from "jquery";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -37,6 +37,11 @@ import { loadScroll } from '../components/load_scroll';
 import { setAvatar } from '../components/set_avatar';
 import { createAvatar } from '../components/create_avatar';
 // import { filterDropdown } from '../components/filter_dropdown'
+
+$(".nav-item").on("click", function(){
+  $(".nav").find(".active").removeClass("active");
+  $(this).parent().addClass("active");
+});
 
 document.addEventListener("turbolinks:load", function() {
   initSelect2();
