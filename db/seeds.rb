@@ -149,7 +149,7 @@ Asset.create!(category: "base", path: "m_:black;_face_1.png", colorized: true)
 
 # ACESSORIES            <gender>_:<color>;_<category>_<id>.png
 
-Asset.create!(category: "acessory", path: "n_:default;_acessory_1", colorized: false)
+Asset.create!(category: "acessory", path: "n_:default;_acessory_1.png", colorized: false)
 
 Asset.create!(category: "acessory", path: "f_:purple;_acessory_2.png", colorized: false)
 Asset.create!(category: "acessory", path: "f_:purple2;_acessory_2.png", colorized: true)
@@ -190,7 +190,7 @@ Asset.create!(category: "eyes", path: "f_:neutral;_eye_1.png", colorized: false)
 Asset.create!(category: "eyes", path: "f_:neutral;_eyec_1.png", colorized: true)
 
 Asset.create!(category: "eyes", path: "f_:black;_eyes_2.png", colorized: false)
-Asset.create!(category: "eyes", path: "f_:white;_eyes_2", colorized: false)
+Asset.create!(category: "eyes", path: "f_:white;_eyes_2.png", colorized: false)
 
 Asset.create!(category: "eyes", path: "f_:white;_eyes_3.png", colorized: false)
 Asset.create!(category: "eyes", path: "f_:black;_eyes_3.png", colorized: false)
@@ -288,31 +288,31 @@ Asset.create!(category: "mouth", path: "n_:neutral;_mouth_6.png", colorized: fal
 
 # NOSES            <gender>_:<skin color>;_<category>_<id>.png
 
-Asset.create!(category: "mouth", path: "f_:black;_nose_1.png", colorized: false)
-Asset.create!(category: "mouth", path: "f_:white;_nose_1.png", colorized: false)
+Asset.create!(category: "nose", path: "f_:black;_nose_1.png", colorized: false)
+Asset.create!(category: "nose", path: "f_:white;_nose_1.png", colorized: false)
 
-Asset.create!(category: "mouth", path: "f_:black;_nose_2.png", colorized: false)
-Asset.create!(category: "mouth", path: "f_:white;_nose_2.png", colorized: false)
+Asset.create!(category: "nose", path: "f_:black;_nose_2.png", colorized: false)
+Asset.create!(category: "nose", path: "f_:white;_nose_2.png", colorized: false)
 
-Asset.create!(category: "mouth", path: "f_:black;_nose_3.png", colorized: false)
-Asset.create!(category: "mouth", path: "f_:white;_nose_3.png", colorized: false)
+Asset.create!(category: "nose", path: "f_:black;_nose_3.png", colorized: false)
+Asset.create!(category: "nose", path: "f_:white;_nose_3.png", colorized: false)
 
-Asset.create!(category: "mouth", path: "m_:black;_nose_4.png", colorized: false)
-Asset.create!(category: "mouth", path: "m_:white;_nose_4.png", colorized: false)
+Asset.create!(category: "nose", path: "m_:black;_nose_4.png", colorized: false)
+Asset.create!(category: "nose", path: "m_:white;_nose_4.png", colorized: false)
 
-Asset.create!(category: "mouth", path: "n_:black;_nose_5.png", colorized: false)
-Asset.create!(category: "mouth", path: "n_:white;_nose_5.png", colorized: false)
+Asset.create!(category: "nose", path: "n_:black;_nose_5.png", colorized: false)
+Asset.create!(category: "nose", path: "n_:white;_nose_5.png", colorized: false)
 
-Asset.create!(category: "mouth", path: "n_:black;_nose_6.png", colorized: false)
-Asset.create!(category: "mouth", path: "n_:white;_nose_6.png", colorized: false)
+Asset.create!(category: "nose", path: "n_:black;_nose_6.png", colorized: false)
+Asset.create!(category: "nose", path: "n_:white;_nose_6.png", colorized: false)
 
-Asset.create!(category: "mouth", path: "n_:black;_nose_7.png", colorized: false)
-Asset.create!(category: "mouth", path: "n_:white;_nose_7.png", colorized: false)
+Asset.create!(category: "nose", path: "n_:black;_nose_7.png", colorized: false)
+Asset.create!(category: "nose", path: "n_:white;_nose_7.png", colorized: false)
 
-Asset.create!(category: "mouth", path: "n_:white;_nose_8.png", colorized: false)
-Asset.create!(category: "mouth", path: "n_:black;_nose_8.png", colorized: false)
+Asset.create!(category: "nose", path: "n_:white;_nose_8.png", colorized: false)
+Asset.create!(category: "nose", path: "n_:black;_nose_8.png", colorized: false)
 
-Asset.create!(category: "mouth", path: "n_:white;_nose_9.png", colorized: false)
+Asset.create!(category: "nose", path: "n_:white;_nose_9.png", colorized: false)
 
 
 

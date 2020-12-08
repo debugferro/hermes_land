@@ -2,31 +2,41 @@ class AvatarsController < ApplicationController
   require 'open-uri'
   before_action :set_user, only: [:index, :update]
   before_action :set_avatar, only: [:index, :update]
-  before_action :set_default_assets, only: [:update]
+  before_action :set_default_assets, only: [:index, :update]
 
   def index
     @new_avatar = Avatar.new
-    @base = @user.avatar.assets.where(category: "base").first.path
-    @eye = @user.avatar.assets.where(category: "eyes").first.path
-    @hair = @user.avatar.assets.where(category: "hair").first.path
-    @mouth = @user.avatar.assets.where(category: "mouth").first.path
-    @eyebrow = @user.avatar.assets.where(category: "eyebrows").first.path
-    @nose = @user.avatar.assets.where(category: "nose").first.path
-    @acessory = @user.avatar.assets.where(category: "acessory").first&.path
-    @cloth = @user.avatar.assets.where(category: "cloth").first&.path
-    @cloth = @cloth.first.path if @cloth.present?
-
-    @gender = @user.avatar.gender
+    # unless @user.avatar
+    #   @new_avatar = Avatar.create!(user_id: @user.id)
+    #   @female_defaults.each do |default|
+    #     @new_avatar.assets << default
+    #   end
+    # end
+    if @user.avatar
+      @base = @user.avatar.assets.where(category: "base").first.path
+      @eye = @user.avatar.assets.where(category: "eyes").first.path
+      @hair = @user.avatar.assets.where(category: "hair").first.path
+      @mouth = @user.avatar.assets.where(category: "mouth").first.path
+      @eyebrow = @user.avatar.assets.where(category: "eyebrows").first.path
+      @nose = @user.avatar.assets.where(category: "nose").first.path
+      @acessory = @user.avatar.assets.where(category: "acessory").first&.path
+      @cloth = @user.avatar.assets.where(category: "cloth").first&.path
+      @cloth = @cloth.first.path if @cloth.present?
+      @gender = @user.avatar.gender
+    end
 
     @bases = write_paths(Asset.where(category: "base", colorized: false))
     @base_colors = write_paths(Asset.where(category: "base", colorized: true))
-    @eyes = write_paths(Asset.where(category: "eyes"))
+    @eyes = write_paths(Asset.where(category: "eyes", colorized: false))
+    @eye_colors = write_paths(Asset.where(category: "eyes", colorized: true))
     @hairs = write_paths(Asset.where(category: "hair", colorized: false))
     @colorized_hairs = write_paths(Asset.where(category: "hair", colorized: true))
     @mouths = write_paths(Asset.where(category: "mouth"))
-    @eyebrows = write_paths(Asset.where(category: "eyebrows"))
+    @eyebrows = write_paths(Asset.where(category: "eyebrows", colorized: false))
+    @eyebrow_colors = write_paths(Asset.where(category: "eyebrows", colorized: true))
     @noses = write_paths(Asset.where(category: "nose"))
-    @acessories = write_paths(Asset.where(category: "acessory"))
+    @acessories = write_paths(Asset.where(category: "acessory", colorized: false))
+    @acessory_colors = write_paths(Asset.where(category: "acessory", colorized: true))
     @clothes = write_paths(Asset.where(category: "cloth"))
   end
 
@@ -91,23 +101,29 @@ class AvatarsController < ApplicationController
 
   def set_default_assets
     @female_defaults = []
-    @female_defaults << Asset.where(path: 'f_white_face_1.png').first
-    @female_defaults  << Asset.where(path: 'f_blue_eyes_1.png').first
-    @female_defaults  << Asset.where(path: 'f_blond_eyebrows_1.png').first
-    @female_defaults  << Asset.where(path: 'f_nose_1.png').first
-    @female_defaults  << Asset.where(path: 'f_mouth_2.png').first
-    @female_defaults  << Asset.where(path: 'f_:blond;_hair_6.png').first
+    @female_defaults << Asset.where(path: 'f_:white;_face_1.png').first
+    @female_defaults  << Asset.where(path: 'f_:neutral;_eye_1.png').first
+    @female_defaults  << Asset.where(path: 'f_:blond;_eyebrows_5.png').first
+    @female_defaults  << Asset.where(path: 'f_:white;_mouth_1.png').first
+    @female_defaults  << Asset.where(path: 'f_:white;_nose_1.png').first
+    @female_defaults  << Asset.where(path: 'f_:blond;_hair_1.png').first
 
     @male_defaults = []
-    @male_defaults << Asset.where(path: 'm_white_face_1.png').first
-    @male_defaults  << Asset.where(path: 'm_blue_eyes_1.png').first
-    @male_defaults  << Asset.where(path: 'm_blond_eyebrows_1.png').first
-    @male_defaults  << Asset.where(path: 'm_nose_1.png').first
-    @male_defaults  << Asset.where(path: 'm_mouth_1.png').first
-    @male_defaults  << Asset.where(path: 'm_blond_hair_1.png').first
+    @male_defaults << Asset.where(path: 'm_:white;_face_1.png').first
+    @male_defaults  << Asset.where(path: 'm_:white;_eyes_12.png').first
+    @male_defaults  << Asset.where(path: 'm_:blond;_eyebrows_4.png').first
+    @male_defaults  << Asset.where(path: 'm_:white;_nose_4.png').first
+    @male_defaults  << Asset.where(path: 'n_:white;_mouth_4.png').first
+    @male_defaults  << Asset.where(path: 'm_:blond;_hair_12.png').first
   end
 
   def write_paths(assets)
     assets.map { |asset| asset.path }
   end
 end
+    # avatar << Asset.where(path: 'f_:white;_face_1.png').first
+    # avatar  << Asset.where(path: 'f_:neutral;_eye_1.png').first
+    # avatar  << Asset.where(path: 'f_:blond;_eyebrows_5.png').first
+    # avatar  << Asset.where(path: 'f_:white;_nose_1.png').first
+    # avatar  << Asset.where(path: 'f_:white;_mouth_1.png').first
+    # avatar  << Asset.where(path: 'f_:blond;_hair_1.png').first
