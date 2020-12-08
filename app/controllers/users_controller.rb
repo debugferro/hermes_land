@@ -41,6 +41,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @chat_room = ChatRoom.new
+    @my_languages = MyLanguage.where(user_id: @user)
   end
 
   def verify_presence_and_set

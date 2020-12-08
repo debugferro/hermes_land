@@ -1,31 +1,33 @@
 <div class="m-4">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-6 col-lg-6">
+    <div class="col-12 col-md-6 col-lg-6 ">
       <div class="card-signup">
-        <div class="container row pt-3" style="background-color: white">
+        <div class="container pt-3 justify-content-center">
           <h2>This is <%= @user.first_name%> <%= @user.last_name %>'s profile</h2>
-          <div> <p>Country: <%= @user.country %></p></div>  
           <div class="container row pt-2">
-
-            <p><strong>Country: </strong><%= @user.country %></p>
-          </div>   
-          <div class="container row pt-2">
-            <p><strong>Native Language: </strong><%= @user.native_language %></p>
-          </div>                  
-          <div class="container row pt-2">
-          <p><strong>About me: </strong><%= @user.about_me %></p>
-          </div>
+            <p>I´m from <%= @user.country %> and I speak <%= @user.native_language %>. </p>
+          </div>                    
           <div class="container row pt-2">
             <p><strong>Interests: </strong><% @user.interests.each do |interest| %></p>
               <ul>
                 <li><%= interest.name %></li>
               </ul>
             <% end %>
+            <div class="container row pt-2">
+               <p><strong>Languages I want to learn: </strong><% @my_languages.each do |my_language| %></p>
+              <ul>
+                <li><%= my_language.language.name %></li>
+              </ul>
+            <% end %>
+            
           </div>
-          <div class="container row pt-2 justify-content-center">
-            <%= link_to "Chat with #{@user.first_name}", chat_rooms_path(chat_room:{user_ids: [@user.id]}), method: :post, class: "btn btn-primary w-75" %>
+          <div class="container row pt-2">
+          <p><strong>More about me: </strong><%= @user.about_me %></p>
           </div>
         </div>
+          <div class="container row  justify-content-center mx-auto">
+            <%= link_to "Chat with #{@user.first_name}", chat_rooms_path(chat_room:{user_ids: [@user.id]}), method: :post, class: "btn btn-primary w-75" %>
+          </div>
       </div>
     </div>
   </div>
