@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {registrations: "registrations"}
   root to: 'pages#home'
 
   resources :users, only: [:index, :show]
+  get '/profile', to: 'users#profile'
   resources :feed, only: [:index]
   resources :chat_rooms, only: [:index, :show, :create] do
     resources :participants, only: [:create]

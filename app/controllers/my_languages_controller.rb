@@ -15,13 +15,13 @@ class MyLanguagesController < ApplicationController
       authorize @my_language
       @my_language.save
     end
-    redirect_to :my_languages
+    redirect_to profile_path
   end
 
   def destroy
     authorize @my_language
     @my_language.destroy
-    redirect_to :my_languages
+    redirect_to profile_path
   end
 
   private
