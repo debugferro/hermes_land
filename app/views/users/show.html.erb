@@ -4,43 +4,45 @@
     <div class="card-signup profile-size">
 
       <div class="profile-content">
+        <div class="profile-path">
+          <span><%= link_to "Home", root_path %></span><span id="path-arrow">></span> <span><%= @user.username %>'s profile</span>
+        </div>
         <div class="profile-pic">
           <div class="profile-img-container">
             <div class="profile-img-box">
               <%= cl_image_tag @user.photo.key if @user.photo.attached? %>
               <%= image_tag "circle-greek.png",  class: "greek-circle-profile"%>
+              <div class="profile-name">
+                <span>
+                  <%= @user.username %>
+                </span>
+              </div>
             </div>
           </div>
-
-
         </div>
-
-
         <div class="profile-info">
           <div class="profile-about">
             <div class="profile-right">
               <%= image_tag 'information.png', class: "profile-icon"%>
-              <strong style="margin-top: 0.3em;">About me</strong>
+              <strong style="margin-top: 0.3em; margin-left: 1.3em;">About me</strong>
             </div>
             <div class="profile-left">
               <%= @user.about_me %>
             </div>
           </div>
-          <hr>
           <div class="profile-about">
             <div class="profile-right">
               <%= image_tag 'country.png', class: "profile-icon"%>
-              <strong style="margin-top: 0.5em;">Country</strong>
+              <strong style="margin-top: 0.5em; margin-left: 1.3em;">Country</strong>
             </div>
             <div class="profile-left">
               <%= @user.country %>
             </div>
           </div>
-          <hr>
           <div class="profile-about">
             <div class="profile-right">
               <%= image_tag 'linguistics2.png', class: "profile-icon"%>
-              <strong style="margin-top: 0.5em;">Languages</strong>
+              <strong style="margin-top: 0.5em; margin-left: 1.3em;">Languages</strong>
             </div>
             <div class="profile-left">
               <% @user.my_languages&.each do |language| %>
@@ -48,11 +50,10 @@
               <% end %>
             </div>
           </div>
-          <hr>
           <div class="profile-about">
             <div class="profile-right">
               <%= image_tag 'interests.png', class: "profile-icon"%>
-              <strong style="margin-top: 0.5em;">Interests</strong>
+              <strong style="margin-top: 0.5em; margin-left: 1.3em;">Interests</strong>
             </div>
             <div class="profile-left">
               <div class="tag-wrapper">
