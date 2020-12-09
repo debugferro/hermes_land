@@ -5,6 +5,9 @@ Avatar.destroy_all
 MyLanguage.destroy_all
 MyInterest.destroy_all
 Language.destroy_all
+Participant.destroy_all
+Message.destroy_all
+ChatRoom.destroy_all
 User.destroy_all
 selected_languages = ["English", "French", "Portuguese", "Chinese", "German"]
 Language::LANGUAGES.each do | language |
