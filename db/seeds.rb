@@ -1,8 +1,11 @@
 require "faker"
 
-User.destroy_all
-Language.destroy_all
 Asset.destroy_all
+Avatar.destroy_all
+MyLanguage.destroy_all
+MyInterest.destroy_all
+Language.destroy_all
+User.destroy_all
 selected_languages = ["English", "French", "Portuguese", "Chinese", "German"]
 Language::LANGUAGES.each do | language |
  Language.create(name: language)
