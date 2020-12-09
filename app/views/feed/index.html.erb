@@ -1,7 +1,7 @@
 <div class="container">
-    <div class="card-signup">
+    <div class="card-signup text-center">
       <h1 id="find-title">Find your buddy!</h1>
-      <div class="d-flex">
+      <div class="d-flex justify-content-center">
         <div>
         <%= simple_form_for :query, url: users_path, method: "GET", html: { class: '', id: '' } do |f| %>
           <div class="p-2">
@@ -13,10 +13,10 @@
           <div class="p-2">
             <%= f.input :languages, as: :select, collection: Language.all, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Languages:"  %>
           </div>
-        </div>
-        <div class="p-2">
+                  <div class="p-2">
           <%= f.submit "Search", class: "btn-search" %>
         <% end %>
+        </div>
         </div>
       </div>
     </div>

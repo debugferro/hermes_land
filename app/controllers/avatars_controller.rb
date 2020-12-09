@@ -70,7 +70,7 @@ class AvatarsController < ApplicationController
       @avatar.save
       redirect_to avatars_path
     end
-    if params[:avatar][:img]
+    unless params[:avatar][:img].blank?
       photo = Cloudinary::Uploader.upload(params[:avatar][:img])
       photo = open(photo['url'])
       @user.photo.attach(io: photo, filename: 'teste')
