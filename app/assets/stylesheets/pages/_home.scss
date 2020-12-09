@@ -62,4 +62,25 @@
 
 .btn-search {
   width:80%;
+  background: $hermes-blue;
+  color: #C2D8FE;
+  border: solid black 1px;
+  text-align: center;
+}
+
+.btn-search:hover {
+  background:  #C2D8FE;
+  color: $hermes-blue;
+  transition: background 0.3s ease;
+}
+
+#find-title {
+  font-weight: bolder;
+  text-align: center;
+}
+
+.interest-form {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
 }

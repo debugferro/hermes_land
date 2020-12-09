@@ -60,19 +60,22 @@
 }
 
 .btn-profile {
-  background-color: #0037c7;
+  background-color: $hermes-blue;
   border-radius: 1.1em;
   padding: 0.1em 1.1em;
   position: absolute;
   bottom: -0.8em;
-  color: whitesmoke;
+  color: #C2D8FE;
+  border: solid black 1px;
   text-decoration: none !important;
   text-transform: uppercase;
       z-index: 1;
 }
 .btn-profile:hover {
-      color: black;
-    }
+  background:  #C2D8FE;
+  color: $hermes-blue;
+  transition: background 0.3s ease;
+}
 
 .btn-search {
   background-color: #0037c7;

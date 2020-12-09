@@ -1,23 +1,24 @@
 <div class="container">
-    <div class="card-signup text-center">
+    <div class="card-signup">
       <h1 id="find-title">Find your buddy!</h1>
-      <div class="d-flex justify-content-center">
-        <div>
+      <div class="interest-form">
         <%= simple_form_for :query, url: users_path, method: "GET", html: { class: '', id: '' } do |f| %>
-          <div class="p-2">
-            <%= f.input :interests, as: :select, collection: Interest.all, value_method: :name, label_method: :name, input_html: { class: 'select2max form-small', multiple: true }, required: false, label: "Interests:" %>
+          <div class="p-1">
+            <p>Interests:</p>
+            <%= f.input :interests, as: :select, collection: Interest.all, value_method: :name, label_method: :name, input_html: { class: 'select2max form-small', multiple: true }, required: false, label: false %>
           </div>
-          <div class="p-2">
-            <%= f.input :countries, as: :select, collection: User::COUNTRIES, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Countries:"  %>
+          <div class="p-1">
+            <p>Countries:</p>
+            <%= f.input :countries, as: :select, collection: User::COUNTRIES, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: false  %>
           </div>
-          <div class="p-2">
-            <%= f.input :languages, as: :select, collection: Language.all, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Languages:"  %>
+          <div class="p-1">
+            <p>Languages:</p>
+            <%= f.input :languages, as: :select, collection: Language.all, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: false  %>
           </div>
-                  <div class="p-2">
-          <%= f.submit "Search", class: "btn-search" %>
+          <div class="p-1">
+            <%= f.submit "Search", class: "btn-search justify-content-center" %>
+          </div>
         <% end %>
-        </div>
-        </div>
       </div>
     </div>
 
