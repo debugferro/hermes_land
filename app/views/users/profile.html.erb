@@ -1,13 +1,13 @@
 
 <div class="container">
-  <div class="card-signup">
+  <div class="card-signup text-center">
     <div class="row justify-content-center p-3">
      <h1 id="find-title">Add the languages you speak!</h1>
     </div>
     <div class="justify-content-center">
       <ul>
         <% @my_languages.each do |my_language| %>
-        <li class="select2-selection__choice">
+        <li class="select2-selection__choice" style="list-style: none;">
         <%= my_language.language.name %>
         <%= link_to 'X', my_language_path(my_language), method: :delete %>
         <% end %>
@@ -24,14 +24,14 @@
 </div>
 
 <div class="container">
-  <div class="card-signup">
+  <div class="card-signup text-center">
     <div class="row justify-content-center p-3">
       <h1 id="find-title">Add your interests</h1>
     </div>
-    <div class="justify-content-center">
+    <div class="">
       <ul>
         <% @my_interests.each do |my_interest| %>
-        <li class="select2-selection__choice">
+        <li class="select2-selection__choice" style="list-style: none;">
         <%= my_interest.interest.name %>
         <%= link_to 'X', my_interest_path(my_interest), method: :delete %>
         <% end %>
