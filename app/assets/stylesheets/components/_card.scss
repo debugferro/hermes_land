@@ -51,6 +51,36 @@
   width: 45%;
 }
 
+.greek-circle-profile{
+    position: absolute;
+    width: 122%;
+    height: 123%;
+    right: -1em;
+    top: -1em;
+}
+
+.profile-content {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.profile-pic {
+  margin: 0 auto;
+  margin-bottom: 3em;
+}
+
+.profile-img-container{
+position: relative;
+    border: 15px solid #F39237;
+    border-radius: 50%;
+}
+
+.profile-img-box{
+  img{
+  border-radius: 50%;
+  }
+}
+
 .profile-about {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -74,6 +104,10 @@
   display: flex;
   max-width: 100%;
   flex-flow: wrap-reverse;
+}
+
+.profile-languages {
+  border-bottom: 1px solid gainsboro;
 }
 
 .tag {

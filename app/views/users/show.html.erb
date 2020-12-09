@@ -4,48 +4,70 @@
     <div class="card-signup profile-size">
 
       <div class="profile-content">
-        <div>
-          <h1><%= @user.username %></h1>
+        <div class="profile-pic">
+          <div class="profile-img-container">
+            <div class="profile-img-box">
+              <%= cl_image_tag @user.photo.key if @user.photo.attached? %>
+              <%= image_tag "circle-greek.png",  class: "greek-circle-profile"%>
+            </div>
+          </div>
+
+
         </div>
 
-        <div class="profile-about">
-          <div class="profile-right">
-            <%= image_tag 'information.png', class: "profile-icon"%>
-            <strong style="margin-top: 0.3em;">About me</strong>
+
+        <div class="profile-info">
+          <div class="profile-about">
+            <div class="profile-right">
+              <%= image_tag 'information.png', class: "profile-icon"%>
+              <strong style="margin-top: 0.3em;">About me</strong>
+            </div>
+            <div class="profile-left">
+              <%= @user.about_me %>
+            </div>
           </div>
-          <div class="profile-left">
-            <%= @user.about_me %>
-          </div>
-        </div>
           <hr>
           <div class="profile-about">
-          <div class="profile-right">
-            <%= image_tag 'country.png', class: "profile-icon"%>
-            <strong style="margin-top: 0.5em;">Country</strong>
+            <div class="profile-right">
+              <%= image_tag 'country.png', class: "profile-icon"%>
+              <strong style="margin-top: 0.5em;">Country</strong>
+            </div>
+            <div class="profile-left">
+              <%= @user.country %>
+            </div>
           </div>
-          <div class="profile-left">
-            <%= @user.country %>
-          </div>
-        </div>
           <hr>
           <div class="profile-about">
-          <div class="profile-right">
-            <%= image_tag 'interests.png', class: "profile-icon"%>
-            <strong style="margin-top: 0.5em;">Interests</strong>
-          </div>
-          <div class="profile-left">
-            <div class="tag-wrapper">
-              <% @user.interests&.each do |interest| %>
-                <div class="tag">
-                  <%= interest.name %>
-                </div>
+            <div class="profile-right">
+              <%= image_tag 'linguistics2.png', class: "profile-icon"%>
+              <strong style="margin-top: 0.5em;">Languages</strong>
+            </div>
+            <div class="profile-left">
+              <% @user.my_languages&.each do |language| %>
+                <p class="profile-languages"><%= language.language.name %>: <%= language.level %></p>
               <% end %>
             </div>
           </div>
-        </div>
+          <hr>
+          <div class="profile-about">
+            <div class="profile-right">
+              <%= image_tag 'interests.png', class: "profile-icon"%>
+              <strong style="margin-top: 0.5em;">Interests</strong>
+            </div>
+            <div class="profile-left">
+              <div class="tag-wrapper">
+                <% @user.interests&.each do |interest| %>
+                  <div class="tag">
+                    <%= interest.name %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
 
   </div>
