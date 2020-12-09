@@ -65,8 +65,8 @@
 }
 
 .profile-pic {
-  margin: 0 auto;
-  margin-bottom: 3em;
+  place-self: center;
+  display: flex;
 }
 
 .profile-path {

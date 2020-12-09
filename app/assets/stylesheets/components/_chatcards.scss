@@ -13,6 +13,29 @@
   height: 16%;
 }
 
+.profile-btns {
+  place-self: center;
+  margin-bottom: 1em;
+}
+
+.btn-chatwith{
+  width: 11em;
+    background-color: #1c77c3;
+    border-radius: 0.5em;
+    border: 1px solid black;
+    padding: 0.3em 1.2em 0.3em 1.2em;
+    box-shadow: rgba(0, 0, 0, 0.51) 1px 1px 1px 1px;
+  img{
+    width: 2em;
+  }
+
+  a{
+    color: white;
+    font-weight: bold;
+    text-decoration: none !important;
+  }
+}
+
 .card-chat {
   box-shadow: 2px 1px 9px 3px #00000040;
   border: 1px solid black;

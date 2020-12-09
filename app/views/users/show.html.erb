@@ -20,6 +20,12 @@
             </div>
           </div>
         </div>
+        <div class="profile-btns">
+          <div class="btn-chatwith">
+            <%= link_to image_tag('newchat.png'), chat_rooms_path(chat_room:{user_ids: [@user.id]}), method: :post %>
+            <%= link_to "Start a chat", chat_rooms_path(chat_room:{user_ids: [@user.id]}), method: :post %>
+          </div>
+        </div>
         <div class="profile-info">
           <div class="profile-about">
             <div class="profile-right">
@@ -45,6 +51,7 @@
               <strong style="margin-top: 0.5em; margin-left: 1.3em;">Languages</strong>
             </div>
             <div class="profile-left">
+              <p class="profile-languages"><%= @user.native_language %>: Fluent</p>
               <% @user.my_languages&.each do |language| %>
                 <p class="profile-languages"><%= language.language.name %>: <%= language.level %></p>
               <% end %>
