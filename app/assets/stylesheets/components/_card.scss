@@ -12,8 +12,11 @@
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   box-shadow: 2px 2px 13px 2px #00000082;
-  position: absolute;
   border: 15px solid #c79000;
+}
+
+.card-feed-position {
+  position: absolute;
   top: -3em;
   right: 4em;
 }
@@ -47,6 +50,59 @@
   height: 45%;
   width: 45%;
 }
+
+.profile-about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.profile-icon {
+  width: 2em;
+  height: 2em;
+}
+
+.profile-size {
+  width: 45em;
+}
+
+.profile-right {
+  display: flex;
+  align-items: center;
+}
+
+.tag-wrapper {
+  display: flex;
+  max-width: 100%;
+  flex-flow: wrap-reverse;
+}
+
+.tag {
+  margin: 2px 4px;
+  padding: 2px 3px;
+  border: solid 1px black;
+  background-color: blue;
+  border-radius: 0.5em;
+  color: white;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #736f6f;
+}
+.separator::before {
+    margin-right: .25em;
+}
+.separator::after {
+margin-left: .25em;
+}
+
+
 .card-filler{
   background-color: #8ABFD7;
   width: 21.79em;

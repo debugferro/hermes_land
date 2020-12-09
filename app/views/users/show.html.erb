@@ -1,12 +1,79 @@
 <div class="m-4">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-6 col-lg-6 ">
+
+    <div class="card-signup profile-size">
+
+      <div class="profile-content">
+        <div>
+          <h1><%= @user.username %></h1>
+        </div>
+
+        <div class="profile-about">
+          <div class="profile-right">
+            <%= image_tag 'information.png', class: "profile-icon"%>
+            <strong style="margin-top: 0.3em;">About me</strong>
+          </div>
+          <div class="profile-left">
+            <%= @user.about_me %>
+          </div>
+        </div>
+          <hr>
+          <div class="profile-about">
+          <div class="profile-right">
+            <%= image_tag 'country.png', class: "profile-icon"%>
+            <strong style="margin-top: 0.5em;">Country</strong>
+          </div>
+          <div class="profile-left">
+            <%= @user.country %>
+          </div>
+        </div>
+          <hr>
+          <div class="profile-about">
+          <div class="profile-right">
+            <%= image_tag 'interests.png', class: "profile-icon"%>
+            <strong style="margin-top: 0.5em;">Interests</strong>
+          </div>
+          <div class="profile-left">
+            <div class="tag-wrapper">
+              <% @user.interests&.each do |interest| %>
+                <div class="tag">
+                  <%= interest.name %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--       <div class="card-signup">
+        <%= cl_image_tag @user.photo.key if @user.photo.attached? %>
+      </div>
+ -->
+    <!-- <div class="col-12 col-md-6 col-lg-6 ">
       <div class="card-signup">
         <div class="container pt-3 justify-content-center">
-          <h2>This is <%= @user.first_name%> <%= @user.last_name %>'s profile</h2>
+          <h2><%= @user.username %></h2>
           <div class="container row pt-2">
             <p>I´m from <%= @user.country %> and I speak <%= @user.native_language %>. </p>
-          </div>                    
+          </div>
           <div class="container row pt-2">
             <p><strong>Interests: </strong><% @user.interests.each do |interest| %></p>
               <ul>
@@ -19,7 +86,7 @@
                 <li><%= my_language.language.name %></li>
               </ul>
             <% end %>
-            
+
           </div>
           <div class="container row pt-2">
           <p><strong>More about me: </strong><%= @user.about_me %></p>
@@ -31,7 +98,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!--  Only can be used after "my_languages" implementation
   <%# @user.my_languages.each do |language|%>
   <ul>
