@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :participants, only: [:create]
     resources :messages, only: [:create]
   end
-  resources :avatars
+  resources :avatars, only: [:index, :edit, :update]
   resources :interests, only: [:index, :show, :create, :update]
   resources :my_interests, only: [:index, :create, :update, :destroy]
   resources :my_languages, only: [:index, :create, :update, :destroy]

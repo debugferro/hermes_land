@@ -1,20 +1,22 @@
-<div class="container">
+<div class="container" style="display: grid;">
   <div class="card-chat card-responsive">
-    <div class="card-chatinfo">
-      <div class="bubble-link">
-      <%= link_to "<", chat_rooms_path, class: "btn-back"%>
-      </div>
+    <div class="profile-filler"></div>
+    <div class="chat-users">
       <% @participants.each do |participant| %>
-      <div class="avatar-bubble">
-
-          <p><%= participant.username[0] %></p>
-
-      </div>
+        <div class="avatar-bubble" data-toggle="tooltip" data-placement="top" title="<%= participant.username %>">
+          <a href="<%= user_path(participant) %>">
+            <img src="<%= cl_image_path participant.photo.key if participant.photo.attached? %>" alt="">
+          </a>
+        </div>
       <% end %>
+    </div>
+    <div class="profile-path pos-relative" style="z-index: 0;">
+        <span><%= link_to "Home", root_path %></span><span id="path-arrow">></span> <span><%= link_to "Chats", chat_rooms_path %></span> <span id="path-arrow">></span> <span>Room</span>
     </div>
     <div id="messages" class="message-scroll" data-chatroom-id="<%= @chat_room.id %>">
     <% @messages.each do |message| %>
-      <%= render 'messages/message', message: message %>
+        <%= render 'messages/message', message: message if @user != message.user%>
+        <%= render 'messages/messageright', message: message if @user == message.user%>
     <% end %>
     </div>
     <div class="box-form">

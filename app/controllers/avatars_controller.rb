@@ -5,7 +5,7 @@ class AvatarsController < ApplicationController
   before_action :set_default_assets, only: [:index, :update]
 
   def index
-    @new_avatar = Avatar.new
+    @avatar = Avatar.where(user: current_user).first
     unless @user.avatar
       avatar = Avatar.create!(user_id: @user.id)
       @female_defaults.each do |default|
