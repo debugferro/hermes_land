@@ -14,7 +14,7 @@ class AvatarsController < ApplicationController
       @eyebrow = @user.avatar.assets.where(category: "eyebrows").first.path
       @nose = @user.avatar.assets.where(category: "nose").first.path
       @acessory = @user.avatar.assets.where(category: "acessory").first&.path
-      @cloth = @user.avatar.assets.where(category: "cloth").first&.avatars_path
+      @cloth = @user.avatar.assets.where(category: "cloth").first&.path
       @gender = @user.avatar.gender
     end
 
