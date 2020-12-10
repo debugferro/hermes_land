@@ -2,9 +2,9 @@
 <div class="container">
   <div class="card-signup text-center">
     <div class="row justify-content-center p-3">
-     <h1 id="find-title">Add the languages you speak!</h1>
+     <h1 id="find-title">Add the languages you want to speak!</h1>
     </div>
-    <div class="justify-content-center">
+    <div class="row justify-content-center">
       <ul>
         <% @my_languages.each do |my_language| %>
         <li class="select2-selection__choice" style="list-style: none;">
@@ -15,11 +15,12 @@
       </ul>
     </div>
       <%= simple_form_for current_user, url: my_languages_path, method: 'post' do |f| %>
-    <div class="row justify-content-center">
-      <%= f.association :languages, value_method: :name, label_method: :name, input_html: { class: 'select2 form-large' }  %>
+    <div class="p-1">
+      <p>Languages:</p>
+      <%= f.association :languages, label: false, value_method: :name, label_method: :name, input_html: { class: 'select2max form-large' }  %>
+    </div>
       <%= f.submit "Save" %>
       <% end %>
-    </div>
   </div>
 </div>
 
@@ -28,23 +29,25 @@
     <div class="row justify-content-center p-3">
       <h1 id="find-title">Add your interests</h1>
     </div>
-    <div class="">
+    <div class="row justify-content-center">
       <ul>
         <% @my_interests.each do |my_interest| %>
         <li class="select2-selection__choice" style="list-style: none;">
         <%= my_interest.interest.name %>
         <%= link_to 'X', my_interest_path(my_interest), method: :delete %>
-        <% end %>
         </li>
+        <% end %>
       </ul>
     </div>
       <%= simple_form_for current_user, url: my_interests_path, method: 'post' do |f| %>
-    <div class="row justify-content-center">
-      <%= f.association :interests, value_method: :name, label_method: :name, input_html: { class: 'select2' }  %>
+    <div class="p-1">
+      <p>Interests:</p>
+      <%= f.association :interests, label: false, value_method: :name, label_method: :name, input_html: { class: 'select2max form-large' }  %>
+    </div>
       <%= f.submit "Save" %>
       <% end %>
-    </div>
-    <div class="row justify-content-center pt-4">
+      <hr>
+    <div class="row justify-content-center pt-2">
       <%= link_to "Customize you avatar", avatars_path, method: 'get', class: 'btn btn-flat-blue' %>
     </div>
   </div>
