@@ -66,6 +66,8 @@
   color: #C2D8FE;
   border: solid black 1px;
   text-align: center;
+  position: relative;
+  left: 15px;
 }
 
 .btn-search:hover {
@@ -80,7 +82,9 @@
 }
 
 .interest-form {
-  width: 100%;
+  width: 80%;
   text-align: center;
   margin: 0 auto;
+  position: relative;
+  right: 15px;
 }
