@@ -5,7 +5,8 @@ import 'select2';
 const initSelect2 = () => {
   $('.select2').select2({
     tags: true,
-    tokenSeparators: [',', ';']
+    tokenSeparators: [',', ';'],
+    width: "resolve"
   });
   $('.select2max').select2({
     tags: true,

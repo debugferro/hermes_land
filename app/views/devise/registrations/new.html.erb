@@ -35,11 +35,15 @@
                         required: true,
                         autofocus: true,
                         input_html: { autocomplete: "username" }%>
-            <%= f.input :photo, as: :file %>
+            <%#= f.input :photo, as: :file %>
             <%= f.input :birth_date,
+                        as: :date,
+                        end_year: Date.today.year - 90,
+                        start_year: Date.today.year - 18,
+                        order: [:day, :month, :year],
                         required: true,
                         autofocus: true,
-                        input_html: { autocomplete: "birthdate" }%>
+                        input_html: { type: :date, autocomplete: "birthdate" }%>
             <%= f.input :country,
                         collection: User::COUNTRIES,
                         required: true,
