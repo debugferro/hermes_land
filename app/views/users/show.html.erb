@@ -10,10 +10,10 @@
         </div>
         <div class="profile-pic">
           <div class="profile-img-container">
-            <div class="profile-img-box">
-              <%= cl_image_tag @user.photo.key if @user.photo.attached? %>
+            <div class="canvas-img-box">
               <%= image_tag "circle-greek.png",  class: "greek-circle-profile"%>
-              <div class="profile-name">
+              <%= cl_image_tag @user.photo.key if @user.photo.attached? %>
+              <div class="profile-name topos-8">
                 <span>
                   <%= @user.username %>
                 </span>

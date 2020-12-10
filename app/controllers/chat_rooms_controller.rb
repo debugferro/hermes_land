@@ -7,6 +7,7 @@ class ChatRoomsController < ApplicationController
   def index
     # Where it is going to display all chatrooms for current user
     @new_chat = ChatRoom.new
+    authorize @new_chat
   end
 
   def show

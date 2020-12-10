@@ -13,10 +13,10 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "Home", "/", class: "nav-link" %>
+          <%= link_to "Home", "/", class: "nav-link" if current_user.photo.attached? %>
         </li>
         <li class="nav-item">
-          <%= link_to "Messages", chat_rooms_path, class: "nav-link"%>
+          <%= link_to "Messages", chat_rooms_path, class: "nav-link" if current_user.photo.attached? %>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo.present? %>

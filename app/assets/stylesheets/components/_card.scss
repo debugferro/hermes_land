@@ -53,8 +53,8 @@
 
 .greek-circle-profile{
     position: absolute;
-    width: 122%;
-    height: 123%;
+    width: 123%;
+    height: 122%;
     right: -1em;
     top: -1em;
 }
@@ -65,8 +65,10 @@
 }
 
 .profile-pic {
-  place-self: center;
   display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.3em;
 }
 
 .profile-filler {
@@ -90,6 +92,8 @@
 .profile-path {
       margin: -0.4em 0em 1.3em;
       z-index: 1;
+    width: 19em;
+    margin-bottom: 0;
   #path-arrow{
     // background-color: white;
     box-shadow: rgba(0, 0, 0, 0.51) 1px 1px 1px 1px;
@@ -107,6 +111,7 @@
     padding: 0.2em 0.4em;
     a{
       text-decoration: none !important;
+          z-index: 4;
       color: $hermes-darkblue;
     }
   }
@@ -135,8 +140,8 @@ position: relative;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
-    top: 88%;
-    right: 16%;
+    // top: 88%;
+    // right: 16%;
     box-shadow: 1px 1px 1px 1px #00000082;
 }
 

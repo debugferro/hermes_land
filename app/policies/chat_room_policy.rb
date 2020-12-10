@@ -5,8 +5,13 @@ class ChatRoomPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    user.photo.attached?
+  end
+
+
   def show?
-    user == record.users
+    user == record.users && user.photo.attached?
     if record.users.where(id: user.id).present?
       true
     else
