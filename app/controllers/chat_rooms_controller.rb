@@ -15,12 +15,21 @@ class ChatRoomsController < ApplicationController
     @participants = @chat_room.users
     @messages = @chat_room.messages
     @new_message = Message.new
+    @user = current_user
   end
 
   def create
-    user_params = params[:chat_room][:user_ids]
-    user_params << current_user.id
-    user_ids = user_params.map(&:to_i)
+    @found_users = []
+    @user_params = params[:chat_room][:user_ids]
+    @user_params.each do |user_param|
+      if number?(user_param)
+        @found_users << User.find(user_param).id
+      else
+        @found_users << User.where(username: user_param).first.id
+      end
+    end
+    @found_users << current_user.id
+    user_ids = @found_users.map(&:to_i)
     @chatrooms = ChatRoom.joins(:participants).group('chat_rooms.id').having('ARRAY[?::bigint] = ARRAY_AGG(participants.user_id ORDER BY participants.user_id ASC)', user_ids.sort)
     if @chatrooms.any?
       redirect_to @chatrooms.first
@@ -56,5 +65,9 @@ class ChatRoomsController < ApplicationController
 
   def chat_room_params
     params.require(:chat_room).permit(user_ids: [])
+  end
+
+  def number?(string)
+    true if Float(string) rescue false
   end
 end

@@ -53,6 +53,11 @@ document.addEventListener("turbolinks:load", function() {
   if (document.querySelector(".avatar_information")) {
     createAvatar();
   }
+  if (document.querySelector(".avatar-bubble")) {
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  }
   // filterDropdown();
 });
 
