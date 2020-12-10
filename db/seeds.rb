@@ -218,8 +218,14 @@ Asset.create!(category: "cloth", path: "n_:black;_clothes_4.png", colorized: fal
 Asset.create!(category: "cloth", path: "n_:red;_clothes_4.png", colorized: false)
 Asset.create!(category: "cloth", path: "n_:white;_clothes_4.png", colorized: false)
 
-User.destroy_all
+Avatar.destroy_all
+MyLanguage.destroy_all
+MyInterest.destroy_all
 Language.destroy_all
+Participant.destroy_all
+Message.destroy_all
+ChatRoom.destroy_all
+User.destroy_all
 selected_languages = ["English", "French", "Portuguese", "Chinese", "German"]
 Language::LANGUAGES.each do | language |
  Language.create(name: language)
