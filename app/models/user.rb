@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # TODO: HASMANY RELATIONS TO THE EXTRA FEATURES
   before_save :fix_case_inputs
+  after_create :create_avatar
 
   NATIVE_LANGUAGES = LanguageList::COMMON_LANGUAGES.map(&:name)
   COUNTRIES        = ISO3166::Country.all.map(&:name).sort
@@ -62,5 +63,9 @@ class User < ApplicationRecord
     self.first_name = first_name.capitalize if first_name
     self.last_name  = last_name.capitalize if last_name
     self.username   = username.downcase if username
+  end
+
+  def create_avatar
+    Avatar.create!(user_id: self.id)
   end
 end

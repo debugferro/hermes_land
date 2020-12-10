@@ -5,7 +5,7 @@ class AvatarsController < ApplicationController
   before_action :set_default_assets, only: [:index, :update]
 
   def index
-    @new_avatar = Avatar.new
+    @avatar = Avatar.where(user: current_user).first
     unless @user.avatar
       avatar = Avatar.create!(user_id: @user.id)
       @female_defaults.each do |default|
@@ -70,7 +70,7 @@ class AvatarsController < ApplicationController
       @avatar.save
       redirect_to avatars_path
     end
-    if params[:avatar][:img]
+    unless params[:avatar][:img].blank?
       photo = Cloudinary::Uploader.upload(params[:avatar][:img])
       photo = open(photo['url'])
       @user.photo.attach(io: photo, filename: 'teste')

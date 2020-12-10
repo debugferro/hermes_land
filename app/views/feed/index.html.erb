@@ -1,23 +1,24 @@
 <div class="container">
     <div class="card-signup">
       <h1 id="find-title">Find your buddy!</h1>
-      <div class="d-flex">
-        <div>
+      <div class="interest-form">
         <%= simple_form_for :query, url: users_path, method: "GET", html: { class: '', id: '' } do |f| %>
-          <div class="p-2">
-            <%= f.input :interests, as: :select, collection: Interest.all, value_method: :name, label_method: :name, input_html: { class: 'select2max form-small', multiple: true }, required: false, label: "Interests:" %>
+          <div class="p-1">
+            <p>Interests:</p>
+            <%= f.input :interests, as: :select, collection: Interest.all, value_method: :name, label_method: :name, input_html: { class: 'select2max form-small', multiple: true }, required: false, label: false %>
           </div>
-          <div class="p-2">
-            <%= f.input :countries, as: :select, collection: User::COUNTRIES, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Countries:"  %>
+          <div class="p-1">
+            <p>Countries:</p>
+            <%= f.input :countries, as: :select, collection: User::COUNTRIES, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: false  %>
           </div>
-          <div class="p-2">
-            <%= f.input :languages, as: :select, collection: Language.all, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: "Languages:"  %>
+          <div class="p-1">
+            <p>Languages:</p>
+            <%= f.input :languages, as: :select, collection: Language.all, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: false  %>
           </div>
-        </div>
-        <div class="p-2">
-          <%= f.submit "Search", class: "btn-search" %>
+          <div class="p-1">
+            <%= f.submit "Search", class: "btn-search justify-content-center" %>
+          </div>
         <% end %>
-        </div>
       </div>
     </div>
 
@@ -25,8 +26,8 @@
       <% @users.each do |user|%>
         <div class="card-profiles">
           <div class="card-filler"></div>
-          <% cl_image_path user.photo.key if user.photo.attached? %>
-          <div class="card-category align-center outflow-avatar" style="background-image: linear-gradient(rgba(211,211,211,0.1), rgba(211,211,211,0.3)), url(<%= cl_image_path user.photo.key if user.photo.attached? %>)">
+          <%#cl_image_path user.photo.key if user.photo.attached? %>
+          <div class="card-category card-feed-position align-center outflow-avatar" style="background-image: linear-gradient(rgba(211,211,211,0.1), rgba(211,211,211,0.3)), url(<%= cl_image_path user.photo.key if user.photo.attached? %>)">
             <%= link_to "#{user.username}", user_path(user), class: "btn-profile" %>
           </div>
           <%= image_tag "circle-greek.png",  class: "greek-circle"%>

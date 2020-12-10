@@ -1,39 +1,51 @@
+
 <div class="container">
-  <div class="card-signup">
-    <ul>
-      <% @my_interests.each do |my_interest| %>
-        <li class="select2-selection__choice">
-        <%= my_interest.interest.name %>
-        <%= link_to 'X', my_interest_path(my_interest), method: :delete %>
-        </li>
-      <% end %>
-    </ul>
-    <button class="btn-add" type="button">+</button>
-      <div id="togglediv" class="hidden togglediv">
-        <%= simple_form_for current_user, url: my_interests_path, method: 'post' do |f| %>
-        <%= f.association :interests, value_method: :name, label_method: :name, input_html: { class: 'select2 form-large' }  %>
-        <%= f.submit "Save" %>
+  <div class="card-signup text-center">
+    <div class="row justify-content-center p-3">
+     <h1 id="find-title">Add the languages you speak!</h1>
+    </div>
+    <div class="justify-content-center">
+      <ul>
+        <% @my_languages.each do |my_language| %>
+        <li class="select2-selection__choice" style="list-style: none;">
+        <%= my_language.language.name %>
+        <%= link_to 'X', my_language_path(my_language), method: :delete %>
         <% end %>
-      </div>
+        </li>
+      </ul>
+    </div>
+      <%= simple_form_for current_user, url: my_languages_path, method: 'post' do |f| %>
+    <div class="row justify-content-center">
+      <%= f.association :languages, value_method: :name, label_method: :name, input_html: { class: 'select2 form-large' }  %>
+      <%= f.submit "Save" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <div class="container">
-  <div class="card-signup">
-    <ul>
-      <% @my_languages.each do |my_language| %>
-       <li class="select2-selection__choice">
-        <%= my_language.language.name %>
-        <%= link_to 'X', my_language_path(my_language), method: :delete %>
-      </li>
-      <% end %>
-    </ul>
-    <button class="btn-add" type="button">+</button>
-      <div id="togglediv" class="hidden togglediv">
-        <%= simple_form_for current_user, url: my_languages_path, method: 'post' do |f| %>
-        <%= f.association :languages, value_method: :name, label_method: :name, input_html: { class: 'select2 form-large' }  %>
-        <%= f.submit "Save" %>
+  <div class="card-signup text-center">
+    <div class="row justify-content-center p-3">
+      <h1 id="find-title">Add your interests</h1>
+    </div>
+    <div class="">
+      <ul>
+        <% @my_interests.each do |my_interest| %>
+        <li class="select2-selection__choice" style="list-style: none;">
+        <%= my_interest.interest.name %>
+        <%= link_to 'X', my_interest_path(my_interest), method: :delete %>
         <% end %>
-      </div>
+        </li>
+      </ul>
+    </div>
+      <%= simple_form_for current_user, url: my_interests_path, method: 'post' do |f| %>
+    <div class="row justify-content-center">
+      <%= f.association :interests, value_method: :name, label_method: :name, input_html: { class: 'select2' }  %>
+      <%= f.submit "Save" %>
+      <% end %>
+    </div>
+    <div class="row justify-content-center pt-4">
+      <%= link_to "Customize you avatar", avatars_path, method: 'get', class: 'btn btn-flat-blue' %>
+    </div>
   </div>
 </div>

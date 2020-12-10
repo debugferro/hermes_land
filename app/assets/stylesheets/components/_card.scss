@@ -12,8 +12,11 @@
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   box-shadow: 2px 2px 13px 2px #00000082;
+  border: 15px solid $hermes-gold;
+}
+
+.card-feed-position {
   position: absolute;
-  border: 15px solid #c79000;
   top: -3em;
   right: 4em;
 }
@@ -47,8 +50,165 @@
   height: 45%;
   width: 45%;
 }
+
+.greek-circle-profile{
+    position: absolute;
+    width: 122%;
+    height: 123%;
+    right: -1em;
+    top: -1em;
+}
+
+.profile-content {
+  display: grid;
+  flex-flow: wrap;
+}
+
+.profile-pic {
+  place-self: center;
+  display: flex;
+}
+
+.profile-filler {
+    background-color: $hermes-red;
+    position: absolute;
+    width: 99.7%;
+    height: 4em;
+    margin-left: -1.8em;
+    z-index: 0;
+    margin-top: -1.8em;
+    border-top-right-radius: 2.49em;
+    border-top-left-radius: 2.49em;
+    box-shadow: rgba(0, 0, 0, 0.89) 2px 1px 10px 1px inset;
+    border: 1px solid whitesmoke;
+}
+
+.pos-relative{
+  position: relative
+}
+
+.profile-path {
+      margin: -0.4em 0em 1.3em;
+      z-index: 1;
+  #path-arrow{
+    // background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.51) 1px 1px 1px 1px;
+    border-radius: 30em;
+    margin: 1em;
+    font-weight: bold;
+    text-shadow: 2px 1px 1px #00000047;
+    background-color: $hermes-white;
+  }
+
+  span{
+  background-color: $hermes-white;
+  box-shadow: 1px 1px 1px 1px #00000082 inset;
+    border-radius: 0.4em;
+    padding: 0.2em 0.4em;
+    a{
+      text-decoration: none !important;
+      color: $hermes-darkblue;
+    }
+  }
+}
+
+.profile-img-container{
+position: relative;
+    border: 15px solid $hermes-gold;
+    border-radius: 50%;
+}
+
+.profile-img-box{
+  img{
+  border-radius: 50%;
+  }
+}
+.profile-name{
+  position: absolute;
+  white-space: nowrap;
+
+    padding: 0.3em 1em;
+    border: solid 1px black;
+    background-color: $hermes-darkblue;
+    border-radius: 0.5em;
+    color: rgb(245, 245, 245);
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    top: 88%;
+    right: 16%;
+    box-shadow: 1px 1px 1px 1px #00000082;
+}
+
+.profile-info{
+  border-top: 1px solid gainsboro;
+}
+
+.profile-about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid gainsboro;
+}
+
+.profile-icon {
+  width: 2em;
+  height: 2em;
+}
+
+.profile-size {
+  width: 45em;
+}
+
+.profile-right {
+  display: flex;
+  align-items: center;
+  margin: 0.6em 0em 0.6em 0em;
+}
+
+.profile-left{
+  margin: 0.6em 0em 0.6em 0em;
+}
+
+.tag-wrapper {
+  display: flex;
+  max-width: 100%;
+  flex-flow: wrap-reverse;
+}
+
+.profile-languages {
+  border-bottom: 1px solid $hermes-white;
+}
+
+.tag {
+  margin: 2px 4px;
+  padding: 2px 3px;
+  border: solid 1px black;
+  background-color: $hermes-darkblue;
+  border-radius: 0.5em;
+  color: $hermes-white;
+  box-shadow: 1px 1px 1px 1px #00000082;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #736f6f;
+}
+.separator::before {
+    margin-right: .25em;
+}
+.separator::after {
+margin-left: .25em;
+}
+
+
 .card-filler{
-  background-color: #8ABFD7;
+  background-color: #D63230;
   width: 21.79em;
   height: 23%;
   margin-left: -1.9em;
@@ -56,29 +216,32 @@
   border-top-right-radius: 2.49em;
   border-top-left-radius: 2.49em;
   box-shadow: 2px 1px 10px 1px #000000e3 inset;
-  border: solid whitesmoke 1px;
+  border: solid $hermes-white 1px;
 }
 
 .btn-profile {
-  background-color: #0037c7;
+
+  background-color: $hermes-darkblue;
   border-radius: 1.1em;
   padding: 0.1em 1.1em;
   position: absolute;
   bottom: -0.8em;
-  color: whitesmoke;
+  color: $hermes-white;
   text-decoration: none !important;
   text-transform: uppercase;
       z-index: 1;
 }
 .btn-profile:hover {
-      color: black;
-    }
+  background:  #C2D8FE;
+  color: $hermes-blue;
+  transition: background 0.3s ease;
+}
 
 .btn-search {
-  background-color: #0037c7;
+  background-color: $hermes-darkblue;
   border-radius: 1.1em;
   padding: 0.1em 1.1em;
-  color: whitesmoke;
+  color: $hermes-white;
   text-decoration: none !important;
   text-transform: uppercase;
   border: none;
@@ -88,6 +251,12 @@
 
 .btn-search:hover {
   color: black;
+}
+
+.btn-start-chat {
+  color: $hermes-blue;
+  background-color: black;
+  border-radius: 10px;
 }
 
 .cards {

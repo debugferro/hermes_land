@@ -38,12 +38,13 @@ import { setAvatar } from '../components/set_avatar';
 import { createAvatar } from '../components/create_avatar';
 // import { filterDropdown } from '../components/filter_dropdown'
 
-$(".nav-item").on("click", function(){
-  $(".nav").find(".active").removeClass("active");
-  $(this).parent().addClass("active");
-});
 
 document.addEventListener("turbolinks:load", function() {
+  $(".nav-item").on("click", function(){
+    $(".nav").find(".active").removeClass("active");
+    $(this).parent().addClass("active");
+  });
+ 
   initSelect2();
   hideDiv();
   initChatRoomCable();
@@ -52,6 +53,11 @@ document.addEventListener("turbolinks:load", function() {
   setAvatar();
   if (document.querySelector(".avatar_information")) {
     createAvatar();
+  }
+  if (document.querySelector(".avatar-bubble")) {
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
   }
   // filterDropdown();
 });
