@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card-signup">
     <h1>CHAT</h1>
-    <p>Start a new conversation:</p>
+    <p>Start a new conversation with:</p>
     <%= simple_form_for @new_chat, url: chat_rooms_path, method: 'post' do |f| %>
       <%= f.association :users, collection: User.where.not(id: current_user.id), value_method: :id, label_method: :username, input_html: { class: 'select2 form-large' }  %>
       <%= f.submit "Start" %>
@@ -14,7 +14,7 @@
       <% end %>
       <% participants = participants.compact %>
       <ul style="list-style:none;">
-      <li><%= link_to participants.to_sentence, chat_room_path(chat), data: { turbolinks: false }, class: "btn btn-primary"  %></li>
+      <li><%= link_to participants.to_sentence, chat_room_path(chat), data: { turbolinks: false }, class: "btn btn-primary"%></li>
       </ul>
     <% end %>
   </div>
