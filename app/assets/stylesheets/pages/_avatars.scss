@@ -1,0 +1,77 @@
+.avatar-edit-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card-edit-left {
+  box-shadow: 2px 1px 9px 3px #00000040;
+  border: 1px solid black;
+  margin-bottom: 29px;
+  background: $hermes-white;
+  margin-top: 29px;
+  padding: 30px;
+  border-radius: 2.6em;
+}
+
+.card-edit-right {
+  box-shadow: 2px 1px 9px 3px #00000040;
+  border: 1px solid black;
+  margin-bottom: 29px;
+  background: $hermes-white;
+  margin-top: 29px;
+  padding: 30px;
+  border-radius: 2.6em;
+}
+
+.card-edit-middle {
+  position: relative;
+  align-self: center;
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 1px 9px 3px;
+  border: 1px solid black;
+  margin-bottom: 29px;
+  background: whitesmoke;
+  margin-top: 29px;
+  padding: 30px;
+  height: 50%;
+  border-radius: 50%;
+}
+
+.card-middle-content {
+  display: grid;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.card-content {
+  display: grid;
+}
+
+.result {
+  border-radius: 50%;
+}
+
+.Btn-female, .Btn-male {
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 1px 9px 3px;
+  border-radius: 50%;
+  background: $hermes-white;
+  border: 1px solid black;
+  img{
+    width: 3em;
+  }
+}
+
+.Btn-female {
+    top: -0.5em;
+    left: 1em;
+}
+
+.Btn-male {
+top: -0.5em;
+    right: 1em;
+}
+
+button:active {
+  border-style: outset;
+}

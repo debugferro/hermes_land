@@ -6,7 +6,7 @@
           <h2>This is <%= @user.first_name%> <%= @user.last_name %>'s profile</h2>
           <div class="container row pt-2">
             <p>I´m from <%= @user.country %> and I speak <%= @user.native_language %>. </p>
-          </div>                    
+          </div>
           <div class="container row pt-2">
             <p><strong>Interests: </strong><% @user.interests.each do |interest| %></p>
               <ul>
@@ -19,7 +19,7 @@
                 <li><%= my_language.language.name %></li>
               </ul>
             <% end %>
-            
+
           </div>
           <div class="container row pt-2">
           <p><strong>More about me: </strong><%= @user.about_me %></p>

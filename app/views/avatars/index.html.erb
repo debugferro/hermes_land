@@ -1,6 +1,5 @@
 <%= content_tag :div, class: "avatar_information", data: { bases: @bases, basecolors: @base_colors, eyes: @eyes, eyecolors: @eye_colors, hairs: @hairs, haircolors: @colorized_hairs, mouths: @mouths, eyebrows: @eyebrows, eyebrowcolors: @eyebrow_colors, noses: @noses, clothes: @clothes, acessories: @acessories, acessorycolors: @acessory_colors, gender: @gender } do %>
 <% end %>
-
 <%= image_tag "/avatar/#{@base}", id: 'face', class: 'hidden-content' %>
 <%= image_tag "/avatar/#{@hair}", id: 'hair', class: 'hidden-content'%>
 <%= image_tag "/avatar/#{@mouth}", id: 'mouth', class: 'hidden-content'%>
@@ -12,37 +11,57 @@
 <%= image_tag "/avatar/#{@acessory}", id: 'acessory', class: 'hidden-content' if @acessory %>
 <%= image_tag '', id: 'acessory', class: 'hidden-content' unless @acessory %>
 
+<div class="avatar-edit-container">
+  <div class="card-edit-left">
+    <div class="card-content">
+      <button class="Btn-base">Change face</button>
+      <button class="Btn-skincolor">Change skin color</button>
+      <button class="Btn-mouth">Change mouth</button>
+      <button class="Btn-nose">Change nose</button>
+      <button class="Btn-eyes">Change eyes</button>
+      <button class="Btn-eyecolor">Change eye colors</button>
+      <button class="Btn-eyebrows">Change eyebrows</button>
+      <button class="Btn-eyebrowcolor">Change eyebrow color</button>
+    </div>
+  </div>
 
-<canvas class="result"></canvas>
+  <div class="card-edit-middle">
+    <div class="card-middle-content">
+      <button class="Btn-male absolute"><%= image_tag "man.png" %></button>
+      <button class="Btn-female absolute"><%= image_tag "woman.png" %></button>
+      <canvas class="result"></canvas>
+    </div>
+  </div>
+
+  <div class="card-edit-right">
+    <div class="card-content">
+      <button class="Btn-hair">Change hair</button>
+      <button class="Btn-haircolor">Change hair color</button>
+      <button class="Btn-acessory">Change acessories</button>
+      <button class="Btn-acessorycolor">Change acessories colors</button>
+      <button class="Btn-cloth">Change clothes</button>
+    </div>
+  </div>
+
+</div>
+
+
+
+
 <br>
 <br>
 <br>
 <hr>
 <button class="Btn">UPDATE</button>
 
-<button class="Btn-base">Change face</button>
-<button class="Btn-skincolor">Change skin color</button>
 
-<button class="Btn-hair">Change hair</button>
-<button class="Btn-haircolor">Change hair color</button>
 
-<button class="Btn-mouth">Change mouth</button>
-<button class="Btn-nose">Change nose</button>
 
-<button class="Btn-eyes">Change eyes</button>
-<button class="Btn-eyecolor">Change eye colors</button>
 
-<button class="Btn-eyebrows">Change eyebrows</button>
-<button class="Btn-eyebrowcolor">Change eyebrow color</button>
 
-<button class="Btn-cloth">Change clothes</button>
 
-<button class="Btn-acessory">Change acessories</button>
-<button class="Btn-acessorycolor">Change acessories colors</button>
 
 <button class="Btn-save">UPLOAD</button>
-<button class="Btn-male">MALE</button>
-<button class="Btn-female">FEMALE</button>
 
   <%= simple_form_for @avatar, method: 'patch', html: { class: "sendAvatar" } do |f| %>
     <%= f.hidden_field :img, value: "" %>
