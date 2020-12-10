@@ -3,13 +3,14 @@
     <div class="profile-filler"></div>
     <div class="chat-users">
       <% @participants.each do |participant| %>
-      <div class="avatar-bubble" data-toggle="tooltip" data-placement="top" title="<%= participant.username %>">
-        <% img_tag = cl_image_tag participant.photo.key if participant.photo.attached? %>
-        <%= link_to img_tag, user_path(participant) %>
-      </div>
+        <div class="avatar-bubble" data-toggle="tooltip" data-placement="top" title="<%= participant.username %>">
+          <a href="<%= user_path(participant) %>">
+            <img src="<%= cl_image_path participant.photo.key if participant.photo.attached? %>" alt="">
+          </a>
+        </div>
       <% end %>
     </div>
-    <div class="profile-path pos-relative">
+    <div class="profile-path pos-relative" style="z-index: 0;">
         <span><%= link_to "Home", root_path %></span><span id="path-arrow">></span> <span><%= link_to "Chats", chat_rooms_path %></span> <span id="path-arrow">></span> <span>Room</span>
     </div>
     <div id="messages" class="message-scroll" data-chatroom-id="<%= @chat_room.id %>">

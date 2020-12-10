@@ -126,3 +126,51 @@
 .box-form {
 
 }
+
+
+.chat-start{
+  display: flex;
+}
+
+
+.chats-container{
+  display: flex;
+  border-top: 1px solid lightgray;
+}
+
+
+.participant-img-box{
+  img{
+    border-radius: 50%;
+    width: 5em;
+    z-index: 0;
+  }
+}
+
+.participant-img-container{
+  width: 10%;
+  position: relative;
+  z-index: 1;
+  border: 8px solid $hermes-gold;
+  border-radius: 50%;
+}
+
+.greek-circle-participant{
+  position: absolute;
+  height: 121.2%;
+  top: -0.53em;
+  right: -0.54em;
+  width: 122% !important;
+}
+
+#chatroom-participants{
+  font-size: 1.3em;;
+}
+
+.participants-img{
+  display: flex;
+}
+
+.participant-info{
+
+}
