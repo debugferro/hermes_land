@@ -73,14 +73,14 @@ const createAvatar = () => {
   let filteredEyes;
 
   // Initializing assets index
-  let baseIndex     = 1;
-  let eyeIndex      = 1;
-  let hairIndex     = 1;
-  let mouthIndex    = 1;
-  let eyebrowIndex  = 1;
-  let noseIndex     = 1;
-  let clothIndex    = 1;
-  let acessoryIndex = 1;
+  let baseIndex     = 0;
+  let eyeIndex      = 0;
+  let hairIndex     = 0;
+  let mouthIndex    = 0;
+  let eyebrowIndex  = 0;
+  let noseIndex     = 0;
+  let clothIndex    = 0;
+  let acessoryIndex = 0;
 
   // Initializing colorized assets index
   let selectedHairColorsIndex = 0;
@@ -100,6 +100,8 @@ const createAvatar = () => {
   let currentEyebrows;
   let currentBase;
   let currentHair;
+  let currentNose;
+  let currentMouth;
   let currentEyes;
   let currentAcessory;
 
@@ -127,21 +129,27 @@ const createAvatar = () => {
   let btnSkin           = document.querySelector(".Btn-skincolor");
 
   let btnEyes           = document.querySelector(".Btn-eyes");
+  let btnEyesBack       = document.querySelector(".Btn-eyesback");
   let btnEyeColor       = document.querySelector(".Btn-eyecolor");
 
   let btnHair           = document.querySelector(".Btn-hair");
+  let btnHairBack           = document.querySelector(".Btn-hairback");
   let btnHairColor      = document.querySelector(".Btn-haircolor");
 
   let btnMouth          = document.querySelector(".Btn-mouth");
+  let btnMouthBack      = document.querySelector(".Btn-mouthback");
 
-  let btnEyebrows       = document.querySelector(".Btn-eyebrows");
-  let btnEyebrowColor   = document.querySelector(".Btn-eyebrowcolor");
+  let btnEyebrows         = document.querySelector(".Btn-eyebrows");
+  let btnEyebrowsBack     = document.querySelector(".Btn-eyebrowsback");
+  let btnEyebrowColor     = document.querySelector(".Btn-eyebrowcolor");
 
-  let btnNose           = document.querySelector(".Btn-nose");
-  let btnCloth          = document.querySelector(".Btn-cloth");
+  let btnNose      = document.querySelector(".Btn-nose");
+  let btnNoseBack  = document.querySelector(".Btn-noseback");
+  let btnCloth     = document.querySelector(".Btn-cloth");
 
-  let btnAcessory       = document.querySelector(".Btn-acessory");
-  let btnAcessoryColor  = document.querySelector(".Btn-acessorycolor");
+  let btnAcessory            = document.querySelector(".Btn-acessory");
+  let btnAcessoryBack        = document.querySelector(".Btn-acessoryback");
+  let btnAcessoryColor       = document.querySelector(".Btn-acessorycolor");
 
   let btnSave           = document.querySelector(".Btn-save");
   let btnMale           = document.querySelector(".Btn-male");
@@ -190,7 +198,7 @@ const createAvatar = () => {
 
     selectedAssetColors = findAssetColors(assetColors, idPattern);
     selectedAssetColors.push(currentAsset)
-    selectedAssetsIndex = (selectedAssetColors.indexOf(currentAsset)) - 1;
+    selectedAssetsIndex = (selectedAssetColors.indexOf(currentAsset));
     return {
       index: selectedAssetsIndex,
       colors: selectedAssetColors
@@ -277,8 +285,50 @@ const createAvatar = () => {
     });
   });
 
+  const iterateBackOrForward = (array, index, direction) => {
+    if (direction == 1){
+      if(index == array.length-1) {
+        index = 0;
+      }
+      else
+      {
+        index = index + 1;
+      }
+      return {
+        direction: index
+      }
+    } else {
+      if(index == 0) {
+        index = array.length - 1;
+      } else {
+        index = index - 1;
+      }
+      return {
+        direction: index
+      }
+    }
+  }
+
   btnHair.addEventListener("click", () => {
-    currentHair = hairs[hairIndex++%hairs.length];
+    hairIndex = iterateBackOrForward(hairs, hairIndex, 1).direction;
+    currentHair = hairs[hairIndex];
+    // INITIALIZING CURRENT HAIR COLOR FILES AND INDEX
+    // SETTING CURRENT HAIR COLORS AND EQUIVALENT INDEX
+    let initializedValues   = initializeColorIndexes(currentHair, hairColors);
+    selectedHairColors      = initializedValues.colors
+    selectedHairColorsIndex = initializedValues.index
+    // -------------------------------------------------
+    imgHair.src = `/avatar/${currentHair}`
+    imgHair.addEventListener("load", function () {
+      grabElements();
+      updateCanvas();
+    });
+  });
+
+
+  btnHairBack.addEventListener("click", () => {
+    hairIndex = iterateBackOrForward(hairs, hairIndex, 0).direction;
+    currentHair = hairs[hairIndex];
     // INITIALIZING CURRENT HAIR COLOR FILES AND INDEX
     // SETTING CURRENT HAIR COLORS AND EQUIVALENT INDEX
     let initializedValues   = initializeColorIndexes(currentHair, hairColors);
@@ -293,11 +343,10 @@ const createAvatar = () => {
   });
 
   btnHairColor.addEventListener("click", () => {
-    // let pattern = currentHair[currentHair.lastIndexOf("_") + 1]
-    // let selectedHairColors = [];
-    // selectedHairColors = findAssetColors(hairColors, pattern);
-    // selectedHairColors.push(currentHair)
-    let currentColor = selectedHairColors[selectedHairColorsIndex++%selectedHairColors.length]
+    selectedHairColorsIndex = iterateBackOrForward(selectedHairColors, selectedHairColorsIndex, 1);
+    selectedHairColorsIndex = selectedHairColorsIndex.direction
+    let currentColor = selectedHairColors[selectedHairColorsIndex]
+    // let currentColor = selectedHairColors[selectedHairColorsIndex++%selectedHairColors.length]
     imgHair.src = `/avatar/${currentColor}`
     imgHair.addEventListener("load", function () {
       grabElements();
@@ -305,9 +354,22 @@ const createAvatar = () => {
     });
   });
 
-
   btnEyes.addEventListener("click", () => {
-    currentEyes            = filteredEyes[eyeIndex++%filteredEyes.length]
+    eyeIndex = iterateBackOrForward(filteredEyes, eyeIndex, 1).direction;
+    currentEyes            = filteredEyes[eyeIndex]
+    let initializedValues  = initializeColorIndexes(currentEyes, eyeColors);
+    selectedEyeColors      = initializedValues.colors
+    selectedEyeColorsIndex = initializedValues.index
+    imgEyes.src = `/avatar/${currentEyes}`
+    imgEyes.addEventListener("load", function () {
+      grabElements();
+      updateCanvas();
+    });
+  });
+
+  btnEyesBack.addEventListener("click", () => {
+    eyeIndex = iterateBackOrForward(filteredEyes, eyeIndex, 0).direction;
+    currentEyes            = filteredEyes[eyeIndex]
     let initializedValues  = initializeColorIndexes(currentEyes, eyeColors);
     selectedEyeColors      = initializedValues.colors
     selectedEyeColorsIndex = initializedValues.index
@@ -319,7 +381,8 @@ const createAvatar = () => {
   });
 
   btnEyeColor.addEventListener("click", () => {
-    let currentColor = selectedEyeColors[selectedEyeColorsIndex++%selectedEyeColors.length]
+    selectedEyeColorsIndex = iterateBackOrForward(selectedEyeColors, selectedEyeColorsIndex, 1).direction;
+    let currentColor = selectedEyeColors[selectedEyeColorsIndex]
     imgEyes.src = `/avatar/${currentColor}`
     imgEyes.addEventListener("load", function () {
       grabElements();
@@ -327,8 +390,30 @@ const createAvatar = () => {
     });
   });
 
+  // btnEyeColorBack.addEventListener("click", () => {
+  //   selectedEyeColorsIndex = iterateBackOrForward(selectedEyeColors, selectedEyeColorsIndex, 0).direction;
+  //   let currentColor = selectedEyeColors[selectedEyeColorsIndex]
+  //   imgEyes.src = `/avatar/${currentColor}`
+  //   imgEyes.addEventListener("load", function () {
+  //     grabElements();
+  //     updateCanvas();
+  //   });
+  // });
+
   btnMouth.addEventListener("click", () => {
-    imgMouth.src = `/avatar/${filteredMouths[mouthIndex++%filteredMouths.length]}`
+    mouthIndex   = iterateBackOrForward(filteredMouths, mouthIndex, 1).direction;
+    currentMouth = filteredMouths[mouthIndex]
+    imgMouth.src = `/avatar/${currentMouth}`
+    imgMouth.addEventListener("load", function () {
+      grabElements();
+      updateCanvas();
+    });
+  });
+
+  btnMouthBack.addEventListener("click", () => {
+    mouthIndex   = iterateBackOrForward(filteredMouths, mouthIndex, 0).direction;
+    currentMouth = filteredMouths[mouthIndex]
+    imgMouth.src = `/avatar/${currentMouth}`
     imgMouth.addEventListener("load", function () {
       grabElements();
       updateCanvas();
@@ -336,7 +421,8 @@ const createAvatar = () => {
   });
 
   btnEyebrows.addEventListener("click", () => {
-    currentEyebrows            = eyebrows[eyebrowIndex++%eyebrows.length]
+    eyebrowIndex               = iterateBackOrForward(eyebrows, eyebrowIndex, 1).direction;
+    currentEyebrows            = eyebrows[eyebrowIndex];
     let initializedValues      = initializeColorIndexes(currentEyebrows, eyebrowColors);
     selectedEyebrowColors      = initializedValues.colors
     selectedEyebrowColorsIndex = initializedValues.index
@@ -347,8 +433,22 @@ const createAvatar = () => {
     });
   });
 
+  btnEyebrowsBack.addEventListener("click", () => {
+    eyebrowIndex               = iterateBackOrForward(eyebrows, eyebrowIndex, 0).direction;
+    currentEyebrows            = eyebrows[eyebrowIndex];
+    let initializedValues      = initializeColorIndexes(currentEyebrows, eyebrowColors);
+    selectedEyebrowColors      = initializedValues.colors;
+    selectedEyebrowColorsIndex = initializedValues.index;
+    imgEyebrows.src = `/avatar/${currentEyebrows}`
+    imgEyebrows.addEventListener("load", function () {
+      grabElements();
+      updateCanvas();
+    });
+  });
+
   btnEyebrowColor.addEventListener("click", () => {
-    let currentColor = selectedEyebrowColors[selectedEyebrowColorsIndex++%selectedEyebrowColors.length]
+    selectedEyebrowColorsIndex = iterateBackOrForward(selectedEyebrowColors, selectedEyebrowColorsIndex, 1).direction;
+    let currentColor = selectedEyebrowColors[selectedEyebrowColorsIndex];
     imgEyebrows.src = `/avatar/${currentColor}`
     imgEyebrows.addEventListener("load", function () {
       grabElements();
@@ -356,8 +456,30 @@ const createAvatar = () => {
     });
   });
 
+  // btnEyebrowColorBack.addEventListener("click", () => {
+  //   selectedEyebrowColorsIndex = iterateBackOrForward(selectedEyebrowColors, selectedEyebrowColorsIndex, 0).direction;
+  //   let currentColor = selectedEyebrowColors[selectedEyebrowColorsIndex];
+  //   imgEyebrows.src = `/avatar/${currentColor}`
+  //   imgEyebrows.addEventListener("load", function () {
+  //     grabElements();
+  //     updateCanvas();
+  //   });
+  // });
+
   btnNose.addEventListener("click", () => {
-    imgNose.src = `/avatar/${filteredNoses[noseIndex++%filteredNoses.length]}`
+    noseIndex = iterateBackOrForward(filteredNoses, noseIndex, 1).direction;
+    currentNose = filteredNoses[noseIndex];
+    imgNose.src = `/avatar/${currentNose}`
+    imgNose.addEventListener("load", function () {
+      grabElements();
+      updateCanvas();
+    });
+  });
+
+  btnNoseBack.addEventListener("click", () => {
+    noseIndex = iterateBackOrForward(filteredNoses, noseIndex, 0).direction;
+    currentNose = filteredNoses[noseIndex];
+    imgNose.src = `/avatar/${currentNose}`
     imgNose.addEventListener("load", function () {
       grabElements();
       updateCanvas();
@@ -373,7 +495,21 @@ const createAvatar = () => {
   });
 
   btnAcessory.addEventListener("click", () => {
-    let currentAcessory         = acessories[acessoryIndex++%acessories.length];
+    acessoryIndex               = iterateBackOrForward(acessories, acessoryIndex, 1).direction;
+    currentAcessory             = acessories[acessoryIndex];
+    let initializedValues       = initializeColorIndexes(currentAcessory, acessoryColors);
+    selectedAcessoryColors      = initializedValues.colors
+    selectedAcessoryColorsIndex = initializedValues.index
+    imgAcessory.src = `/avatar/${currentAcessory}`
+    imgAcessory.addEventListener("load", function () {
+      grabElements();
+      updateCanvas();
+    });
+  });
+
+  btnAcessoryBack.addEventListener("click", () => {
+    acessoryIndex               = iterateBackOrForward(acessories, acessoryIndex, 0).direction;
+    currentAcessory             = acessories[acessoryIndex];
     let initializedValues       = initializeColorIndexes(currentAcessory, acessoryColors);
     selectedAcessoryColors      = initializedValues.colors
     selectedAcessoryColorsIndex = initializedValues.index

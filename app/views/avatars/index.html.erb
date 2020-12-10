@@ -13,31 +13,49 @@
 
 <div class="avatar-edit-container">
   <div class="card-edit-left">
+    <div class="profile-filler width-99"></div>
     <div class="card-content">
       <button class="Btn-base">Change face</button>
       <button class="Btn-skincolor">Change skin color</button>
       <button class="Btn-mouth">Change mouth</button>
+      <button class="Btn-mouthback">Change mouth back</button>
       <button class="Btn-nose">Change nose</button>
+      <button class="Btn-noseback">Change nose back</button>
       <button class="Btn-eyes">Change eyes</button>
+      <button class="Btn-eyesback">Change eyes back</button>
       <button class="Btn-eyecolor">Change eye colors</button>
       <button class="Btn-eyebrows">Change eyebrows</button>
+      <button class="Btn-eyebrowsback">Change eyebrows back</button>
       <button class="Btn-eyebrowcolor">Change eyebrow color</button>
     </div>
   </div>
 
   <div class="card-edit-middle">
     <div class="card-middle-content">
-      <button class="Btn-male absolute"><%= image_tag "man.png" %></button>
-      <button class="Btn-female absolute"><%= image_tag "woman.png" %></button>
-      <canvas class="result"></canvas>
+      <button class="Btn-male absolute"><%= image_tag "male.png" %></button>
+      <button class="Btn-female absolute"><%= image_tag "fem.png" %></button>
+      <div class="canvas-img-box">
+        <canvas class="result"></canvas>
+          <%= image_tag "circle-greek.png",  class: "canvas-greek"%>
+        <div class="profile-name topos-12">
+          <span>
+            <%= @user.username %>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 
+  <div class="white-filler"></div>
+
   <div class="card-edit-right">
+    <div class="profile-filler width-99"></div>
     <div class="card-content">
-      <button class="Btn-hair">Change hair</button>
+      <button class="Btn-hair">Change hair forward</button>
+      <button class="Btn-hairback">Change hair backwards</button>
       <button class="Btn-haircolor">Change hair color</button>
       <button class="Btn-acessory">Change acessories</button>
+      <button class="Btn-acessoryback">Change acessories back</button>
       <button class="Btn-acessorycolor">Change acessories colors</button>
       <button class="Btn-cloth">Change clothes</button>
     </div>

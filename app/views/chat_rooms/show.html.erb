@@ -1,3 +1,5 @@
+
+<div id="current-user" data-id="<%= current_user.id %>"></div>
 <div class="container" style="display: grid;">
   <div class="card-chat card-responsive">
     <div class="profile-filler"></div>
@@ -15,8 +17,7 @@
     </div>
     <div id="messages" class="message-scroll" data-chatroom-id="<%= @chat_room.id %>">
     <% @messages.each do |message| %>
-        <%= render 'messages/message', message: message if @user != message.user%>
-        <%= render 'messages/messageright', message: message if @user == message.user%>
+        <%= render 'messages/message', message: message %>
     <% end %>
     </div>
     <div class="box-form">

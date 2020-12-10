@@ -15,7 +15,7 @@
       <% @results.each do |user|%>
         <div class="card-profiles">
           <div class="card-filler"></div>
-          <div class="card-category align-center outflow-avatar" style="background-image: linear-gradient(rgba(211,211,211,0.1), rgba(211,211,211,0.3)), url(https://kitt.lewagon.com/placeholder/users/ssaunier)">
+          <div class="card-category card-feed-position align-center outflow-avatar" style="background-image: linear-gradient(rgba(211,211,211,0.1), rgba(211,211,211,0.3)), url(https://kitt.lewagon.com/placeholder/users/ssaunier)">
             <%= link_to "#{user.username}", user_path(user), class: "btn-profile" %>
           </div>
           <%= image_tag "circle-greek.png",  class: "greek-circle"%>
