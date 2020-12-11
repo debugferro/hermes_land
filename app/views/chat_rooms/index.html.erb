@@ -5,13 +5,17 @@
         <span><%= link_to "Home", root_path %></span><span id="path-arrow">></span> <span>Chats</span>
     </div>
     <div class="chatroom-content">
-    <h1>CHAT</h1>
-    <div class="chat-start">
+    <div class="pt-3">
+      <h1>CHAT</h1>
+    </div>
+    <!-- <div class="chat-start"> -->
       <%= simple_form_for @new_chat, url: chat_rooms_path, method: 'post' do |f| %>
-        <%= f.association :users, label: false, collection: User.where.not(id: current_user.id), value_method: :id, label_method: :username, input_html: { class: 'select2 form-large' }  %>
+        <div class="p-1">
+          <%= f.association :users, label: false, collection: User.where.not(id: current_user.id), value_method: :id, label_method: :username, input_html: { class: 'select2max form-large' }  %>
+        </div>
         <%= f.submit "Start" %>
       <% end %>
-    </div>
+  <!-- </div> -->
     <div class="list-chat">
       <% @present_chats.each do |chat| %>
         <div class="chats-container">
@@ -61,5 +65,5 @@
       <% end %>
     </div>
   </div>
-  </div>
-    </div>
+</div>
+
