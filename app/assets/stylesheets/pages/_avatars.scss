@@ -4,6 +4,16 @@
   position: relative;
 }
 
+.pointer {
+  cursor: pointer;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+
 .card-edit-left {
   z-index: 1;
   position: relative;
@@ -66,6 +76,7 @@
 
 .card-content {
   display: grid;
+  margin-top: 3em;
 }
 
 .result {
@@ -128,4 +139,47 @@ button:active {
 
 .width-99{
   width: 99% !important;
+}
+
+.change-button {
+  display: flex;
+  position: relative;
+  place-content: center;
+  margin-top: 1em;
+}
+
+
+.btn-color {
+  position: relative;
+  margin-left: 1em;
+  padding: 0.2em;
+  height: 2em;
+  width: 2em;
+  border-radius: 3em;
+  box-shadow: 1px 1px 4px 1px #00000073;
+  transition: 0.4s ease;
+}
+
+.shadow-rgb{
+  width: 1.5em;
+  -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  filter: drop-shadow( -3px 2px 1px rgba(0, 0, 0, .7));
+  position: absolute;
+  right: 0.2em;
+  transition: 0.4s ease;
+}
+
+.btn-color:hover {
+  box-shadow: 1px 1px 4px 1px #00000073 inset;
+  transition: 0.4s ease;
+  img{
+    width: 1.7em;
+    right: -0.3em;
+    transition: 0.4s ease;
+  }
+}
+
+.kill-margin-left {
+  margin-right: 1em;
+  margin-left: 0 !important;
 }

@@ -15,25 +15,88 @@
   <div class="card-edit-left">
     <div class="profile-filler width-99"></div>
     <div class="card-content">
-      <button class="Btn-base">Change face</button>
-      <button class="Btn-skincolor">Change skin color</button>
-      <button class="Btn-mouth">Change mouth</button>
-      <button class="Btn-mouthback">Change mouth back</button>
-      <button class="Btn-nose">Change nose</button>
-      <button class="Btn-noseback">Change nose back</button>
-      <button class="Btn-eyes">Change eyes</button>
-      <button class="Btn-eyesback">Change eyes back</button>
-      <button class="Btn-eyecolor">Change eye colors</button>
-      <button class="Btn-eyebrows">Change eyebrows</button>
-      <button class="Btn-eyebrowsback">Change eyebrows back</button>
-      <button class="Btn-eyebrowcolor">Change eyebrow color</button>
+      <div class="change-button">
+        <div class="option">
+          <div class="arrow-right-filler">
+            <span class="pointer"></span>
+          </div>
+          Face
+          <div class="Btn-base arrow-left-filler pointer">
+            <span class="pointer">></span>
+          </div>
+        </div>
+          <div class="color">
+            <div class="Btn-skincolor btn-color">
+              <span class="pointer"><%= image_tag "rgb.svg", class: "shadow-rgb" %></span>
+            </div>
+          </div>
+      </div>
+
+
+      <div class="change-button">
+        <div class="option margin-3">
+          <div class="Btn-mouthback arrow-right-filler pointer">
+            <span class="pointer"><</span>
+          </div>
+          Mouth
+          <div class="Btn-mouth arrow-left-filler pointer">
+            <span class="pointer">></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="change-button">
+        <div class="option margin-3">
+          <div class="Btn-noseback arrow-right-filler pointer">
+            <span class="pointer"><</span>
+          </div>
+          Nose
+          <div class="Btn-nose arrow-left-filler pointer">
+            <span class="pointer">></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="change-button">
+        <div class="option">
+          <div class="Btn-eyesback arrow-right-filler pointer">
+            <span class="pointer"><</span>
+          </div>
+          Eyes
+          <div class="Btn-eyes arrow-left-filler pointer">
+            <span class="pointer">></span>
+          </div>
+        </div>
+        <div class="color">
+          <div class="Btn-eyecolor btn-color">
+            <span class="pointer"><%= image_tag "rgb.svg", class: "shadow-rgb" %></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="change-button">
+        <div class="option">
+          <div class="Btn-eyebrowsback arrow-right-filler pointer">
+            <span class="pointer"><</span>
+          </div>
+          Eyebrows
+          <div class="Btn-eyebrows arrow-left-filler pointer">
+            <span class="pointer">></span>
+          </div>
+        </div>
+        <div class="color">
+          <div class="Btn-eyebrowcolor btn-color">
+            <span class="pointer"><%= image_tag "rgb.svg", class: "shadow-rgb" %></span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="card-edit-middle">
     <div class="card-middle-content">
-      <button class="Btn-male absolute"><%= image_tag "male.png" %></button>
-      <button class="Btn-female absolute"><%= image_tag "fem.png" %></button>
+      <span class="Btn-male absolute"><%= image_tag "male.png" %></span>
+      <span class="Btn-female absolute"><%= image_tag "fem.png" %></span>
       <div class="canvas-img-box">
         <canvas class="result"></canvas>
           <%= image_tag "circle-greek.png",  class: "canvas-greek"%>
@@ -47,39 +110,72 @@
   </div>
 
   <div class="white-filler"></div>
-
   <div class="card-edit-right">
     <div class="profile-filler width-99"></div>
     <div class="card-content">
-      <button class="Btn-hair">Change hair forward</button>
-      <button class="Btn-hairback">Change hair backwards</button>
-      <button class="Btn-haircolor">Change hair color</button>
-      <button class="Btn-acessory">Change acessories</button>
-      <button class="Btn-acessoryback">Change acessories back</button>
-      <button class="Btn-acessorycolor">Change acessories colors</button>
-      <button class="Btn-cloth">Change clothes</button>
+
+      <div class="change-button">
+        <div class="color">
+          <div class="Btn-haircolor btn-color kill-margin-left">
+            <span class="pointer"><%= image_tag "rgb.svg", class: "shadow-rgb" %></span>
+          </div>
+        </div>
+        <div class="option">
+          <div class="Btn-hairback arrow-right-filler pointer">
+            <span class="pointer"><</span>
+          </div>
+          Hair
+          <div class="Btn-hair arrow-left-filler pointer">
+            <span class="pointer">></span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="change-button">
+        <div class="color">
+          <div class="Btn-acessorycolor btn-color kill-margin-left">
+            <span class="pointer"><%= image_tag "rgb.svg", class: "shadow-rgb" %></span>
+          </div>
+        </div>
+        <div class="option">
+          <div class="Btn-acessoryback arrow-right-filler pointer">
+            <span class="pointer"><</span>
+          </div>
+          Acessories
+          <div class="Btn-acessory arrow-left-filler pointer">
+            <span class="pointer">></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="change-button">
+        <div class="option">
+          <div class="Btn-hairback arrow-right-filler pointer">
+            <span class="pointer"></span>
+          </div>
+          Clothes
+          <div class="Btn-cloth arrow-left-filler pointer">
+            <span class="pointer">></span>
+          </div>
+        </div>
+      </div>
+
+
     </div>
   </div>
 
+
+    </div>
+  </div>
+
+
+      <span class="Btn-acessory">Change acessories</span>
+      <span class="Btn-acessoryback">Change acessories back</span>
+      <span class="Btn-acessorycolor">Change acessories colors</span>
+      <span class="Btn-cloth">Change clothes</span>
 </div>
-
-
-
-
-<br>
-<br>
-<br>
-<hr>
-<button class="Btn">UPDATE</button>
-
-
-
-
-
-
-
-
-<button class="Btn-save">UPLOAD</button>
+<span class="Btn-save">UPLOAD</span>
 
   <%= simple_form_for @avatar, method: 'patch', html: { class: "sendAvatar" } do |f| %>
     <%= f.hidden_field :img, value: "" %>

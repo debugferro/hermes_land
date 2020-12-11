@@ -124,7 +124,7 @@ const createAvatar = () => {
   }
 
   // GETTING HTML BUTTONS FOR CHANGES
-  let btnUpdate         = document.querySelector(".Btn");
+  // let btnUpdate         = document.querySelector(".Btn");
   let btnBase           = document.querySelector(".Btn-base");
   let btnSkin           = document.querySelector(".Btn-skincolor");
 
@@ -244,9 +244,9 @@ const createAvatar = () => {
 
 
 
-  btnUpdate.addEventListener("click", () => {
-    updateCanvas();
-  });
+  // btnUpdate.addEventListener("click", () => {
+  //   updateCanvas();
+  // });
 
   btnBase.addEventListener("click", () => {             // If the skin was not changed
     if (selectedBaseColors == undefined){               // then selectedBaseColors will be
