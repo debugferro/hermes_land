@@ -4,19 +4,19 @@
     <div class="interest-form">
       <%= simple_form_for :query, url: users_path, method: "GET", html: { class: '', id: '' } do |f| %>
         <div class="p-1">
-          <p>Interests:</p>
-          <%= f.input :interests, as: :select, collection: Interest.all, value_method: :name, label_method: :name, input_html: { class: 'select2max form-small', multiple: true }, required: false, label: false %>
+          <p style="margin-bottom: 0;">Interests:</p>
+          <%= f.input :interests, as: :select, collection: Interest.all, value_method: :name, label_method: :name, input_html: { class: 'select2max form-small kill-margin-btm', multiple: true }, required: false, label: false %>
         </div>
         <div class="p-1">
-          <p>Countries:</p>
-          <%= f.input :countries, as: :select, collection: User::COUNTRIES, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: false  %>
+          <p style="margin-bottom: 0;">Countries:</p>
+          <%= f.input :countries, as: :select, collection: User::COUNTRIES, input_html: { class: 'select2max form-large kill-margin-btm', multiple: true }, required: false, label: false  %>
         </div>
         <div class="p-1">
-          <p>Languages:</p>
-          <%= f.input :languages, as: :select, collection: Language.all, input_html: { class: 'select2max form-large', multiple: true }, required: false, label: false  %>
+          <p style="margin-bottom: 0;">Languages:</p>
+          <%= f.input :languages, as: :select, collection: Language.all, input_html: { class: 'select2max form-large kill-margin-btm', multiple: true }, required: false, label: false  %>
         </div>
         <div class="p-1">
-          <%= f.submit "Search", class: "btn-search justify-content-center" %>
+          <%= f.submit "Search", class: "btn-chatwith white-txt highlight width-fix" %>
         </div>
       <% end %>
     </div>
@@ -24,32 +24,43 @@
 
   <div class="cards">
     <% @results.each do |user|%>
-      <div class="card-profiles">
-        <div class="card-filler"></div>
-        <div class="card-category card-feed-position align-center outflow-avatar" style="background-image: linear-gradient(rgba(211,211,211,0.1), rgba(211,211,211,0.3)), url(https://kitt.lewagon.com/placeholder/users/ssaunier)">
-          <%= link_to "#{user.username}", user_path(user), class: "btn-profile" %>
-        </div>
-        <%= image_tag "circle-greek.png",  class: "greek-circle"%>
-        <div class="card-profile-content">
-          <p><strong>About me:</strong> <%= user.about_me.truncate(100) %></p>
-          <p><strong>Country:</strong> <%= user.country %></p>
-          <p><strong>Native language:</strong> <%= user.native_language %>
-          <% user.my_languages&.each do |language| %>
-            <p></p>
-            <% level = '🔹' if language.level == "Begginer"%>
-            <% level = '🔹🔹' if language.level == "Elementary"%>
-            <% level = '🔹🔹🔹' if language.level == "Intermediate"%>
-            <% level = '🔹🔹🔹🔹' if language.level == "Advanced"%>
-            <% level = '🔹🔹🔹🔹🔹' if language.level == "Fluent"%>
-            <p>
-              <%= "#{language.language.name}: #{level}" %>
-            </p>
-          <% end %>
-          <% user.interests&.each do |interest| %>
-            (<%= interest.name %>)
-          <% end %>
-        </div>
-      </div>
+      <% if user.photo.attached? %>
+
+          <div class="card-profiles">
+            <div class="card-filler"></div>
+
+            <div class="card-category card-feed-position align-center outflow-avatar" style="background-color: #D63230; background-image: url(<%= cl_image_path user.photo.key if user.photo.attached? %>)">
+              <%= link_to "#{user.username}", user_path(user), class: "btn-profile" %>
+            </div>
+              <%= image_tag "circle-greek.png",  class: "greek-circle"%>
+            <div class="card-profile-content">
+              <%= user.about_me.truncate(100) %>
+              ...I'm from <%= user.country %>!
+              <div class="separator"><%= image_tag 'linguistics2.png', class: "profile-card-icons"%></div>
+              <div class="tag-wrapper">
+                <div class="tag" style="background-color: #f39237;">
+                  <%= user.native_language %>
+                </div>
+                  <% user.my_languages&.first(3).each do |language| %>
+                <div class="tag">
+                    <%= language.language.name %>
+                </div>
+                  <% end %>
+                <div class="tag">...</div>
+              </div>
+              <div class="separator"><%= image_tag 'interests.png', class: "profile-card-icons"%></div>
+                <div class="tag-wrapper">
+                  <% user.interests&.first(4).each do |interest| %>
+                  <div class="tag">
+                    <%= interest.name.truncate(17) %>
+                  </div>
+                  <% end %>
+                <div class="tag">...</div>
+                </div>
+            </div>
+          </div>
+
+        <% end %>
     <% end %>
   </div>
 </div>

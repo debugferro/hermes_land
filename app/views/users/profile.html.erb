@@ -4,18 +4,20 @@
     <div class="row justify-content-center p-3">
      <h1 id="find-title">Add the languages you speak!</h1>
     </div>
-    <div class="justify-content-center">
-      <ul>
+      <div class="tag-wrapper">
+
         <% @my_languages.each do |my_language| %>
-        <li class="select2-selection__choice" style="list-style: none;">
-        <%= my_language.language.name %>
-        <%= link_to 'X', my_language_path(my_language), method: :delete %>
+        <div class="tag highlight">
+          <span>
+            <%= my_language.language.name %>
+          </span>
+          <%= link_to 'X', my_language_path(my_language), method: :delete, class: "white-link"%>
+        </div>
         <% end %>
-        </li>
-      </ul>
+
     </div>
       <%= simple_form_for current_user, url: my_languages_path, method: 'post' do |f| %>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="display: contents;">
       <%= f.association :languages, value_method: :name, label_method: :name, input_html: { class: 'select2 form-large' }  %>
       <%= f.submit "Save" %>
       <% end %>
@@ -29,23 +31,26 @@
       <h1 id="find-title">Add your interests</h1>
     </div>
     <div class="">
-      <ul>
+      <div class="tag-wrapper">
         <% @my_interests.each do |my_interest| %>
-        <li class="select2-selection__choice" style="list-style: none;">
-        <%= my_interest.interest.name %>
-        <%= link_to 'X', my_interest_path(my_interest), method: :delete %>
+          <div class="tag highlight">
+            <span>
+              <%= my_interest.interest.name %>
+            </span>
+            <%= link_to 'X', my_interest_path(my_interest), method: :delete, class: "white-link" %>
+          </div>
         <% end %>
-        </li>
-      </ul>
+      </div>
+
     </div>
       <%= simple_form_for current_user, url: my_interests_path, method: 'post' do |f| %>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="display: contents;">
       <%= f.association :interests, value_method: :name, label_method: :name, input_html: { class: 'select2' }  %>
       <%= f.submit "Save" %>
       <% end %>
     </div>
     <div class="row justify-content-center pt-4">
-      <%= link_to "Customize you avatar", avatars_path, method: 'get', class: 'btn btn-flat-blue' %>
+      <%= link_to "Finish", avatars_path, method: 'get', class: 'btn-chatwith white-txt highlight' %>
     </div>
   </div>
 </div>

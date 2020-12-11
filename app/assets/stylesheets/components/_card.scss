@@ -25,9 +25,9 @@
   box-shadow: 2px 1px 9px 3px #00000040;
   background: whitesmoke;
   border: 1px solid black;
-  padding: 30px;
+  padding: 1.5em;
   position: relative;
-  height: 22em;
+  height: 24em;
   width: 22em;
   border-radius: 2.6em;
 }
@@ -87,6 +87,11 @@
 
 .pos-relative{
   position: relative
+}
+
+.profile-card-icons {
+  width: 1.5em;
+  height: 1.5em;
 }
 
 .profile-path {
@@ -177,7 +182,11 @@ position: relative;
 .tag-wrapper {
   display: flex;
   max-width: 100%;
-  flex-flow: wrap-reverse;
+  flex-flow: wrap;
+}
+
+.tag-separator{
+  border-bottom: 1px solid gainsboro;
 }
 
 .profile-languages {
@@ -202,7 +211,7 @@ position: relative;
 .separator::before, .separator::after {
     content: '';
     flex: 1;
-    border-bottom: 1px solid #736f6f;
+    border-bottom: 1px solid gainsboro;
 }
 .separator::before {
     margin-right: .25em;
@@ -216,8 +225,8 @@ margin-left: .25em;
   background-color: #D63230;
   width: 21.79em;
   height: 23%;
-  margin-left: -1.9em;
-  margin-top: -1.9em;
+margin-left: -1.44em;
+    margin-top: -1.4em;
   border-top-right-radius: 2.49em;
   border-top-left-radius: 2.49em;
   box-shadow: 2px 1px 10px 1px #000000e3 inset;
@@ -229,6 +238,7 @@ margin-left: .25em;
   background-color: $hermes-darkblue;
   border-radius: 1.1em;
   padding: 0.1em 1.1em;
+  border: 1px solid black;
   position: absolute;
   bottom: -0.8em;
   color: $hermes-white;

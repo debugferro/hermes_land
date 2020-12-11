@@ -13,6 +13,53 @@
 //   height: 16%;
 // }
 
+.white-link {
+  color: $hermes-white;
+  font-weight: bold;
+  font-size: 0.9em;
+    margin-left: 0.2em;
+    margin-right: 0.3em;
+}
+
+.kill-margin-btm{
+  margin-bottom: 0 !important;
+  > .form-group, .select, .optional, .query_interests{
+    margin-bottom: 0 !important;
+  }
+}
+
+.form-group{
+  margin-bottom: 0 !important;
+}
+
+.width-fix{
+      width: 43em !important;
+}
+
+.white-txt{
+  color: white;
+  font-weight: bold;
+
+    text-decoration: none !important;
+}
+
+.tag > span {
+  margin-left: 0.2em
+}
+
+.tag > a {
+  text-decoration: none !important;
+}
+
+.highlight:hover {
+  background:  #C2D8FE;
+  color: $hermes-blue;
+  transition: background 0.3s ease;
+  a{
+    color: $hermes-blue;
+  }
+}
+
 .chat-users{
       width: 91%;
     display: flex;
