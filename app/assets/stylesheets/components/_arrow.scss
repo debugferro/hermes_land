@@ -177,7 +177,11 @@ white-space: nowrap;
   transition: none !important;
 }
 
-
+.floating-btn {
+  position: absolute;
+    top: 23em;
+    width: 14em;
+}
 
 
 

@@ -7,12 +7,12 @@ class AvatarsController < ApplicationController
   def index
     @avatar = Avatar.where(user: current_user).first
     if @user.avatar
-      @base = @user.avatar.assets.where(category: "base").first.path
-      @eye = @user.avatar.assets.where(category: "eyes").first.path
-      @hair = @user.avatar.assets.where(category: "hair").first.path
-      @mouth = @user.avatar.assets.where(category: "mouth").first.path
-      @eyebrow = @user.avatar.assets.where(category: "eyebrows").first.path
-      @nose = @user.avatar.assets.where(category: "nose").first.path
+      @base = @user.avatar.assets.where(category: "base").first&.path
+      @eye = @user.avatar.assets.where(category: "eyes").first&.path
+      @hair = @user.avatar.assets.where(category: "hair").first&.path
+      @mouth = @user.avatar.assets.where(category: "mouth").first&.path
+      @eyebrow = @user.avatar.assets.where(category: "eyebrows").first&.path
+      @nose = @user.avatar.assets.where(category: "nose").first&.path
       @acessory = @user.avatar.assets.where(category: "acessory").first&.path
       @cloth = @user.avatar.assets.where(category: "cloth").first&.path
       @gender = @user.avatar.gender
