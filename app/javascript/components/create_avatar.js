@@ -124,7 +124,7 @@ const createAvatar = () => {
   }
 
   // GETTING HTML BUTTONS FOR CHANGES
-  let btnUpdate         = document.querySelector(".Btn");
+  // let btnUpdate         = document.querySelector(".Btn");
   let btnBase           = document.querySelector(".Btn-base");
   let btnSkin           = document.querySelector(".Btn-skincolor");
 
@@ -213,7 +213,7 @@ const createAvatar = () => {
     filteredMouths = findColors(mouths, idPattern);
     filteredEyes   = findColors(eyes, idPattern);
   }
-
+  let currentSkinColor;;
   // INITIALIZING
   window.onload = function () {
     grabElements();
@@ -227,6 +227,11 @@ const createAvatar = () => {
     initializedValues       = initializeColorIndexes(currentHair, hairColors);
     selectedHairColors      = initializedValues.colors;
     selectedHairColorsIndex = initializedValues.index;
+    // INITIALIZING EYE COLORS
+    currentEyes             = imgEyes.src.slice(29);
+    initializedValues       = initializeColorIndexes(currentEyes, eyeColors);
+    selectedEyeColors      = initializedValues.colors;
+    selectedEyeColorsIndex = initializedValues.index;
     // INITIALIZING EYEBROW COLORS
     currentEyebrows            = imgEyebrows.src.slice(29);
     initializedValues          = initializeColorIndexes(currentEyebrows, eyebrowColors);
@@ -242,48 +247,6 @@ const createAvatar = () => {
   getInfo();
   getAssetsInfo(avatarInfos, gender);
 
-
-
-  btnUpdate.addEventListener("click", () => {
-    updateCanvas();
-  });
-
-  btnBase.addEventListener("click", () => {             // If the skin was not changed
-    if (selectedBaseColors == undefined){               // then selectedBaseColors will be
-      currentBase = bases[baseIndex++%bases.length];    // undefined, so it will set a current base
-    }                                                   // else, it was set in the skin event listener below
-    // Initializing colors for present base
-    let initializedValues   = initializeColorIndexes(currentBase, baseColors);
-    selectedBaseColors      = initializedValues.colors
-    selectedBaseColorsIndex = initializedValues.index
-    imgBase.src = `/avatar/${currentBase}`
-    imgBase.addEventListener("load", function () {
-      grabElements();
-      updateCanvas();
-    });
-  });
-
-  btnSkin.addEventListener("click", () => {
-    // Verifying it current base was initialized
-    // If not, it will initialize to get current base colors to iterate over
-    if (currentBase == undefined) {
-      currentBase             = bases[baseIndex++%bases.length];
-      let initializedValues   = initializeColorIndexes(currentBase, baseColors);
-      selectedBaseColors      = initializedValues.colors
-      selectedBaseColorsIndex = initializedValues.index
-    }
-    let currentColor = selectedBaseColors[selectedBaseColorsIndex++%selectedBaseColors.length]
-    imgBase.src = `/avatar/${currentColor}`
-    currentBase = currentColor;
-    initializeNoseMouthForColor(currentColor);
-    btnMouth.click(); // Forcind mouth, nose and eyes to change accordingly to
-    btnNose.click();  // the current skin color
-    btnEyes.click();
-    imgBase.addEventListener("load", function () {
-      grabElements();
-      updateCanvas();
-    });
-  });
 
   const iterateBackOrForward = (array, index, direction) => {
     if (direction == 1){
@@ -308,6 +271,51 @@ const createAvatar = () => {
       }
     }
   }
+
+  // btnUpdate.addEventListener("click", () => {
+  //   updateCanvas();
+  // });
+
+  btnBase.addEventListener("click", () => {             // If the skin was not changed
+    // if (selectedBaseColors == undefined){               // then selectedBaseColors will be
+    //   currentBase = bases[baseIndex++%bases.length];    // undefined, so it will set a current base
+    // }                                                   // else, it was set in the skin event listener below
+    // Initializing colors for present base
+    let initializedValues   = initializeColorIndexes(currentBase, baseColors);
+    selectedBaseColors      = initializedValues.colors
+    selectedBaseColorsIndex = initializedValues.index
+    baseIndex = iterateBackOrForward(bases, baseIndex, 1).direction;
+    currentBase = bases[baseIndex];
+    imgBase.src = `/avatar/${currentBase}`
+    imgBase.addEventListener("load", function () {
+      grabElements();
+      updateCanvas();
+    });
+  });
+
+  btnSkin.addEventListener("click", () => {
+    // Verifying it current base was initialized
+    // If not, it will initialize to get current base colors to iterate over
+    if (currentBase == undefined) {
+      currentBase             = bases[baseIndex++%bases.length];
+      let initializedValues   = initializeColorIndexes(currentBase, baseColors);
+      selectedBaseColors      = initializedValues.colors
+      selectedBaseColorsIndex = initializedValues.index
+    }
+    selectedBaseColorsIndex = iterateBackOrForward(selectedBaseColors, selectedBaseColorsIndex, 1).direction;
+    let currentColor = selectedBaseColors[selectedBaseColorsIndex]
+    imgBase.src = `/avatar/${currentColor}`
+    currentBase = currentColor;
+    initializeNoseMouthForColor(currentColor);
+    btnMouth.click(); // Forcind mouth, nose and eyes to change accordingly to
+    btnNose.click();  // the current skin color
+    btnEyes.click();
+    imgBase.addEventListener("load", function () {
+      grabElements();
+      updateCanvas();
+    });
+  });
+
 
   btnHair.addEventListener("click", () => {
     hairIndex = iterateBackOrForward(hairs, hairIndex, 1).direction;
@@ -347,11 +355,13 @@ const createAvatar = () => {
     selectedHairColorsIndex = selectedHairColorsIndex.direction
     let currentColor = selectedHairColors[selectedHairColorsIndex]
     // let currentColor = selectedHairColors[selectedHairColorsIndex++%selectedHairColors.length]
-    imgHair.src = `/avatar/${currentColor}`
-    imgHair.addEventListener("load", function () {
-      grabElements();
-      updateCanvas();
-    });
+    if (currentColor && currentColor.length > 0) {
+      imgHair.src = `/avatar/${currentColor}`
+      imgHair.addEventListener("load", function () {
+        grabElements();
+        updateCanvas();
+      });
+    }
   });
 
   btnEyes.addEventListener("click", () => {
@@ -383,11 +393,13 @@ const createAvatar = () => {
   btnEyeColor.addEventListener("click", () => {
     selectedEyeColorsIndex = iterateBackOrForward(selectedEyeColors, selectedEyeColorsIndex, 1).direction;
     let currentColor = selectedEyeColors[selectedEyeColorsIndex]
-    imgEyes.src = `/avatar/${currentColor}`
-    imgEyes.addEventListener("load", function () {
-      grabElements();
-      updateCanvas();
-    });
+    if (currentColor && currentColor.length > 0) {
+      imgEyes.src = `/avatar/${currentColor}`
+      imgEyes.addEventListener("load", function () {
+        grabElements();
+        updateCanvas();
+      });
+    }
   });
 
   // btnEyeColorBack.addEventListener("click", () => {
@@ -449,11 +461,13 @@ const createAvatar = () => {
   btnEyebrowColor.addEventListener("click", () => {
     selectedEyebrowColorsIndex = iterateBackOrForward(selectedEyebrowColors, selectedEyebrowColorsIndex, 1).direction;
     let currentColor = selectedEyebrowColors[selectedEyebrowColorsIndex];
-    imgEyebrows.src = `/avatar/${currentColor}`
-    imgEyebrows.addEventListener("load", function () {
-      grabElements();
-      updateCanvas();
-    });
+    if (currentColor && currentColor.length > 0) {
+      imgEyebrows.src = `/avatar/${currentColor}`
+      imgEyebrows.addEventListener("load", function () {
+        grabElements();
+        updateCanvas();
+      });
+    }
   });
 
   // btnEyebrowColorBack.addEventListener("click", () => {
@@ -521,12 +535,15 @@ const createAvatar = () => {
   });
 
   btnAcessoryColor.addEventListener("click", () => {
+
     let currentColor = selectedAcessoryColors[selectedAcessoryColorsIndex++%selectedAcessoryColors.length]
-    imgAcessory.src = `/avatar/${currentColor}`
-    imgAcessory.addEventListener("load", function () {
-      grabElements();
-      updateCanvas();
-    });
+    if (currentColor && currentColor.length > 0) {
+      imgAcessory.src = `/avatar/${currentColor}`
+      imgAcessory.addEventListener("load", function () {
+        grabElements();
+        updateCanvas();
+      });
+    }
   });
 
   btnMale.addEventListener("click", () => {

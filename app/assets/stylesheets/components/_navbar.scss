@@ -1,8 +1,15 @@
 .navbar-lewagon {
-  justify-content: space-between;
-  background: black;
-  height: 64px;
-  border-bottom: 1px solid black;
+    justify-content: space-between;
+    box-shadow: 2px 1px 11px 2px #00000078;
+    background: #191919;
+    height: 64px;
+    border-bottom: 1px solid black;
+    margin-top: 1em;
+    border-top: 1px solid black;
+}
+
+.bubble-blue{
+
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -15,25 +22,31 @@
 }
 
 .logo {
-  position: relative;
-  margin-left: 3em;
-  font-weight: bold;
-  letter-spacing: 0.3em;
-  font-size: 1.3em;
-  text-transform: uppercase;
-  color: $hermes-blue;
-  text-decoration: none !important;
+position: relative;
+    margin-left: 5em;
+    font-weight: bold;
+    text-shadow: 3px 1px 0px #1C77C3;
+    letter-spacing: 0.3em;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none !important;
 }
 .logo:hover {
   color: #C2D8FE;
 }
 
 .logo-img {
-  position: absolute;
-  width: 5em;
-  height: 5em;
-  margin-left: -1.5em;
-  margin-top: -1.7em;
+    position: absolute;
+    top: 1.2em;
+    width: 5em;
+    height: 5em;
+    margin-left: -0.5em;
+    margin-top: -1.7em;
+        background-color: #d63230;
+    border-radius: 50%;
+    box-shadow: 2px 1px 5px 1px #00000078;
+    border: 1px solid black
 }
 
 .navbar-light .navbar-nav {
@@ -49,5 +62,5 @@
       color: #C2D8FE;
     }
   }
-} 
-  
+}
+

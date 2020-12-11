@@ -12,7 +12,7 @@
           <div class="profile-img-container">
             <div class="canvas-img-box">
               <%= image_tag "circle-greek.png",  class: "greek-circle-profile"%>
-              <%= cl_image_tag @user.photo.key if @user.photo.attached? %>
+              <%= cl_image_tag @user.photo.key, class: "background-image" if @user.photo.attached? %>
               <div class="profile-name topos-8">
                 <span>
                   <%= @user.username %>
@@ -52,10 +52,15 @@
               <strong style="margin-top: 0.5em; margin-left: 1.3em;">Languages</strong>
             </div>
             <div class="profile-left">
-              <p class="profile-languages"><%= @user.native_language %>: Fluent</p>
-              <% @user.my_languages&.each do |language| %>
-                <p class="profile-languages"><%= language.language.name %>: <%= language.level %></p>
-              <% end %>
+              <div class="tag-wrapper">
+                <div class="tag"><%= @user.native_language %></div>
+                <% @user.my_languages&.each do |language| %>
+                <!-- <p class="profile-languages"><%= language.language.name %>: <%= language.level %></p> -->
+                  <div class="tag">
+                    <%= language.language.name %>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
           <div class="profile-about">

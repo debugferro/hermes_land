@@ -6,13 +6,6 @@ class AvatarsController < ApplicationController
 
   def index
     @avatar = Avatar.where(user: current_user).first
-    unless @user.avatar
-      avatar = Avatar.create!(user_id: @user.id)
-      @female_defaults.each do |default|
-        avatar.assets << default
-      end
-    end
-
     if @user.avatar
       @base = @user.avatar.assets.where(category: "base").first.path
       @eye = @user.avatar.assets.where(category: "eyes").first.path
@@ -22,7 +15,6 @@ class AvatarsController < ApplicationController
       @nose = @user.avatar.assets.where(category: "nose").first.path
       @acessory = @user.avatar.assets.where(category: "acessory").first&.path
       @cloth = @user.avatar.assets.where(category: "cloth").first&.path
-      # @cloth = @cloth.first.path if @cloth.present?
       @gender = @user.avatar.gender
     end
 

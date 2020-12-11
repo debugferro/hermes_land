@@ -5,9 +5,9 @@
     <div class="profile-filler"></div>
     <div class="chat-users">
       <% @participants.each do |participant| %>
-        <div class="avatar-bubble" data-toggle="tooltip" data-placement="top" title="<%= participant.username %>">
+        <div class="data-bubble avatar-bubble" data-toggle="tooltip" data-placement="top" title="<%= participant.username %>">
           <a href="<%= user_path(participant) %>">
-            <img src="<%= cl_image_path participant.photo.key if participant.photo.attached? %>" alt="">
+            <img src="<%= cl_image_path participant.photo.key if participant.photo.attached? %>" alt="user avatar image" class="background-image">
           </a>
         </div>
       <% end %>
