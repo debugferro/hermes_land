@@ -54,7 +54,7 @@ document.addEventListener("turbolinks:load", function() {
   if (document.querySelector(".avatar_information")) {
     createAvatar();
   }
-  if (document.querySelector(".avatar-bubble")) {
+  if (document.querySelector(".data-bubble")) {
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
     })

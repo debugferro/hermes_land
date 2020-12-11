@@ -98,3 +98,69 @@
 .message-photo-right{
   width: 5em;
 }
+
+.chat-room-names {
+    color: black;
+    text-decoration: none !important;
+    font-weight: bold;
+}
+
+.last-message {
+  align-self: center;
+  padding: 1em 1em 1em 1em;
+  border-radius: 1em;
+  box-shadow: rgba(0, 0, 0, 0.30) 2px 1px 10px 1px;
+  display: flex;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.grid {
+  display: grid !important;
+  justify-items: center;
+}
+
+.speech-bubble-index {
+  position: relative;
+  background: $hermes-darkblue;
+  border-radius: .4em;
+  small{
+    color: $hermes-white;
+  }
+}
+
+.speech-bubble-index:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-right-color: $hermes-darkblue;
+  border-left: 0;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+
+.error{
+    margin-right: 2%;
+    margin-left: 2em;
+    width: 2em;
+    margin-top: -0.4em;
+        -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+}
+
+.start-chat{
+  display: flex;
+  height: 2.8em;
+    margin: 1em 1em 1em auto;
+    align-self: center;
+}
+
+.chatroom-content {
+  margin-top: 2em;
+}
