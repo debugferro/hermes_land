@@ -4,8 +4,12 @@ Asset.destroy_all
 
 Asset.create!(category: "base", path: "f_:white;_face_1.png", colorized: false)
 Asset.create!(category: "base", path: "m_:white;_face_1.png", colorized: false)
+# Asset.create!(category: "base", path: "m_:white;_face_2.png", colorized: false)
+# Asset.create!(category: "base", path: "f_:white;_face_2.png", colorized: false)
 Asset.create!(category: "base", path: "f_:black;_face_1.png", colorized: true)
 Asset.create!(category: "base", path: "m_:black;_face_1.png", colorized: true)
+# Asset.create!(category: "base", path: "m_:black;_face_2.png", colorized: true)
+# Asset.create!(category: "base", path: "f_:black;_face_2.png", colorized: true)
 
 
 # ACESSORIES            <gender>_:<color>;_<category>_<id>.png
